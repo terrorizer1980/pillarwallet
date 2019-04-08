@@ -236,11 +236,17 @@ export const smallScreen = () => {
   return Dimensions.get('window').width < 410;
 };
 
-export function getEthereumProvider(network: string) {
-  // Connect to INFURA
+export function getInfuraEthereumProvider(network: string) {
   const infuraNetwork = (network === 'homestead') ? 'mainnet' : network;
   const infuraUrl = `https://${infuraNetwork}.infura.io/v3/${INFURA_PROJECT_ID}`;
-  const infuraProvider = new providers.JsonRpcProvider(infuraUrl, network);
+  // PATCH for 3box
+  // providers.JsonRpcProvider.prototype.sendAsync = providers.JsonRpcProvider.prototype.send;
+  return new providers.JsonRpcProvider(infuraUrl, network);
+}
+
+export function getEthereumProvider(network: string) {
+  // Connect to INFURA
+  const infuraProvider = getInfuraEthereumProvider(network);
 
   // Connect to Etherscan
   const etherscanProvider = new providers.EtherscanProvider(network);

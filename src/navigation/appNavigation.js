@@ -64,6 +64,7 @@ import BackupPhraseScreen from 'screens/BackupPhrase';
 import BackupPhraseValidateScreen from 'screens/BackupPhraseValidate';
 import CollectibleScreen from 'screens/Collectible';
 import BadgeScreen from 'screens/Badge';
+import DidScreen from 'screens/Did';
 
 // components
 import RetryApiRegistration from 'components/RetryApiRegistration';
@@ -131,6 +132,7 @@ import {
   SEND_COLLECTIBLE_FROM_ASSET_FLOW,
   SEND_COLLECTIBLE_CONFIRM,
   BADGE,
+  DID,
 } from 'constants/navigationConstants';
 import { PENDING, REGISTERED } from 'constants/userConstants';
 
@@ -241,6 +243,13 @@ const homeFlow = createStackNavigator({
 
 homeFlow.navigationOptions = hideTabNavigatorOnChildView;
 
+// DID FLOW
+const didFlow = createStackNavigator({
+  [DID]: DidScreen,
+}, StackNavigatorConfig);
+
+didFlow.navigationOptions = hideTabNavigatorOnChildView;
+
 // ICO FLOW
 const icoFlow = createStackNavigator({
   [MARKET]: MarketScreen,
@@ -332,6 +341,13 @@ const tabNavigation = createBottomTabNavigator(
             (screenProps.hasUnreadNotifications || !!screenProps.intercomNotificationsCount)),
           !screenProps.isWalletBackedUp),
         tabBarLabel: tabBarLabel('Home'),
+      }),
+    },
+    [DID]: {
+      screen: didFlow,
+      navigationOptions: () => ({
+        tabBarIcon: tabBarIcon(iconWalletActive, iconWallet),
+        tabBarLabel: tabBarLabel('DID'),
       }),
     },
     // [MARKET]: {
