@@ -15,7 +15,7 @@ import { Container } from 'components/Layout';
 import { Paragraph } from 'components/Typography';
 
 // utils
-import { getEthereumProvider, getInfuraEthereumProvider, hashEthereumMessage } from 'utils/common';
+import { getEthereumProvider, getInfuraEthereumProvider } from 'utils/common';
 
 
 type Props = {
@@ -50,21 +50,6 @@ class DidScreen extends React.Component<Props, *> {
       };
     }(myWallet));
 
-    // const text = 'This app wants to view and update your 3Box profile.';
-    // const sig = myWallet.signMessage(text);
-    // console.log('sig', sig);
-
-    // provider.send(method, params).then((result) => {
-    //   console.log('result', result);
-    // }).catch(console.log);
-
-    // providers.JsonRpcProvider.prototype.sendAsync = providers.JsonRpcProvider.prototype.send;
-    // const provider2 = new providers.JsonRpcProvider();
-
-    // const provider = getWeb3EthereumProvider('homestead');
-    // console.log('getWeb3EthereumProvider', provider);
-    // console.log('getWeb3EthereumProvider sendAsync', provider.sendAsync);
-    // console.log('JsonRpcProvider', provider2);
     Box.openBox(wallet.address, provider)
       .then(boxInstance => {
         console.log('boxInstance', boxInstance);
