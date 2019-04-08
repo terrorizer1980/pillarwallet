@@ -101,6 +101,8 @@
     "includeFailureMsg": true
   },
   "dependencies": {
+    "3box": "^1.6.1",
+    "@babel/polyfill": "^7.4.3",
     "@pillarwallet/pillarwallet-nodejs-sdk": "1.21.1334",
     "@tradle/react-native-http": "^2.0.0",
     "add": "^2.0.6",
