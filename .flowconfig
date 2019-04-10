@@ -46,6 +46,9 @@
 <PROJECT_ROOT>/node_modules/metro-bundler/.*
 <PROJECT_ROOT>/node_modules/findup/.*
 
+; Ignore libs patcher
+<PROJECT_ROOT>/libsPatcher/.*
+
 [include]
 
 [libs]

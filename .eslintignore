@@ -6,4 +6,5 @@ ios
 flow-typed
 android/
 src/utils/shim.js
+libsPatcher
 reports

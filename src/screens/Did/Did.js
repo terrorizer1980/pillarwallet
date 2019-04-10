@@ -3,12 +3,13 @@ import '@babel/polyfill';
 import * as React from 'react';
 import isEqual from 'lodash.isequal';
 import { connect } from 'react-redux';
-import { providers, Wallet, utils } from 'ethers';
+// import { providers, Wallet, utils } from 'ethers';
+import { Wallet } from 'ethers';
 // import localStorage from 'react-native-sync-localstorage';
 import Box from '3box/src/3box';
 // import Box from '3box';
 import type { NavigationScreenProp } from 'react-navigation';
-import { NETWORK_PROVIDER } from 'react-native-dotenv';
+// import { NETWORK_PROVIDER } from 'react-native-dotenv';
 import { Input } from 'native-base';
 
 // components
@@ -18,7 +19,8 @@ import { Paragraph } from 'components/Typography';
 import { ButtonMini } from 'components/Button';
 
 // utils
-import { getEthereumProvider, getInfuraEthereumProvider } from 'utils/common';
+// import { getEthereumProvider, getInfuraEthereumProvider } from 'utils/common';
+import { getInfuraEthereumProvider } from 'utils/common';
 
 type Props = {
   navigation: NavigationScreenProp<*>,
