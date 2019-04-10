@@ -29,3 +29,7 @@ YellowBox.ignoreWarnings([
 ]);
 import 'utils/shim';
 import'crypto';
+
+import localStorage from 'react-native-sync-localstorage';
+global.localStorage = localStorage;
+
