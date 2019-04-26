@@ -10,4 +10,10 @@ import 'components/CountrySelect/CountrySelect.hobbesui';
 import 'components/ProfileImage/ProfileImage.hobbesui';
 import 'components/ListItem/SettingsItem.hobbesui';
 import 'components/ListItem/ListItemInputSwitch.hobbesui';
+
 import 'screens/PinCodeUnlock/PinCodeUnlock.hobbesui';
+import 'screens/Me/Me.hobbesui';
+import 'screens/Persona/Persona.hobbesui';
+import 'screens/Personas/Personas.hobbesui';
+import 'screens/UpgradeToSmartWallet/UpgradeToSmartWallet.hobbesui';
+import 'screens/PersonaWorkflow/PersonaWorkflow.hobbesui';
