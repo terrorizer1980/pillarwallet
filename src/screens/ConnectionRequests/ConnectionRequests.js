@@ -3,20 +3,20 @@ import * as React from 'react';
 import { FlatList, RefreshControl } from 'react-native';
 import type { NavigationScreenProp } from 'react-navigation';
 import { connect } from 'react-redux';
-import { TYPE_RECEIVED, TYPE_REJECTED } from 'constants/invitationsConstants';
-import { spacing } from 'utils/variables';
+import { TYPE_RECEIVED, TYPE_REJECTED } from '../../constants/invitationsConstants';
+import { spacing } from '../../utils/variables';
 import {
   cancelInvitationAction,
   acceptInvitationAction,
   rejectInvitationAction,
   fetchInviteNotificationsAction,
-} from 'actions/invitationsActions';
-import { PEOPLE, CONTACT } from 'constants/navigationConstants';
-import { Container } from 'components/Layout';
-import Header from 'components/Header';
-import ListItemWithImage from 'components/ListItem/ListItemWithImage';
-import Separator from 'components/Separator';
-import { createAlert } from 'utils/alerts';
+} from '../../actions/invitationsActions';
+import { PEOPLE, CONTACT } from '../../constants/navigationConstants';
+import { Container } from '../../components/Layout';
+import Header from '../../components/Header';
+import ListItemWithImage from '../../components/ListItem/ListItemWithImage';
+import Separator from '../../components/Separator';
+import { createAlert } from '../../utils/alerts';
 
 type Props = {
   navigation: NavigationScreenProp<*>,

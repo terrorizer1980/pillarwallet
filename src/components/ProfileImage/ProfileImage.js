@@ -3,10 +3,10 @@ import * as React from 'react';
 import { ImageBackground } from 'react-native';
 import styled from 'styled-components/native';
 import { CachedImage } from 'react-native-cached-image';
-import { baseColors, fontSizes } from 'utils/variables';
-import { getInitials } from 'utils/contacts';
-import { BaseText } from 'components/Typography';
-import { Shadow } from 'components/Shadow';
+import { baseColors, fontSizes } from '../../utils/variables';
+import { getInitials } from '../../utils/contacts';
+import { BaseText } from '../Typography';
+import { Shadow } from '../Shadow';
 
 const CircleImage = styled(CachedImage)`
   width: ${props => (props.diameter ? props.diameter : '50')}px;

@@ -1,5 +1,5 @@
 // @flow
-import { ADD_INVITATION, UPDATE_INVITATIONS, UPDATE_INVITATIONS_STATE } from 'constants/invitationsConstants';
+import { ADD_INVITATION, UPDATE_INVITATIONS, UPDATE_INVITATIONS_STATE } from '../constants/invitationsConstants';
 
 export type InvitationsReducerState = {
   data: Object[],

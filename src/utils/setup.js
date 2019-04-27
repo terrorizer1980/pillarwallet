@@ -9,5 +9,5 @@ YellowBox.ignoreWarnings([
   'Module Intercom',
   'Class EX'
 ]);
-import 'utils/shim';
+import './shim';
 import'crypto';

@@ -1,6 +1,6 @@
 // @flow
-import ChatService from 'services/chat';
-import Toast from 'components/Toast';
+import ChatService from '../services/chat';
+import Toast from '../components/Toast';
 import {
   UPDATE_CHATS,
   ADD_MESSAGE,
@@ -8,7 +8,7 @@ import {
   RESET_UNREAD_MESSAGE,
   FETCHING_CHATS,
   DELETE_CHAT,
-} from 'constants/chatConstants';
+} from '../constants/chatConstants';
 
 const chat = new ChatService();
 

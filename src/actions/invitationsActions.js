@@ -1,7 +1,7 @@
 // @flow
-import { generateAccessKey } from 'utils/invitations';
-import type { ApiUser } from 'models/Contacts';
-import { uniqBy } from 'utils/common';
+import { generateAccessKey } from '../utils/invitations';
+import type { ApiUser } from '../models/Contacts';
+import { uniqBy } from '../utils/common';
 import {
   ADD_INVITATION,
   TYPE_SENT,
@@ -11,11 +11,11 @@ import {
   TYPE_BLOCKED,
   TYPE_REJECTED,
   TYPE_RECEIVED,
-} from 'constants/invitationsConstants';
-import { UPDATE_CONTACTS } from 'constants/contactsConstants';
-import { ADD_NOTIFICATION } from 'constants/notificationConstants';
-import { UPDATE_ACCESS_TOKENS } from 'constants/accessTokensConstants';
-import { getExistingChatsAction } from 'actions/chatActions';
+} from '../constants/invitationsConstants';
+import { UPDATE_CONTACTS } from '../constants/contactsConstants';
+import { ADD_NOTIFICATION } from '../constants/notificationConstants';
+import { UPDATE_ACCESS_TOKENS } from '../constants/accessTokensConstants';
+import { getExistingChatsAction } from '../actions/chatActions';
 import { saveDbAction } from './dbActions';
 
 export const fetchInviteNotificationsAction = () => {

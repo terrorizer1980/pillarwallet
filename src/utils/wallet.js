@@ -1,5 +1,5 @@
 // @flow
-import { getRandomInt } from 'utils/common';
+import { getRandomInt } from '../utils/common';
 import DeviceInfo from 'react-native-device-info';
 import ethers from 'ethers';
 

@@ -1,10 +1,10 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components/native';
-import { Container, ScrollWrapper } from 'components/Layout';
-import { Paragraph, BoldText } from 'components/Typography';
-import { baseColors, fontSizes, fontWeights, spacing } from 'utils/variables';
-import Header from 'components/Header';
+import { Container, ScrollWrapper } from '../../components/Layout';
+import { Paragraph, BoldText } from '../../components/Typography';
+import { baseColors, fontSizes, fontWeights, spacing } from '../../utils/variables';
+import Header from '../../components/Header';
 
 const ComingSoonBanner = styled.View`
   padding: ${spacing.rhythm}px;

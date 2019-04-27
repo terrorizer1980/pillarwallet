@@ -1,13 +1,13 @@
 // @flow
 import * as React from 'react';
 import { View } from 'react-native';
-import { UIColors, baseColors, fontSizes } from 'utils/variables';
-import type { Assets, Balances, Rates } from 'models/Asset';
-import { BaseText } from 'components/Typography';
+import { UIColors, baseColors, fontSizes } from '../../utils/variables';
+import type { Assets, Balances, Rates } from '../../models/Asset';
+import { BaseText } from '../Typography';
 import { connect } from 'react-redux';
-import { formatMoney, getCurrencySymbol } from 'utils/common';
-import { getBalance } from 'utils/assets';
-import { defaultFiatCurrency } from 'constants/assetsConstants';
+import { formatMoney, getCurrencySymbol } from '../../utils/common';
+import { getBalance } from '../../utils/assets';
+import { defaultFiatCurrency } from '../../constants/assetsConstants';
 
 type Props = {
   assets: Assets,

@@ -2,7 +2,7 @@
 import React from 'react';
 import Lottie from 'lottie-react-native';
 
-const placeholder = require('assets/animations/transactionSentConfirmationAnimation.json');
+const placeholder = require('../../assets/animations/transactionSentConfirmationAnimation.json');
 
 type Props = {
   source: Object,

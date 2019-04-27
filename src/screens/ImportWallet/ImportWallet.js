@@ -8,7 +8,7 @@ import {
   importWalletFromTWordsPhraseAction,
   importWalletFromPrivateKeyAction,
   resetWalletErrorAction,
-} from 'actions/walletActions';
+} from '../../actions/walletActions';
 import {
   WALLET_ERROR,
   IMPORT_ERROR,
@@ -16,16 +16,16 @@ import {
   IMPORT_WALLET_TWORDS_PHRASE,
   TWORDSPHRASE,
   PRIVATEKEY,
-} from 'constants/walletConstants';
-import Button from 'components/Button';
-import { Container, ScrollWrapper, Footer } from 'components/Layout';
-import { Paragraph, BaseText } from 'components/Typography';
-import Header from 'components/Header';
-import TextInput from 'components/TextInput';
-import QRCodeScanner from 'components/QRCodeScanner';
-import IconButton from 'components/IconButton';
-import WalletTabs from 'components/Tabs/WalletTabs';
-import { fontSizes, baseColors, UIColors, spacing } from 'utils/variables';
+} from '../../constants/walletConstants';
+import Button from '../../components/Button';
+import { Container, ScrollWrapper, Footer } from '../../components/Layout';
+import { Paragraph, BaseText } from '../../components/Typography';
+import Header from '../../components/Header';
+import TextInput from '../../components/TextInput';
+import QRCodeScanner from '../../components/QRCodeScanner';
+import IconButton from '../../components/IconButton';
+import WalletTabs from '../../components/Tabs/WalletTabs';
+import { fontSizes, baseColors, UIColors, spacing } from '../../utils/variables';
 
 type Props = {
   importWalletFromTWordsPhrase: (tWordsPhrase: string) => Function,

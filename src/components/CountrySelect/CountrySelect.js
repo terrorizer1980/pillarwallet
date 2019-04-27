@@ -2,11 +2,11 @@
 import * as React from 'react';
 import { FlatList } from 'react-native';
 import styled from 'styled-components/native';
-import SearchBar from 'components/SearchBar';
-import EmptyStateParagraph from 'components/EmptyState/EmptyStateParagraph';
-import { Wrapper } from 'components/Layout';
-import { baseColors, spacing } from 'utils/variables';
-import countries from 'utils/countries.json';
+import SearchBar from '../SearchBar';
+import EmptyStateParagraph from '../EmptyState/EmptyStateParagraph';
+import { Wrapper } from '../Layout';
+import { baseColors, spacing } from '../../utils/variables';
+import countries from '../../utils/countries.json';
 
 const sortedCountries = countries.sort((a, b) => a.name.localeCompare(b.name));
 

@@ -4,9 +4,9 @@ import { Platform } from 'react-native';
 import Modal from 'react-native-modal';
 import styled from 'styled-components/native';
 import HTMLView from 'react-native-htmlview';
-import { Container, ScrollWrapper } from 'components/Layout';
-import Header from 'components/Header';
-import Spinner from 'components/Spinner';
+import { Container, ScrollWrapper } from '../../Layout';
+import Header from '../../Header';
+import Spinner from '../../Spinner';
 
 type Props = {
   htmlEndpoint: string,

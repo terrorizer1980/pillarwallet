@@ -3,21 +3,21 @@ import type { SwitchNavigator as SwitchNavigatorType } from 'react-navigation';
 import { createStackNavigator, createSwitchNavigator } from 'react-navigation';
 
 // screens
-import OnboardingScreen from 'screens/Onboarding';
-import NewWalletScreen from 'screens/NewWallet';
-import NewProfileScreen from 'screens/NewProfile';
-import SecurityConfirmScreen from 'screens/SecurityConfirm';
-import BackupPhraseScreen from 'screens/BackupPhrase';
-import BackupPhraseValidateScreen from 'screens/BackupPhraseValidate';
-import LegalTermsScreen from 'screens/LegalTerms';
-import ImportWalletScreen from 'screens/ImportWallet';
-import SetWalletPinCodeScreen from 'screens/SetWalletPinCode';
-import PinCodeConfirmationScreen from 'screens/PinCodeConfirmation';
-import PinCodeUnlockScreen from 'screens/PinCodeUnlock';
-import WelcomeScreen from 'screens/Welcome';
-import ForgotPinScreen from 'screens/ForgotPin';
+import OnboardingScreen from '../screens/Onboarding';
+import NewWalletScreen from '../screens/NewWallet';
+import NewProfileScreen from '../screens/NewProfile';
+import SecurityConfirmScreen from '../screens/SecurityConfirm';
+import BackupPhraseScreen from '../screens/BackupPhrase';
+import BackupPhraseValidateScreen from '../screens/BackupPhraseValidate';
+import LegalTermsScreen from '../screens/LegalTerms';
+import ImportWalletScreen from '../screens/ImportWallet';
+import SetWalletPinCodeScreen from '../screens/SetWalletPinCode';
+import PinCodeConfirmationScreen from '../screens/PinCodeConfirmation';
+import PinCodeUnlockScreen from '../screens/PinCodeUnlock';
+import WelcomeScreen from '../screens/Welcome';
+import ForgotPinScreen from '../screens/ForgotPin';
 
-import { modalTransition } from 'utils/common';
+import { modalTransition } from '../utils/common';
 
 import {
   APP_FLOW,
@@ -36,7 +36,7 @@ import {
   ONBOARDING_HOME,
   WELCOME,
   FORGOT_PIN,
-} from 'constants/navigationConstants';
+} from '../constants/navigationConstants';
 
 import AppFlow from './appNavigation';
 

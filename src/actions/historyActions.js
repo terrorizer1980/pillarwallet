@@ -1,5 +1,5 @@
 // @flow
-import { uniqBy } from 'utils/common';
+import { uniqBy } from '../utils/common';
 import {
   SET_HISTORY,
   TRANSACTION_PENDING_EVENT,
@@ -8,8 +8,8 @@ import {
   TX_CONFIRMED_STATUS,
   TX_FAILED_STATUS,
   TX_PENDING_STATUS,
-} from 'constants/historyConstants';
-import { UPDATE_APP_SETTINGS } from 'constants/appSettingsConstants';
+} from '../constants/historyConstants';
+import { UPDATE_APP_SETTINGS } from '../constants/appSettingsConstants';
 import { checkForMissedAssetsAction } from './assetsActions';
 import { saveDbAction } from './dbActions';
 import { getExistingTxNotesAction } from './txNoteActions';

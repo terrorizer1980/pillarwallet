@@ -4,13 +4,13 @@ import { Platform, TouchableOpacity, Animated, Easing, Dimensions } from 'react-
 import isEqual from 'lodash.isequal';
 import isEqualWith from 'lodash.isequalwith';
 import styled from 'styled-components/native';
-import { LightText, BoldText } from 'components/Typography';
-import { Shadow } from 'components/Shadow';
+import { LightText, BoldText } from '../Typography';
+import { Shadow } from '../Shadow';
 import { CachedImage } from 'react-native-cached-image';
-import { getCurrencySymbol } from 'utils/common';
-import { spacing, fontSizes, fontTrackings, baseColors } from 'utils/variables';
-import Icon from 'components/Icon';
-import Toast from 'components/Toast';
+import { getCurrencySymbol } from '../../utils/common';
+import { spacing, fontSizes, fontTrackings, baseColors } from '../../utils/variables';
+import Icon from '../Icon';
+import Toast from '../Toast';
 
 type Props = {
   id: string,
@@ -40,7 +40,7 @@ type State = {
 }
 
 const defaultCircleColor = '#ACBCCD';
-const genericToken = require('assets/images/tokens/genericToken.png');
+const genericToken = require('../../assets/images/tokens/genericToken.png');
 
 const AssetWrapper = styled(Animated.View)`
   width: 33.33333%;

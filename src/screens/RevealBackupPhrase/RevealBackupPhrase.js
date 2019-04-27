@@ -3,13 +3,13 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components/native';
 import type { NavigationScreenProp } from 'react-navigation';
-import { Container, Wrapper, ScrollWrapper } from 'components/Layout';
-import { Paragraph } from 'components/Typography';
-import MnemonicPhrase from 'components/MnemonicPhrase';
-import CheckPin from 'components/CheckPin';
-import Header from 'components/Header';
-import { baseColors } from 'utils/variables';
-import { resetIncorrectPasswordAction } from 'actions/authActions';
+import { Container, Wrapper, ScrollWrapper } from '../../components/Layout';
+import { Paragraph } from '../../components/Typography';
+import MnemonicPhrase from '../../components/MnemonicPhrase';
+import CheckPin from '../../components/CheckPin';
+import Header from '../../components/Header';
+import { baseColors } from '../../utils/variables';
+import { resetIncorrectPasswordAction } from '../../actions/authActions';
 
 
 type Props = {

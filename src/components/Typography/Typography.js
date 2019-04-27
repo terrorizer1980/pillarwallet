@@ -1,6 +1,6 @@
 // @flow
 import styled from 'styled-components/native';
-import { UIColors, baseColors, fontSizes, fontWeights } from 'utils/variables';
+import { UIColors, baseColors, fontSizes, fontWeights } from '../../utils/variables';
 import { Platform } from 'react-native';
 
 export const BaseText = styled.Text`

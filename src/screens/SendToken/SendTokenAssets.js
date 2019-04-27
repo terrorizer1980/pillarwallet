@@ -3,18 +3,18 @@ import * as React from 'react';
 import { FlatList } from 'react-native';
 import type { NavigationScreenProp } from 'react-navigation';
 import { connect } from 'react-redux';
-import type { Assets, Balances } from 'models/Asset';
-import { fetchAssetsBalancesAction } from 'actions/assetsActions';
-import Header from 'components/Header';
-import { Container, Wrapper } from 'components/Layout';
-import Separator from 'components/Separator';
-import ListItemWithImage from 'components/ListItem/ListItemWithImage';
-import EmptyStateParagraph from 'components/EmptyState/EmptyStateParagraph';
-import { formatAmount } from 'utils/common';
-import { getBalance } from 'utils/assets';
-import { SEND_TOKEN_AMOUNT } from 'constants/navigationConstants';
+import type { Assets, Balances } from '../../models/Asset';
+import { fetchAssetsBalancesAction } from '../../actions/assetsActions';
+import Header from '../../components/Header';
+import { Container, Wrapper } from '../../components/Layout';
+import Separator from '../../components/Separator';
+import ListItemWithImage from '../../components/ListItem/ListItemWithImage';
+import EmptyStateParagraph from '../../components/EmptyState/EmptyStateParagraph';
+import { formatAmount } from '../../utils/common';
+import { getBalance } from '../../utils/assets';
+import { SEND_TOKEN_AMOUNT } from '../../constants/navigationConstants';
 import { SDK_PROVIDER } from 'react-native-dotenv';
-import assetsConfig from 'configs/assetsConfig';
+import assetsConfig from '../../configs/assetsConfig';
 
 type Props = {
   fetchAssetsBalances: (assets: Assets, walletAddress: string) => Function,
@@ -32,7 +32,7 @@ type NextScreenAssetData = {
   icon: string,
 };
 
-const genericToken = require('assets/images/tokens/genericToken.png');
+const genericToken = require('../../assets/images/tokens/genericToken.png');
 
 class SendTokenAssetsScreen extends React.Component<Props, {}> {
   navigateToNextScreen(nextScreenAssetData: NextScreenAssetData) {

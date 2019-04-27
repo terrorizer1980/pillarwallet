@@ -3,15 +3,15 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import type { NavigationScreenProp } from 'react-navigation';
 import { Platform } from 'react-native';
-import { UIColors, fontSizes } from 'utils/variables';
+import { UIColors, fontSizes } from '../../utils/variables';
 import styled from 'styled-components/native';
-import { Container, Wrapper, Footer } from 'components/Layout';
-import { Paragraph, Label, BoldText } from 'components/Typography';
-import Button from 'components/Button';
-import Header from 'components/Header';
-import IconButton from 'components/IconButton';
-import { LEGAL_TERMS, PROFILE } from 'constants/navigationConstants';
-import { backupWalletAction } from 'actions/walletActions';
+import { Container, Wrapper, Footer } from '../../components/Layout';
+import { Paragraph, Label, BoldText } from '../../components/Typography';
+import Button from '../../components/Button';
+import Header from '../../components/Header';
+import IconButton from '../../components/IconButton';
+import { LEGAL_TERMS, PROFILE } from '../../constants/navigationConstants';
+import { backupWalletAction } from '../../actions/walletActions';
 
 type State = {
   enteredWords: string[],

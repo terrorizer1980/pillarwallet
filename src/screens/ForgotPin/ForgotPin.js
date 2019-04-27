@@ -3,13 +3,13 @@ import * as React from 'react';
 
 import { connect } from 'react-redux';
 import type { NavigationScreenProp } from 'react-navigation';
-import { Container, Wrapper, Footer } from 'components/Layout';
-import { Paragraph } from 'components/Typography';
-import Header from 'components/Header';
-import Button from 'components/Button';
+import { Container, Wrapper, Footer } from '../../components/Layout';
+import { Paragraph } from '../../components/Typography';
+import Header from '../../components/Header';
+import Button from '../../components/Button';
 import styled from 'styled-components/native/index';
-import { spacing } from 'utils/variables';
-import { IMPORT_WALLET, FORGOT_PIN } from 'constants/navigationConstants';
+import { spacing } from '../../utils/variables';
+import { IMPORT_WALLET, FORGOT_PIN } from '../../constants/navigationConstants';
 
 type Props = {
   checkPin: (pin: string, onValidPin: Function) => Function,

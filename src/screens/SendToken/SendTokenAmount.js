@@ -8,36 +8,36 @@ import { BigNumber } from 'bignumber.js';
 import styled from 'styled-components/native';
 
 // components
-import { Container, Footer, Wrapper } from 'components/Layout';
-import SingleInput from 'components/TextInput/SingleInput';
-import Button from 'components/Button';
-import { TextLink, Label, BaseText } from 'components/Typography';
-import Header from 'components/Header';
-import SlideModal from 'components/Modals/SlideModal';
+import { Container, Footer, Wrapper } from '../../components/Layout';
+import SingleInput from '../../components/TextInput/SingleInput';
+import Button from '../../components/Button';
+import { TextLink, Label, BaseText } from '../../components/Typography';
+import Header from '../../components/Header';
+import SlideModal from '../../components/Modals/SlideModal';
 
 // utils
-import { parseNumber, formatAmount, isValidNumber, getCurrencySymbol, formatMoney } from 'utils/common';
-import { fontSizes, spacing, UIColors } from 'utils/variables';
-import { getBalance, getRate } from 'utils/assets';
+import { parseNumber, formatAmount, isValidNumber, getCurrencySymbol, formatMoney } from '../../utils/common';
+import { fontSizes, spacing, UIColors } from '../../utils/variables';
+import { getBalance, getRate } from '../../utils/assets';
 
 // types
 import type { NavigationScreenProp } from 'react-navigation';
-import type { GasInfo } from 'models/GasInfo';
-import type { TransactionPayload } from 'models/Transaction';
-import type { Balances, Rates } from 'models/Asset';
+import type { GasInfo } from '../../models/GasInfo';
+import type { TransactionPayload } from '../../models/Transaction';
+import type { Balances, Rates } from '../../models/Asset';
 
 // constants
-import { SEND_TOKEN_CONFIRM } from 'constants/navigationConstants';
-import { ETH, defaultFiatCurrency } from 'constants/assetsConstants';
+import { SEND_TOKEN_CONFIRM } from '../../constants/navigationConstants';
+import { ETH, defaultFiatCurrency } from '../../constants/assetsConstants';
 
 // actions
-import { fetchGasInfoAction } from 'actions/historyActions';
+import { fetchGasInfoAction } from '../../actions/historyActions';
 
 
 const { Form } = t.form;
 const GAS_LIMIT = 500000;
 const MIN_TX_AMOUNT = 0.000000000000000001;
-const genericToken = require('assets/images/tokens/genericTokenIcon.png');
+const genericToken = require('../../assets/images/tokens/genericTokenIcon.png');
 
 const getFormStructure = (
   maxAmount: number,

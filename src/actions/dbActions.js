@@ -1,6 +1,6 @@
 // @flow
-import Storage from 'services/storage';
-import { UPDATE_DB } from 'constants/dbConstants';
+import Storage from '../services/storage';
+import { UPDATE_DB } from '../constants/dbConstants';
 
 const storage = Storage.getInstance('db');
 

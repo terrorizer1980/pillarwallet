@@ -2,10 +2,10 @@
 import * as React from 'react';
 import styled from 'styled-components/native';
 import { Platform } from 'react-native';
-import { UIColors, baseColors, fontSizes, spacing, fontWeights } from 'utils/variables';
+import { UIColors, baseColors, fontSizes, spacing, fontWeights } from '../../utils/variables';
 import { Button as NBButton } from 'native-base';
-import { BoldText } from 'components/Typography';
-import Icon from 'components/Icon';
+import { BoldText } from '../Typography';
+import Icon from '../Icon';
 
 type Props = {
   children?: React.Node,

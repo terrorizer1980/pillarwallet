@@ -1,7 +1,7 @@
 // @flow
 import ethers from 'ethers';
 import { NavigationActions } from 'react-navigation';
-import { getSaltedPin } from 'utils/wallet';
+import { getSaltedPin } from '../utils/wallet';
 import merge from 'lodash.merge';
 import {
   DECRYPT_WALLET,
@@ -11,19 +11,19 @@ import {
   ENCRYPTING,
   GENERATE_ENCRYPTED_WALLET,
   DECRYPTED,
-} from 'constants/walletConstants';
-import { APP_FLOW, AUTH_FLOW, ONBOARDING_FLOW, ASSETS, CHAT, CHAT_LIST } from 'constants/navigationConstants';
-import { UPDATE_USER, PENDING, REGISTERED } from 'constants/userConstants';
-import { LOG_OUT } from 'constants/authConstants';
-import { UPDATE_APP_SETTINGS } from 'constants/appSettingsConstants';
-import { delay } from 'utils/common';
-import { generateChatPassword } from 'utils/chat';
-import Storage from 'services/storage';
-import { navigate, getNavigationState, getNavigationPathAndParamsState } from 'services/navigation';
-import ChatService from 'services/chat';
+} from '../constants/walletConstants';
+import { APP_FLOW, AUTH_FLOW, ONBOARDING_FLOW, ASSETS, CHAT, CHAT_LIST } from '../constants/navigationConstants';
+import { UPDATE_USER, PENDING, REGISTERED } from '../constants/userConstants';
+import { LOG_OUT } from '../constants/authConstants';
+import { UPDATE_APP_SETTINGS } from '../constants/appSettingsConstants';
+import { delay } from '../utils/common';
+import { generateChatPassword } from '../utils/chat';
+import Storage from '../services/storage';
+import { navigate, getNavigationState, getNavigationPathAndParamsState } from '../services/navigation';
+import ChatService from '../services/chat';
 import firebase from 'react-native-firebase';
-import { toastWalletBackup } from 'utils/toasts';
-import { setupSentryAction } from 'actions/appActions';
+import { toastWalletBackup } from '../utils/toasts';
+import { setupSentryAction } from '../actions/appActions';
 import { saveDbAction } from './dbActions';
 
 const Crashlytics = firebase.crashlytics();

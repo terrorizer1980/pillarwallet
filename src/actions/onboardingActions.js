@@ -2,11 +2,11 @@
 import ethers from 'ethers';
 import { NavigationActions } from 'react-navigation';
 import firebase from 'react-native-firebase';
-import { delay, uniqBy } from 'utils/common';
+import { delay, uniqBy } from '../utils/common';
 import Intercom from 'react-native-intercom';
 import { ImageCacheManager } from 'react-native-cached-image';
-import ChatService from 'services/chat';
-import { generateMnemonicPhrase, getSaltedPin } from 'utils/wallet';
+import ChatService from '../services/chat';
+import { generateMnemonicPhrase, getSaltedPin } from '../utils/wallet';
 import {
   ENCRYPTING,
   GENERATE_ENCRYPTED_WALLET,
@@ -17,25 +17,25 @@ import {
   USERNAME_OK,
   CHECKING_USERNAME,
   SET_API_USER,
-} from 'constants/walletConstants';
-import { APP_FLOW, NEW_WALLET, ASSETS } from 'constants/navigationConstants';
-import { SET_INITIAL_ASSETS, UPDATE_ASSETS } from 'constants/assetsConstants';
-import { UPDATE_CONTACTS } from 'constants/contactsConstants';
+} from '../constants/walletConstants';
+import { APP_FLOW, NEW_WALLET, ASSETS } from '../constants/navigationConstants';
+import { SET_INITIAL_ASSETS, UPDATE_ASSETS } from '../constants/assetsConstants';
+import { UPDATE_CONTACTS } from '../constants/contactsConstants';
 import {
   TYPE_ACCEPTED,
   TYPE_RECEIVED,
   UPDATE_INVITATIONS,
-} from 'constants/invitationsConstants';
-import { UPDATE_APP_SETTINGS } from 'constants/appSettingsConstants';
-import { UPDATE_RATES } from 'constants/ratesConstants';
-import { PENDING, REGISTERED, UPDATE_USER } from 'constants/userConstants';
-import { UPDATE_ACCESS_TOKENS } from 'constants/accessTokensConstants';
-import { SET_HISTORY } from 'constants/historyConstants';
-import { generateChatPassword } from 'utils/chat';
-import { toastWalletBackup } from 'utils/toasts';
-import Storage from 'services/storage';
-import { navigate } from 'services/navigation';
-import { getExchangeRates } from 'services/assets';
+} from '../constants/invitationsConstants';
+import { UPDATE_APP_SETTINGS } from '../constants/appSettingsConstants';
+import { UPDATE_RATES } from '../constants/ratesConstants';
+import { PENDING, REGISTERED, UPDATE_USER } from '../constants/userConstants';
+import { UPDATE_ACCESS_TOKENS } from '../constants/accessTokensConstants';
+import { SET_HISTORY } from '../constants/historyConstants';
+import { generateChatPassword } from '../utils/chat';
+import { toastWalletBackup } from '../utils/toasts';
+import Storage from '../services/storage';
+import { navigate } from '../services/navigation';
+import { getExchangeRates } from '../services/assets';
 import { saveDbAction } from './dbActions';
 import { generateWalletMnemonicAction } from './walletActions';
 

@@ -1,11 +1,11 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components/native';
-import Title from 'components/Title';
-import Icon from 'components/Icon';
-import { BaseText } from 'components/Typography';
-import { ALL } from 'constants/activityConstants';
-import { UIColors, baseColors, spacing, fontSizes } from 'utils/variables';
+import Title from '../Title';
+import Icon from '../Icon';
+import { BaseText } from '../Typography';
+import { ALL } from '../../constants/activityConstants';
+import { UIColors, baseColors, spacing, fontSizes } from '../../utils/variables';
 
 type Tab = {
   id: string,

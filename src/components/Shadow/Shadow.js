@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Platform, PixelRatio, View } from 'react-native';
 import { BoxShadow } from 'react-native-shadow';
 import styled from 'styled-components/native';
-import { UIColors } from 'utils/variables';
+import { UIColors } from '../../utils/variables';
 import NativeAndroidShadow from './NativeAndroidShadow';
 
 type Props = {

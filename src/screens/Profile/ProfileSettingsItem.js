@@ -1,10 +1,10 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components/native';
-import { baseColors, fontSizes, spacing } from 'utils/variables';
+import { baseColors, fontSizes, spacing } from '../../utils/variables';
 import { Switch, Badge as NBBadge } from 'native-base';
-import { BaseText } from 'components/Typography';
-import Icon from 'components/Icon';
+import { BaseText } from '../../components/Typography';
+import Icon from '../../components/Icon';
 import { Platform, StyleSheet, TouchableNativeFeedback } from 'react-native';
 
 const StyledItemTouchable = styled.TouchableHighlight`

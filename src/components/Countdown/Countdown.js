@@ -1,8 +1,8 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components/native';
-import { MediumText } from 'components/Typography';
-import { fontSizes, fontTrackings, baseColors } from 'utils/variables';
+import { MediumText } from '../Typography';
+import { fontSizes, fontTrackings, baseColors } from '../../utils/variables';
 
 type Props = {
   endDate: string,

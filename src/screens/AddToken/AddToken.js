@@ -8,18 +8,18 @@ import debounce from 'lodash.debounce';
 import { List, ListItem, Body, Switch } from 'native-base';
 import { SDK_PROVIDER } from 'react-native-dotenv';
 
-import type { Assets, Asset } from 'models/Asset';
+import type { Assets, Asset } from '../../models/Asset';
 import { connect } from 'react-redux';
-import { baseColors, fontSizes, fontWeights, UIColors } from 'utils/variables';
-import { partial } from 'utils/common';
-import Button from 'components/Button';
-import Toast from 'components/Toast';
-import EmptyStateParagraph from 'components/EmptyState/EmptyStateParagraph';
-import { Container, ScrollWrapper, Wrapper } from 'components/Layout';
-import SearchBar from 'components/SearchBar';
-import { SubHeading, BaseText, BoldText, LightText } from 'components/Typography';
-import Header from 'components/Header';
-import Spinner from 'components/Spinner';
+import { baseColors, fontSizes, fontWeights, UIColors } from '../../utils/variables';
+import { partial } from '../../utils/common';
+import Button from '../../components/Button';
+import Toast from '../../components/Toast';
+import EmptyStateParagraph from '../../components/EmptyState/EmptyStateParagraph';
+import { Container, ScrollWrapper, Wrapper } from '../../components/Layout';
+import SearchBar from '../../components/SearchBar';
+import { SubHeading, BaseText, BoldText, LightText } from '../../components/Typography';
+import Header from '../../components/Header';
+import Spinner from '../../components/Spinner';
 
 import {
   addAssetAction,
@@ -29,8 +29,8 @@ import {
   startAssetsSearchAction,
   searchAssetsAction,
   resetSearchAssetsResultAction,
-} from 'actions/assetsActions';
-import { ETH, FETCHING, FETCHED } from 'constants/assetsConstants';
+} from '../../actions/assetsActions';
+import { ETH, FETCHING, FETCHED } from '../../constants/assetsConstants';
 
 const TokenName = styled(BoldText)`
   font-size: ${fontSizes.small};
@@ -155,7 +155,7 @@ type State = {
 }
 
 const MIN_QUERY_LENGTH = 2;
-const genericToken = require('assets/images/tokens/genericToken.png');
+const genericToken = require('../../assets/images/tokens/genericToken.png');
 
 class AddToken extends React.Component<Props, State> {
   _willBlur: NavigationEventSubscription;

@@ -4,21 +4,21 @@ import { TouchableOpacity, Image as RNImage, ScrollView, Dimensions, ViewLayoutE
 import styled from 'styled-components/native';
 
 // constants
-import { EXTRASMALL, MINIMIZED, SIMPLIFIED } from 'constants/assetsLayoutConstants';
+import { EXTRASMALL, MINIMIZED, SIMPLIFIED } from '../../constants/assetsLayoutConstants';
 
 // utils
-import { baseColors, fontSizes, spacing } from 'utils/variables';
+import { baseColors, fontSizes, spacing } from '../../utils/variables';
 
 // components
-import { BaseText } from 'components/Typography';
-import SlideModal from 'components/Modals/SlideModal';
+import { BaseText } from '../../components/Typography';
+import SlideModal from '../../components/Modals/SlideModal';
 import ProfileSettingsItem from './ProfileSettingsItem';
 import SettingsModalTitle from './SettingsModalTitle';
 
-const SIMPLIFIED_IMG = require('assets/images/assetsSimplified.png');
-const MINIMIZED_IMG = require('assets/images/assetsMinified.png');
-const EXTRASMALL_IMG = require('assets/images/assetsExtraSmall.png');
-// const EXPANDED_IMG = require('assets/images/assetsExtended.png');
+const SIMPLIFIED_IMG = require('../../assets/images/assetsSimplified.png');
+const MINIMIZED_IMG = require('../../assets/images/assetsMinified.png');
+const EXTRASMALL_IMG = require('../../assets/images/assetsExtraSmall.png');
+// const EXPANDED_IMG = require('../../assets/images/assetsExtended.png');
 
 const halfScreenWidth = (Dimensions.get('window').width - 80) / 2;
 

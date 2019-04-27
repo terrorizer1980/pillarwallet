@@ -1,12 +1,12 @@
 // @flow
 import * as React from 'react';
 import { Left, Body, Right } from 'native-base';
-import { TextLink, BaseText } from 'components/Typography';
-import { UIColors, baseColors, fontSizes, spacing } from 'utils/variables';
-import { noop } from 'utils/common';
-import Title from 'components/Title';
+import { TextLink, BaseText } from '../Typography';
+import { UIColors, baseColors, fontSizes, spacing } from '../../utils/variables';
+import { noop } from '../../utils/common';
+import Title from '../Title';
 import styled from 'styled-components/native';
-import IconButton from 'components/IconButton';
+import IconButton from '../IconButton';
 
 type Props = {
   onBack?: Function,

@@ -2,9 +2,9 @@
 import * as React from 'react';
 import { Text } from 'react-native';
 import type { NavigationScreenProp } from 'react-navigation';
-import Header from 'components/Header';
-import Button from 'components/Button';
-import { Container, Wrapper } from 'components/Layout';
+import Header from '../../components/Header';
+import Button from '../../components/Button';
+import { Container, Wrapper } from '../../components/Layout';
 
 type Props = {
   navigation: NavigationScreenProp<*>,

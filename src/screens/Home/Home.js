@@ -5,33 +5,33 @@ import isEqual from 'lodash.isequal';
 import type { NavigationScreenProp, NavigationEventSubscription } from 'react-navigation';
 import firebase from 'react-native-firebase';
 import { Animated, RefreshControl, Platform, View } from 'react-native';
-import { PROFILE, CONTACT } from 'constants/navigationConstants';
-import ActivityFeed from 'components/ActivityFeed';
+import { PROFILE, CONTACT } from '../../constants/navigationConstants';
+import ActivityFeed from '../../components/ActivityFeed';
 import styled from 'styled-components/native';
-import { Container } from 'components/Layout';
+import { Container } from '../../components/Layout';
 import Intercom from 'react-native-intercom';
-import { BaseText } from 'components/Typography';
-import Title from 'components/Title';
-import PortfolioBalance from 'components/PortfolioBalance';
+import { BaseText } from '../../components/Typography';
+import Title from '../../components/Title';
+import PortfolioBalance from '../../components/PortfolioBalance';
 import {
   fetchTransactionsHistoryAction,
   fetchTransactionsHistoryNotificationsAction,
-} from 'actions/historyActions';
-import { setUnreadNotificationsStatusAction } from 'actions/notificationsActions';
-import IconButton from 'components/IconButton';
-import Tabs from 'components/Tabs';
-import Icon from 'components/Icon';
-import ProfileImage from 'components/ProfileImage';
-import Camera from 'components/Camera';
+} from '../../actions/historyActions';
+import { setUnreadNotificationsStatusAction } from '../../actions/notificationsActions';
+import IconButton from '../../components/IconButton';
+import Tabs from '../../components/Tabs';
+import Icon from '../../components/Icon';
+import ProfileImage from '../../components/ProfileImage';
+import Camera from '../../components/Camera';
 import Permissions from 'react-native-permissions';
-import { baseColors, UIColors, fontSizes, spacing } from 'utils/variables';
+import { baseColors, UIColors, fontSizes, spacing } from '../../utils/variables';
 import {
   cancelInvitationAction,
   acceptInvitationAction,
   rejectInvitationAction,
   fetchInviteNotificationsAction,
-} from 'actions/invitationsActions';
-import { ALL, TRANSACTIONS, SOCIAL } from 'constants/activityConstants';
+} from '../../actions/invitationsActions';
+import { ALL, TRANSACTIONS, SOCIAL } from '../../constants/activityConstants';
 
 type Props = {
   navigation: NavigationScreenProp<*>,

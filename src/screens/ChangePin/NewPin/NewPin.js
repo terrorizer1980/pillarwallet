@@ -1,11 +1,11 @@
 // @flow
 import * as React from 'react';
 import type { NavigationScreenProp } from 'react-navigation';
-import { Container } from 'components/Layout';
-import Header from 'components/Header';
-import PinCode from 'components/PinCode';
-import ErrorMessage from 'components/ErrorMessage';
-import { CHANGE_PIN_CONFIRM_NEW_PIN } from 'constants/navigationConstants';
+import { Container } from '../../../components/Layout';
+import Header from '../../../components/Header';
+import PinCode from '../../../components/PinCode';
+import ErrorMessage from '../../../components/ErrorMessage';
+import { CHANGE_PIN_CONFIRM_NEW_PIN } from '../../../constants/navigationConstants';
 
 type Props = {
   navigation: NavigationScreenProp<*>,

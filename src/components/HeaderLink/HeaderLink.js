@@ -2,8 +2,8 @@
 import * as React from 'react';
 import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
-import Spinner from 'components/Spinner';
-import { TextLink } from 'components/Typography';
+import Spinner from '../Spinner';
+import { TextLink } from '../Typography';
 
 type Props = {
   children: React.Node,

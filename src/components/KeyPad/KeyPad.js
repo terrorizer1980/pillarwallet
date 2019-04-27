@@ -2,10 +2,10 @@
 import * as React from 'react';
 import { Platform, TouchableNativeFeedback, Image as RNImage } from 'react-native';
 import styled from 'styled-components/native';
-import { fontSizes, baseColors } from 'utils/variables';
-import { BaseText } from 'components/Typography';
-import { Wrapper } from 'components/Layout';
-import { KEYPAD_BUTTON_FORGOT } from 'constants/keyPadButtonsConstants';
+import { fontSizes, baseColors } from '../../utils/variables';
+import { BaseText } from '../Typography';
+import { Wrapper } from '../Layout';
+import { KEYPAD_BUTTON_FORGOT } from '../../constants/keyPadButtonsConstants';
 import keyPadTypes from './keyPadTypes';
 
 const KeyPadWrapper = styled(Wrapper)`

@@ -1,5 +1,5 @@
 // @flow
-import { UPDATE_APP_SETTINGS } from 'constants/appSettingsConstants';
+import { UPDATE_APP_SETTINGS } from '../constants/appSettingsConstants';
 import set from 'lodash.set';
 import { saveDbAction } from './dbActions';
 

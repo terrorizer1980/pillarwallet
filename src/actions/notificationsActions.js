@@ -5,23 +5,23 @@ import firebase from 'react-native-firebase';
 import Intercom from 'react-native-intercom';
 import { NavigationActions } from 'react-navigation';
 import { Alert } from 'react-native';
-import { processNotification } from 'utils/notifications';
-import { fetchInviteNotificationsAction } from 'actions/invitationsActions';
+import { processNotification } from '../utils/notifications';
+import { fetchInviteNotificationsAction } from './invitationsActions';
 import {
   fetchTransactionsHistoryNotificationsAction,
   fetchTransactionsHistoryAction,
-} from 'actions/historyActions';
-import { fetchAssetsBalancesAction } from 'actions/assetsActions';
-import { getExistingChatsAction, getChatByContactAction } from 'actions/chatActions';
-import { navigate, getNavigationPathAndParamsState, updateNavigationLastScreenState } from 'services/navigation';
-import Storage from 'services/storage';
+} from './historyActions';
+import { fetchAssetsBalancesAction } from './assetsActions';
+import { getExistingChatsAction, getChatByContactAction } from './chatActions';
+import { navigate, getNavigationPathAndParamsState, updateNavigationLastScreenState } from '../services/navigation';
+import Storage from '../services/storage';
 import {
   ADD_NOTIFICATION,
   UPDATE_INTERCOM_NOTIFICATIONS_COUNT,
   SET_UNREAD_NOTIFICATIONS_STATUS,
   SET_UNREAD_CHAT_NOTIFICATIONS_STATUS,
-} from 'constants/notificationConstants';
-import { PEOPLE, HOME, AUTH_FLOW, APP_FLOW, CHAT, CHAT_LIST } from 'constants/navigationConstants';
+} from '../constants/notificationConstants';
+import { PEOPLE, HOME, AUTH_FLOW, APP_FLOW, CHAT, CHAT_LIST } from '../constants/navigationConstants';
 
 const CONNECTION = 'CONNECTION';
 const SIGNAL = 'SIGNAL';

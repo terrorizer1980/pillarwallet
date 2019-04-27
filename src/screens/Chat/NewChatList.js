@@ -2,16 +2,16 @@
 import * as React from 'react';
 import orderBy from 'lodash.orderby';
 import { FlatList, RefreshControl, View } from 'react-native';
-import { Container, ScrollWrapper } from 'components/Layout';
+import { Container, ScrollWrapper } from '../../components/Layout';
 import { connect } from 'react-redux';
 import type { NavigationScreenProp, NavigationEventSubscription } from 'react-navigation';
-import { CHAT, CHAT_LIST, CONTACT } from 'constants/navigationConstants';
-import Header from 'components/Header';
-import EmptyChat from 'components/EmptyState/EmptyChat';
-import ListItemWithImage from 'components/ListItem/ListItemWithImage';
-import Separator from 'components/Separator';
-import { getExistingChatsAction } from 'actions/chatActions';
-import { setUnreadChatNotificationsStatusAction } from 'actions/notificationsActions';
+import { CHAT, CHAT_LIST, CONTACT } from '../../constants/navigationConstants';
+import Header from '../../components/Header';
+import EmptyChat from '../../components/EmptyState/EmptyChat';
+import ListItemWithImage from '../../components/ListItem/ListItemWithImage';
+import Separator from '../../components/Separator';
+import { getExistingChatsAction } from '../../actions/chatActions';
+import { setUnreadChatNotificationsStatusAction } from '../../actions/notificationsActions';
 
 type Props = {
   navigation: NavigationScreenProp<*>,

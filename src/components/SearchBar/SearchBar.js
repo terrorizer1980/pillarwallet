@@ -1,10 +1,10 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components/native';
-import { UIColors, baseColors } from 'utils/variables';
+import { UIColors, baseColors } from '../../utils/variables';
 import { Animated, Keyboard, Platform } from 'react-native';
-import { BaseText } from 'components/Typography';
-import IconButton from 'components/IconButton';
+import { BaseText } from '../Typography';
+import IconButton from '../IconButton';
 
 const SearchHolder = styled.View`
   margin-bottom: 20px;

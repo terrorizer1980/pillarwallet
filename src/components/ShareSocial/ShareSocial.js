@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 import Share from 'react-native-share';
 
 import { TouchableOpacity, TouchableNativeFeedback, Platform, Image, Linking } from 'react-native';
-import { Label } from 'components/Typography';
+import { Label } from '../Typography';
 
 const ShareWrapper = styled.View`
   justify-content: center;
@@ -21,8 +21,8 @@ const ButtonWrapper = styled.View`
   padding: 14px;
 `;
 
-const facebook = require('assets/icons/icon_facebook.png');
-const twitter = require('assets/icons/icon_twitter.png');
+const facebook = require('../../assets/icons/icon_facebook.png');
+const twitter = require('../../assets/icons/icon_twitter.png');
 
 type Props = {
   label?: string,

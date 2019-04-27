@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components/native';
-import { baseColors } from 'utils/variables';
+import { baseColors } from '../../utils/variables';
 
 const Wrapper = styled.View`
   flex-wrap: wrap;

@@ -2,8 +2,8 @@
 import * as React from 'react';
 import { TouchableOpacity } from 'react-native';
 import type { NavigationScreenProp } from 'react-navigation';
-import Icon from 'components/Icon';
-import { UIColors, fontSizes } from 'utils/variables';
+import Icon from '../Icon';
+import { UIColors, fontSizes } from '../../utils/variables';
 
 type Props = {
   navigation: NavigationScreenProp<*>,

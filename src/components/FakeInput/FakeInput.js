@@ -1,6 +1,6 @@
 // @flow
 import styled from 'styled-components/native';
-import { BaseText } from 'components/Typography';
+import { BaseText } from '../Typography';
 
 const FakeInput = styled(BaseText)`
   background: #ffffff;

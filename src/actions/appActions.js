@@ -1,18 +1,18 @@
 // @flow
 import { NavigationActions } from 'react-navigation';
 import { Sentry } from 'react-native-sentry';
-import Storage from 'services/storage';
-import { navigate } from 'services/navigation';
-import { AUTH_FLOW, ONBOARDING_FLOW } from 'constants/navigationConstants';
-import { UPDATE_APP_SETTINGS } from 'constants/appSettingsConstants';
-import { UPDATE_ASSETS, UPDATE_BALANCES } from 'constants/assetsConstants';
-import { UPDATE_CONTACTS } from 'constants/contactsConstants';
-import { UPDATE_INVITATIONS } from 'constants/invitationsConstants';
-import { UPDATE_ACCESS_TOKENS } from 'constants/accessTokensConstants';
-import { UPDATE_SESSION } from 'constants/sessionConstants';
-import { ADD_NOTIFICATION } from 'constants/notificationConstants';
-import { SET_HISTORY } from 'constants/historyConstants';
-import { UPDATE_WALLET_IMPORT_STATE } from 'constants/walletConstants';
+import Storage from '../services/storage';
+import { navigate } from '../services/navigation';
+import { AUTH_FLOW, ONBOARDING_FLOW } from '../constants/navigationConstants';
+import { UPDATE_APP_SETTINGS } from '../constants/appSettingsConstants';
+import { UPDATE_ASSETS, UPDATE_BALANCES } from '../constants/assetsConstants';
+import { UPDATE_CONTACTS } from '../constants/contactsConstants';
+import { UPDATE_INVITATIONS } from '../constants/invitationsConstants';
+import { UPDATE_ACCESS_TOKENS } from '../constants/accessTokensConstants';
+import { UPDATE_SESSION } from '../constants/sessionConstants';
+import { ADD_NOTIFICATION } from '../constants/notificationConstants';
+import { SET_HISTORY } from '../constants/historyConstants';
+import { UPDATE_WALLET_IMPORT_STATE } from '../constants/walletConstants';
 import { saveDbAction } from './dbActions';
 
 const storage = Storage.getInstance('db');

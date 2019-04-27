@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components/native';
-import CircleButton from 'components/CircleButton';
+import CircleButton from '../CircleButton';
 
 type Props = {
   onPressReceive: Function,
@@ -18,8 +18,8 @@ const AssetButtonsWrapper = styled.View`
   margin: 0;
 `;
 
-const iconReceive = require('assets/icons/icon_receive.png');
-const iconSend = require('assets/icons/icon_send.png');
+const iconReceive = require('../../assets/icons/icon_receive.png');
+const iconSend = require('../../assets/icons/icon_send.png');
 
 const AssetButtons = (props: Props) => {
   return (

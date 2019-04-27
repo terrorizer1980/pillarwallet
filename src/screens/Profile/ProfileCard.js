@@ -1,8 +1,8 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components/native';
-import { baseColors, brandColors, UIColors, fontSizes } from 'utils/variables';
-import { BaseText, BoldText } from 'components/Typography';
+import { baseColors, brandColors, UIColors, fontSizes } from '../../utils/variables';
+import { BaseText, BoldText } from '../../components/Typography';
 
 type Props = {
   name: string,

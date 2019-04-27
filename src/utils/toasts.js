@@ -1,5 +1,5 @@
 // @flow
-import Toast from 'components/Toast';
+import Toast from '../components/Toast';
 
 export function toastWalletBackup(isWalletBackedUp: boolean) {
   if (!isWalletBackedUp) {

@@ -3,8 +3,8 @@ import * as React from 'react';
 import styled from 'styled-components/native';
 import { transparentize } from 'polished';
 import LinearGradient from 'react-native-linear-gradient';
-import { Paragraph, BaseText } from 'components/Typography';
-import { baseColors, spacing, fontSizes, UIColors } from 'utils/variables';
+import { Paragraph, BaseText } from '../Typography';
+import { baseColors, spacing, fontSizes, UIColors } from '../../utils/variables';
 
 
 type Props = {

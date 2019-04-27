@@ -9,26 +9,26 @@ import {
   CHANGE_PIN_FLOW,
   REVEAL_BACKUP_PHRASE,
   BACKUP_WALLET_IN_SETTINGS_FLOW,
-} from 'constants/navigationConstants';
-import { supportedFiatCurrencies, defaultFiatCurrency } from 'constants/assetsConstants';
-import { Container, ScrollWrapper, Wrapper } from 'components/Layout';
-import SlideModal from 'components/Modals/SlideModal';
-import Header from 'components/Header';
-import { SubHeading } from 'components/Typography';
-import HTMLContentModal from 'components/Modals/HTMLContentModal';
-import SystemInfoModal from 'components/SystemInfoModal';
-import Toast from 'components/Toast';
-import CountrySelect from 'components/CountrySelect';
+} from '../../constants/navigationConstants';
+import { supportedFiatCurrencies, defaultFiatCurrency } from '../../constants/assetsConstants';
+import { Container, ScrollWrapper, Wrapper } from '../../components/Layout';
+import SlideModal from '../../components/Modals/SlideModal';
+import Header from '../../components/Header';
+import { SubHeading } from '../../components/Typography';
+import HTMLContentModal from '../../components/Modals/HTMLContentModal';
+import SystemInfoModal from '../../components/SystemInfoModal';
+import Toast from '../../components/Toast';
+import CountrySelect from '../../components/CountrySelect';
 import {
   saveBaseFiatCurrencyAction,
   updateAppSettingsAction,
-} from 'actions/appSettingsActions';
-import { updateUserAction } from 'actions/userActions';
-import { repairStorageAction } from 'actions/appActions';
-import { resetIncorrectPasswordAction, lockScreenAction, logoutAction } from 'actions/authActions';
-import Storage from 'services/storage';
-import ChatService from 'services/chat';
-import { baseColors, spacing } from 'utils/variables';
+} from '../../actions/appSettingsActions';
+import { updateUserAction } from '../../actions/userActions';
+import { repairStorageAction } from '../../actions/appActions';
+import { resetIncorrectPasswordAction, lockScreenAction, logoutAction } from '../../actions/authActions';
+import Storage from '../../services/storage';
+import ChatService from '../../services/chat';
+import { baseColors, spacing } from '../../utils/variables';
 import ProfileSettingsItem from './ProfileSettingsItem';
 import ProfileForm from './ProfileForm';
 import SettingsModalTitle from './SettingsModalTitle';

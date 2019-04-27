@@ -2,8 +2,8 @@
 import { Contract, utils, providers } from 'ethers';
 import { NETWORK_PROVIDER } from 'react-native-dotenv';
 import cryptocompare from 'cryptocompare';
-import { ETH, supportedFiatCurrencies } from 'constants/assetsConstants';
-import type { Asset } from 'models/Asset';
+import { ETH, supportedFiatCurrencies } from '../constants/assetsConstants';
+import type { Asset } from '../models/Asset';
 
 const PROVIDER = NETWORK_PROVIDER;
 

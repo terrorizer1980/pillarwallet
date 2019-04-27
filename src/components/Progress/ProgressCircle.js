@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { Svg, Path, G, Defs, LinearGradient, Stop, Text } from 'react-native-svg';
-import { baseColors, fontSizes } from 'utils/variables';
+import { baseColors, fontSizes } from '../../utils/variables';
 
 type Props = {
   circleSize: number,

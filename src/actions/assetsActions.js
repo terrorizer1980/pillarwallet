@@ -15,19 +15,19 @@ import {
   ETH,
   UPDATE_BALANCES,
   UPDATE_SUPPORTED_ASSETS,
-} from 'constants/assetsConstants';
-import { ADD_TRANSACTION } from 'constants/historyConstants';
-import { UPDATE_RATES } from 'constants/ratesConstants';
+} from '../constants/assetsConstants';
+import { ADD_TRANSACTION } from '../constants/historyConstants';
+import { UPDATE_RATES } from '../constants/ratesConstants';
 import {
   transferETH,
   transferERC20,
   getExchangeRates,
-} from 'services/assets';
-import type { TransactionPayload } from 'models/Transaction';
-import type { Asset, Assets } from 'models/Asset';
-import { transformAssetsToObject } from 'utils/assets';
-import { delay, noop, uniqBy } from 'utils/common';
-import { buildHistoryTransaction } from 'utils/history';
+} from '../services/assets';
+import type { TransactionPayload } from '../models/Transaction';
+import type { Asset, Assets } from '../models/Asset';
+import { transformAssetsToObject } from '../utils/assets';
+import { delay, noop, uniqBy } from '../utils/common';
+import { buildHistoryTransaction } from '../utils/history';
 import { saveDbAction } from './dbActions';
 
 type TransactionStatus = {

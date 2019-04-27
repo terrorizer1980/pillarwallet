@@ -6,21 +6,21 @@ import type { NavigationScreenProp } from 'react-navigation';
 import styled from 'styled-components/native';
 import unionBy from 'lodash.unionby';
 import intersectionBy from 'lodash.intersectionby';
-import { TYPE_INVITE, TYPE_REJECTED, TYPE_SENT } from 'constants/invitationsConstants';
-import { CONTACT } from 'constants/navigationConstants';
-import { baseColors, fontSizes, itemSizes, spacing, fontWeights } from 'utils/variables';
-import ListItemWithImage from 'components/ListItem/ListItemWithImage';
-import Separator from 'components/Separator';
-import { SubHeading, BaseText } from 'components/Typography';
-import ProfileImage from 'components/ProfileImage';
-import type { SearchResults, ApiUser } from 'models/Contacts';
-import { createAlert } from 'utils/alerts';
+import { TYPE_INVITE, TYPE_REJECTED, TYPE_SENT } from '../../constants/invitationsConstants';
+import { CONTACT } from '../../constants/navigationConstants';
+import { baseColors, fontSizes, itemSizes, spacing, fontWeights } from '../../utils/variables';
+import ListItemWithImage from '../ListItem/ListItemWithImage';
+import Separator from '../Separator';
+import { SubHeading, BaseText } from '../Typography';
+import ProfileImage from '../ProfileImage';
+import type { SearchResults, ApiUser } from '../../models/Contacts';
+import { createAlert } from '../../utils/alerts';
 import {
   sendInvitationAction,
   acceptInvitationAction,
   cancelInvitationAction,
   rejectInvitationAction,
-} from 'actions/invitationsActions';
+} from '../../actions/invitationsActions';
 
 const ContactCardList = styled.FlatList`
   padding: 16px 0;

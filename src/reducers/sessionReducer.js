@@ -1,5 +1,5 @@
 // @flow
-import { UPDATE_SESSION } from 'constants/sessionConstants';
+import { UPDATE_SESSION } from '../constants/sessionConstants';
 import merge from 'lodash.merge';
 
 export type SessionReducerState = {

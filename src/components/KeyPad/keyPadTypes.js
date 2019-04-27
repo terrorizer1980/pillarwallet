@@ -1,7 +1,7 @@
 // @flow
-import { KEYPAD_BUTTON_DELETE, KEYPAD_BUTTON_FORGOT, KEYPAD_BUTTON_DOT } from 'constants/keyPadButtonsConstants';
+import { KEYPAD_BUTTON_DELETE, KEYPAD_BUTTON_FORGOT, KEYPAD_BUTTON_DOT } from '../../constants/keyPadButtonsConstants';
 
-const backspaceIMG = require('assets/icons/backspace.png');
+const backspaceIMG = require('../../assets/icons/backspace.png');
 
 type KeyPadButton = {
   label: string,

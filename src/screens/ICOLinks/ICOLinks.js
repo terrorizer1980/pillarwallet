@@ -9,11 +9,11 @@ import {
 } from 'react-native';
 import styled from 'styled-components/native';
 import type { NavigationScreenProp } from 'react-navigation';
-import { baseColors, fontSizes, spacing, fontTrackings } from 'utils/variables';
-import { BaseText } from 'components/Typography';
-import Icon from 'components/Icon';
-import Header from 'components/Header';
-import { Container, Wrapper } from 'components/Layout';
+import { baseColors, fontSizes, spacing, fontTrackings } from '../../utils/variables';
+import { BaseText } from '../../components/Typography';
+import Icon from '../../components/Icon';
+import Header from '../../components/Header';
+import { Container, Wrapper } from '../../components/Layout';
 
 type Props = {
   navigation: NavigationScreenProp<*>,

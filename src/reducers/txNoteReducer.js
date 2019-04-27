@@ -2,7 +2,7 @@
 import {
   UPDATE_TX_NOTES,
   ADD_TX_NOTE,
-} from 'constants/txNoteConstants';
+} from '../constants/txNoteConstants';
 import merge from 'lodash.merge';
 
 type TxNote = {

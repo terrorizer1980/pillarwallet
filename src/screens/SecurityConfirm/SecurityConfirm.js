@@ -1,12 +1,12 @@
 // @flow
 import * as React from 'react';
 import type { NavigationScreenProp } from 'react-navigation';
-import { BACKUP_PHRASE } from 'constants/navigationConstants';
-import { Container, Wrapper, Footer } from 'components/Layout';
-import Header from 'components/Header';
-import { Paragraph, BoldText } from 'components/Typography';
-import Button from 'components/Button';
-import Checkbox from 'components/Checkbox';
+import { BACKUP_PHRASE } from '../../constants/navigationConstants';
+import { Container, Wrapper, Footer } from '../../components/Layout';
+import Header from '../../components/Header';
+import { Paragraph, BoldText } from '../../components/Typography';
+import Button from '../../components/Button';
+import Checkbox from '../../components/Checkbox';
 
 type Props = {
   navigation: NavigationScreenProp<*>,

@@ -1,11 +1,11 @@
 // @flow
 import * as React from 'react';
 import type { NavigationScreenProp } from 'react-navigation';
-import { OTP } from 'constants/navigationConstants';
-import { Container, Wrapper } from 'components/Layout';
-import HyperLink from 'components/HyperLink';
-import { Paragraph } from 'components/Typography';
-import Title from 'components/Title';
+import { OTP } from '../../constants/navigationConstants';
+import { Container, Wrapper } from '../../components/Layout';
+import HyperLink from '../../components/HyperLink';
+import { Paragraph } from '../../components/Typography';
+import Title from '../../components/Title';
 
 type Props = {
   navigation: NavigationScreenProp<*>,

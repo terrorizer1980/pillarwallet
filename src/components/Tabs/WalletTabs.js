@@ -2,9 +2,9 @@
 import * as React from 'react';
 import { Dimensions } from 'react-native';
 import styled from 'styled-components/native';
-import { BaseText } from 'components/Typography';
-import { TWORDSPHRASE } from 'constants/walletConstants';
-import { baseColors, spacing, fontSizes, fontWeights } from 'utils/variables';
+import { BaseText } from '../Typography';
+import { TWORDSPHRASE } from '../../constants/walletConstants';
+import { baseColors, spacing, fontSizes, fontWeights } from '../../utils/variables';
 
 type Tab = {
   id: string,

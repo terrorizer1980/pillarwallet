@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { ActionSheet } from 'native-base';
-import Toast from 'components/Toast';
+import Toast from '../../components/Toast';
 
 type Props = {
   children: React.Node,

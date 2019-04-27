@@ -1,6 +1,6 @@
 // @flow
-import { UPDATE_APP_SETTINGS } from 'constants/appSettingsConstants';
-import { SIMPLIFIED } from 'constants/assetsLayoutConstants';
+import { UPDATE_APP_SETTINGS } from '../constants/appSettingsConstants';
+import { SIMPLIFIED } from '../constants/assetsLayoutConstants';
 import merge from 'lodash.merge';
 
 export type AppSettingsReducerState = {

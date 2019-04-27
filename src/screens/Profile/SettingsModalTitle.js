@@ -1,7 +1,7 @@
 // @flow
 import styled from 'styled-components/native';
-import { BoldText } from 'components/Typography';
-import { spacing, fontSizes, fontWeights } from 'utils/variables';
+import { BoldText } from '../../components/Typography';
+import { spacing, fontSizes, fontWeights } from '../../utils/variables';
 
 const SettingsModalTitle = styled(BoldText)`
   line-height: ${fontSizes.medium};

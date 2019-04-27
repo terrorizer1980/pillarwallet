@@ -9,28 +9,28 @@ import { utils } from 'ethers';
 import { BigNumber } from 'bignumber.js';
 import { TX_DETAILS_URL } from 'react-native-dotenv';
 import { format as formatDate, differenceInSeconds } from 'date-fns';
-import type { Transaction } from 'models/Transaction';
+import type { Transaction } from '../../models/Transaction';
 import type { Asset } from 'models/Asset';
-import { BaseText } from 'components/Typography';
-import Button from 'components/Button';
-import ListItemParagraph from 'components/ListItem/ListItemParagraph';
-import ListItemUnderlined from 'components/ListItem';
-import ProfileImage from 'components/ProfileImage';
-import { spacing, baseColors, fontSizes, fontWeights } from 'utils/variables';
-import { formatFullAmount } from 'utils/common';
-import { createAlert } from 'utils/alerts';
-import { updateTransactionStatusAction } from 'actions/historyActions';
-import { getTxNoteByContactAction } from 'actions/txNoteActions';
+import { BaseText } from '../Typography';
+import Button from '../Button';
+import ListItemParagraph from '../ListItem/ListItemParagraph';
+import ListItemUnderlined from '../ListItem';
+import ProfileImage from '../ProfileImage';
+import { spacing, baseColors, fontSizes, fontWeights } from '../../utils/variables';
+import { formatFullAmount } from '../../utils/common';
+import { createAlert } from '../../utils/alerts';
+import { updateTransactionStatusAction } from '../../actions/historyActions';
+import { getTxNoteByContactAction } from '../../actions/txNoteActions';
 
 // constants
-import { TRANSACTION_EVENT, TX_PENDING_STATUS } from 'constants/historyConstants';
+import { TRANSACTION_EVENT, TX_PENDING_STATUS } from '../../constants/historyConstants';
 import {
   TYPE_RECEIVED,
   TYPE_ACCEPTED,
   TYPE_REJECTED,
   TYPE_SENT,
-} from 'constants/invitationsConstants';
-import { CONTACT, SEND_TOKEN_FROM_CONTACT_FLOW, CHAT } from 'constants/navigationConstants';
+} from '../../constants/invitationsConstants';
+import { CONTACT, SEND_TOKEN_FROM_CONTACT_FLOW, CHAT } from '../../constants/navigationConstants';
 
 import EventHeader from './EventHeader';
 

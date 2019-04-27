@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { Dimensions } from 'react-native';
 import styled from 'styled-components/native';
-import { getRandomInt } from 'utils/common';
+import { getRandomInt } from '../../utils/common';
 import AnimatedBackroundItem from './AnimatedBackgroundItem';
 
 type Item = {

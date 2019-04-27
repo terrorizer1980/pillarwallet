@@ -2,13 +2,13 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import type { NavigationScreenProp } from 'react-navigation';
-import { Container, Wrapper } from 'components/Layout';
-import { Paragraph } from 'components/Typography';
-import PinCode from 'components/PinCode';
-import ErrorMessage from 'components/ErrorMessage';
-import Header from 'components/Header';
-import { setPinForNewWalletAction } from 'actions/walletActions';
-import { validatePin } from 'utils/validators';
+import { Container, Wrapper } from '../../components/Layout';
+import { Paragraph } from '../../components/Typography';
+import PinCode from '../../components/PinCode';
+import ErrorMessage from '../../components/ErrorMessage';
+import Header from '../../components/Header';
+import { setPinForNewWalletAction } from '../../actions/walletActions';
+import { validatePin } from '../../utils/validators';
 
 type Props = {
   setPinForNewWallet: (pin: string) => Function,

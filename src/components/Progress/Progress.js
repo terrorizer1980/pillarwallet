@@ -3,8 +3,8 @@ import * as React from 'react';
 import { Platform, Animated, Easing } from 'react-native';
 import styled from 'styled-components/native/index';
 import LinearGradient from 'react-native-linear-gradient';
-import { baseColors, fontSizes, spacing, fontTrackings } from 'utils/variables';
-import { MediumText } from 'components/Typography';
+import { baseColors, fontSizes, spacing, fontTrackings } from '../../utils/variables';
+import { MediumText } from '../Typography';
 import ProgressCircle from './ProgressCircle';
 
 type Props = {

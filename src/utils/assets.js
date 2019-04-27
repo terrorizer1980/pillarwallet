@@ -1,5 +1,5 @@
 // @flow
-import type { Balances, Rates } from 'models/Asset';
+import type { Balances, Rates } from '../models/Asset';
 
 export function transformAssetsToObject(assetsArray: Object[] = []): Object {
   return assetsArray.reduce((memo, asset) => {

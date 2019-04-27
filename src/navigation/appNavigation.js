@@ -8,46 +8,51 @@ import type { NavigationScreenProp } from 'react-navigation';
 import BackgroundTimer from 'react-native-background-timer';
 import { connect } from 'react-redux';
 import { AppState, Animated, Easing, View, Platform, Image, DeviceEventEmitter } from 'react-native';
-import { BaseText } from 'components/Typography';
+import { BaseText } from '../components/Typography';
 
 // services
-import { updateNavigationLastScreenState } from 'services/navigation';
+import { updateNavigationLastScreenState } from '../services/navigation';
 
 // screens
-import AddTokenScreen from 'screens/AddToken';
-import AssetsScreen from 'screens/Assets';
-import AssetScreen from 'screens/Asset';
-import MarketScreen from 'screens/Market';
-import ProfileScreen from 'screens/Profile';
-import PeopleScreen from 'screens/People';
-import ContactScreen from 'screens/Contact';
-import ConnectionRequestsScreen from 'screens/ConnectionRequests';
-import ChangePinCurrentPinScreen from 'screens/ChangePin/CurrentPin';
-import ChangePinNewPinScreen from 'screens/ChangePin/NewPin';
-import ChangePinConfirmNewPinScreen from 'screens/ChangePin/ConfirmNewPin';
-import RevealBackupPhraseScreen from 'screens/RevealBackupPhrase';
-import SendTokenAmountScreen from 'screens/SendToken/SendTokenAmount';
-import SendTokenContactsScreen from 'screens/SendToken/SendTokenContacts';
-import SendTokenAssetsScreen from 'screens/SendToken/SendTokenAssets';
-import SendTokenPinConfirmScreen from 'screens/SendToken/SendTokenPinConfirmScreen';
-import SendTokenConfirmScreen from 'screens/SendToken/SendTokenConfirm';
-import SendTokenTransactionScreen from 'screens/SendToken/SendTokenTransaction';
-import HomeScreen from 'screens/Home';
-import ChatListScreen from 'screens/Chat/ChatList';
-import NewChatListScreen from 'screens/Chat/NewChatList';
-import ChatScreen from 'screens/Chat/Chat';
-import ICOScreen from 'screens/ICO';
-import ParticipateScreen from 'screens/Participate';
-import InstructionsScreen from 'screens/Participate/Instructions';
-import ConfirmScreen from 'screens/Participate/Confirm';
-import ICOLinks from 'screens/ICOLinks';
-import BackupPhraseScreen from 'screens/BackupPhrase';
-import BackupPhraseValidateScreen from 'screens/BackupPhraseValidate';
+import AddTokenScreen from '../screens/AddToken';
+import AssetsScreen from '../screens/Assets';
+import AssetScreen from '../screens/Asset';
+import MarketScreen from '../screens/Market';
+import ProfileScreen from '../screens/Profile';
+import PeopleScreen from '../screens/People';
+import ContactScreen from '../screens/Contact';
+import ConnectionRequestsScreen from '../screens/ConnectionRequests';
+import ChangePinCurrentPinScreen from '../screens/ChangePin/CurrentPin';
+import ChangePinNewPinScreen from '../screens/ChangePin/NewPin';
+import ChangePinConfirmNewPinScreen from '../screens/ChangePin/ConfirmNewPin';
+import RevealBackupPhraseScreen from '../screens/RevealBackupPhrase';
+import SendTokenAmountScreen from '../screens/SendToken/SendTokenAmount';
+import SendTokenContactsScreen from '../screens/SendToken/SendTokenContacts';
+import SendTokenAssetsScreen from '../screens/SendToken/SendTokenAssets';
+import SendTokenPinConfirmScreen from '../screens/SendToken/SendTokenPinConfirmScreen';
+import SendTokenConfirmScreen from '../screens/SendToken/SendTokenConfirm';
+import SendTokenTransactionScreen from '../screens/SendToken/SendTokenTransaction';
+import HomeScreen from '../screens/Home';
+import ChatListScreen from '../screens/Chat/ChatList';
+import NewChatListScreen from '../screens/Chat/NewChatList';
+import ChatScreen from '../screens/Chat/Chat';
+import ICOScreen from '../screens/ICO';
+import ParticipateScreen from '../screens/Participate';
+import InstructionsScreen from '../screens/Participate/Instructions';
+import ConfirmScreen from '../screens/Participate/Confirm';
+import ICOLinks from '../screens/ICOLinks';
+import BackupPhraseScreen from '../screens/BackupPhrase';
+import BackupPhraseValidateScreen from '../screens/BackupPhraseValidate';
+import EcommerceScreen from '../screens/Ecommerce/Ecommerce';
+import EcommerceOffersScreen from '../screens/Ecommerce/EcommerceOffers';
+import EcommerceItemDetailScreen from '../screens/Ecommerce/EcommerceItemDetail';
+import EcommerceCheckoutScreen from '../screens/Ecommerce/EcommerceCheckout';
+import EcommercePaymentConfirmationScreen from '../screens/Ecommerce/EcommercePaymentConfirmation';
 
 // components
-import RetryApiRegistration from 'components/RetryApiRegistration';
-import AndroidTabBarComponent from 'components/AndroidTabBarComponent';
-import Toast from 'components/Toast';
+import RetryApiRegistration from '../components/RetryApiRegistration';
+import AndroidTabBarComponent from '../components/AndroidTabBarComponent';
+import Toast from '../components/Toast';
 
 // actions
 import {
@@ -55,12 +60,12 @@ import {
   startListeningNotificationsAction,
   startListeningIntercomNotificationsAction,
   stopListeningIntercomNotificationsAction,
-} from 'actions/notificationsActions';
-import { fetchInviteNotificationsAction } from 'actions/invitationsActions';
-import { fetchAssetsBalancesAction } from 'actions/assetsActions';
-import { fetchTransactionsHistoryNotificationsAction } from 'actions/historyActions';
-import { getExistingChatsAction } from 'actions/chatActions';
-import { fetchICOsAction } from 'actions/icosActions';
+} from '../actions/notificationsActions';
+import { fetchInviteNotificationsAction } from '../actions/invitationsActions';
+import { fetchAssetsBalancesAction } from '../actions/assetsActions';
+import { fetchTransactionsHistoryNotificationsAction } from '../actions/historyActions';
+import { getExistingChatsAction } from '../actions/chatActions';
+import { fetchICOsAction } from '../actions/icosActions';
 
 // constants
 import {
@@ -100,14 +105,20 @@ import {
   BACKUP_PHRASE,
   BACKUP_PHRASE_VALIDATE,
   BACKUP_WALLET_IN_SETTINGS_FLOW,
-} from 'constants/navigationConstants';
-import { PENDING } from 'constants/userConstants';
+  ECOMMERCE_FLOW,
+  ECOMMERCE_GREET,
+  ECOMMERCE_OFFERS,
+  ECOMMERCE_ITEM_DETAIL,
+  ECOMMERCE_CHECKOUT,
+  ECOMMERCE_PAYMENT_CONFIRM
+} from '../constants/navigationConstants';
+import { PENDING } from '../constants/userConstants';
 
 // models
-import type { Assets } from 'models/Asset';
+import type { Assets } from '../models/Asset';
 
-import { UIColors, baseColors, fontSizes } from 'utils/variables';
-import { modalTransition } from 'utils/common';
+import { UIColors, baseColors, fontSizes } from '../utils/variables';
+import { modalTransition } from '../utils/common';
 
 const SLEEP_TIMEOUT = 20000;
 const BACKGROUND_APP_STATE = 'background';
@@ -125,17 +136,16 @@ const removeAppStateChangeListener = (callback) => {
     : DeviceEventEmitter.removeListener('ActivityStateChange', callback);
 };
 
-const iconWallet = require('assets/icons/icon_wallet_new.png');
-const iconPeople = require('assets/icons/icon_people_new.png');
-const iconHome = require('assets/icons/icon_home_new.png');
-// const iconMarket = require('assets/icons/icon_marketplace_new.png');
-const iconChat = require('assets/icons/icon_chat_new.png');
-const iconWalletActive = require('assets/icons/icon_wallet_active.png');
-const iconPeopleActive = require('assets/icons/icon_people_active.png');
-const iconHomeActive = require('assets/icons/icon_home_active.png');
-// const iconMarketActive = require('assets/icons/icon_marketplace_active.png');
-const iconChatActive = require('assets/icons/icon_chat_active.png');
-
+const iconWallet = require('../assets/icons/icon_wallet_new.png');
+const iconPeople = require('../assets/icons/icon_people_new.png');
+const iconHome = require('../assets/icons/icon_home_new.png');
+const iconChat = require('../assets/icons/icon_chat_new.png');
+const iconWalletActive = require('../assets/icons/icon_wallet_active.png');
+const iconPeopleActive = require('../assets/icons/icon_people_active.png');
+const iconHomeActive = require('../assets/icons/icon_home_active.png');
+const iconChatActive = require('../assets/icons/icon_chat_active.png');
+const iconMarketActive = require('../assets/icons/icon_marketplace_active.png');
+const iconMarket = require('../assets/icons/icon_marketplace_new.png');
 const StackNavigatorModalConfig = {
   transitionConfig: () => ({
     transitionSpec: {
@@ -170,6 +180,7 @@ const chatFlow = createStackNavigator({
   [NEW_CHAT]: NewChatListScreen,
   [CONTACT]: ContactScreen,
   [CHAT]: ChatScreen,
+  [ECOMMERCE_GREET]: EcommerceScreen,
 }, StackNavigatorConfig);
 
 chatFlow.navigationOptions = hideTabNavigatorOnChildView;
@@ -179,6 +190,7 @@ const assetsFlow = createStackNavigator({
   [ASSETS]: AssetsScreen,
   [ASSET]: AssetScreen,
   [CONTACT]: ContactScreen,
+  [ECOMMERCE_GREET]: EcommerceScreen,
 }, StackNavigatorConfig);
 
 assetsFlow.navigationOptions = hideTabNavigatorOnChildView;
@@ -189,6 +201,7 @@ const peopleFlow = createStackNavigator({
   [CONTACT]: ContactScreen,
   [CONNECTION_REQUESTS]: ConnectionRequestsScreen,
   [CHAT]: ChatScreen,
+  [ECOMMERCE_GREET]: EcommerceScreen,
 }, StackNavigatorConfig);
 
 peopleFlow.navigationOptions = hideTabNavigatorOnChildView;
@@ -199,9 +212,21 @@ const homeFlow = createStackNavigator({
   [PROFILE]: ProfileScreen,
   [CONTACT]: ContactScreen,
   [CHAT]: ChatScreen,
+  [ECOMMERCE_GREET]: EcommerceScreen,
 }, StackNavigatorConfig);
 
 homeFlow.navigationOptions = hideTabNavigatorOnChildView;
+
+// ECOMMERCE FLOW
+const ecommerceFlow = createStackNavigator({
+  [HOME]: HomeScreen,
+  [PROFILE]: ProfileScreen,
+  [CONTACT]: ContactScreen,
+  [CHAT]: ChatScreen,
+  [ECOMMERCE_GREET]: EcommerceScreen,
+}, StackNavigatorConfig);
+
+ecommerceFlow.navigationOptions = hideTabNavigatorOnChildView;
 
 // ICO FLOW
 const icoFlow = createStackNavigator({
@@ -315,6 +340,13 @@ const tabNavigation = createBottomTabNavigator(
         tabBarLabel: tabBarLabel('Chat'),
       }),
     },
+    [ECOMMERCE_GREET]: {
+      screen: ecommerceFlow,
+      navigationOptions: ({ navigation, screenProps }) => ({
+        tabBarIcon: tabBarIcon(iconMarketActive, iconMarket),
+        tabBarLabel: tabBarLabel('Shop'),
+      }),
+    },
   }, {
     tabBarOptions: {
       activeTintColor: UIColors.primary,
@@ -378,6 +410,15 @@ const backupWalletFlow = createStackNavigator({
   [BACKUP_PHRASE_VALIDATE]: BackupPhraseValidateScreen,
 }, StackNavigatorModalConfig);
 
+// OFFERS FLOW
+const offersFlow = createStackNavigator({
+  [ECOMMERCE_GREET]: EcommerceScreen,
+  [ECOMMERCE_OFFERS]: EcommerceOffersScreen,
+  [ECOMMERCE_ITEM_DETAIL]: EcommerceItemDetailScreen,
+  [ECOMMERCE_CHECKOUT]: EcommerceCheckoutScreen,
+  [ECOMMERCE_PAYMENT_CONFIRM]: EcommercePaymentConfirmationScreen,
+}, StackNavigatorModalConfig);
+
 
 // APP NAVIGATION FLOW
 const AppFlowNavigation = createStackNavigator(
@@ -390,6 +431,7 @@ const AppFlowNavigation = createStackNavigator(
     [CHANGE_PIN_FLOW]: changePinFlow,
     [REVEAL_BACKUP_PHRASE]: RevealBackupPhraseScreen,
     [BACKUP_WALLET_IN_SETTINGS_FLOW]: backupWalletFlow,
+    [ECOMMERCE_FLOW]: offersFlow,
   }, modalTransition,
 );
 

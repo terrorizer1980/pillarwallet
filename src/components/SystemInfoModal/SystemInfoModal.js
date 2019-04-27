@@ -9,9 +9,9 @@ import {
   NOTIFICATIONS_URL,
 } from 'react-native-dotenv';
 import styled from 'styled-components/native';
-import { Wrapper } from 'components/Layout';
-import { BoldText } from 'components/Typography';
-import { baseColors, fontSizes } from 'utils/variables';
+import { Wrapper } from '../Layout';
+import { BoldText } from '../Typography';
+import { baseColors, fontSizes } from '../../utils/variables';
 
 const LabeledRow = styled.View`
   margin: 10px 0;

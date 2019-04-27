@@ -2,9 +2,9 @@
 import * as React from 'react';
 import { Animated, Easing } from 'react-native';
 import styled from 'styled-components/native';
-import KeyPad from 'components/KeyPad';
-import { Wrapper } from 'components/Layout';
-import { KEYPAD_BUTTON_DELETE, KEYPAD_BUTTON_FORGOT } from 'constants/keyPadButtonsConstants';
+import KeyPad from '../KeyPad';
+import { Wrapper } from '../Layout';
+import { KEYPAD_BUTTON_DELETE, KEYPAD_BUTTON_FORGOT } from '../../constants/keyPadButtonsConstants';
 import PinDots from './PinDots';
 
 const PASS_CODE_LENGTH = 6;

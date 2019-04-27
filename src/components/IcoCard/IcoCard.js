@@ -3,14 +3,14 @@ import * as React from 'react';
 import { Platform, Dimensions } from 'react-native';
 import { format, differenceInDays } from 'date-fns';
 import styled from 'styled-components/native';
-import { MediumText, BaseText } from 'components/Typography';
+import { MediumText, BaseText } from '../Typography';
 import { CachedImage } from 'react-native-cached-image';
-import { getCurrencySymbol, formatMoney } from 'utils/common';
-import { spacing, fontSizes, fontTrackings, baseColors } from 'utils/variables';
-import Countdown from 'components/Countdown';
-import TruncatedText from 'components/TruncatedText';
-import Progress from 'components/Progress';
-import { Shadow } from 'components/Shadow';
+import { getCurrencySymbol, formatMoney } from '../../utils/common';
+import { spacing, fontSizes, fontTrackings, baseColors } from '../../utils/variables';
+import Countdown from '../Countdown';
+import TruncatedText from '../TruncatedText';
+import Progress from '../Progress';
+import { Shadow } from '../Shadow';
 
 type Props = {
   id: string,
@@ -30,7 +30,7 @@ type Props = {
 }
 
 const { width } = Dimensions.get('window');
-const genericToken = require('assets/images/tokens/genericToken.png');
+const genericToken = require('../../assets/images/tokens/genericToken.png');
 
 const CardWrapper = styled.View`
   width: 100%;

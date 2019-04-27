@@ -2,8 +2,8 @@
 import * as React from 'react';
 import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
-import { baseColors, fontSizes, fontWeights } from 'utils/variables';
-import { BoldText } from 'components/Typography';
+import { baseColors, fontSizes, fontWeights } from '../../utils/variables';
+import { BoldText } from '../Typography';
 
 
 type Props = {

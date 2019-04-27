@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { Paragraph } from 'components/Typography';
+import { Paragraph } from '../../components/Typography';
 
 const PrivateKeyModal = () => (
   <React.Fragment>

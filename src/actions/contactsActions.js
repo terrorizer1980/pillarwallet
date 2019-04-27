@@ -4,8 +4,8 @@ import {
   FETCHING,
   UPDATE_CONTACTS_STATE,
   UPDATE_CONTACTS,
-} from 'constants/contactsConstants';
-import { excludeLocalContacts } from 'utils/contacts';
+} from '../constants/contactsConstants';
+import { excludeLocalContacts } from '../utils/contacts';
 import { saveDbAction } from './dbActions';
 
 export const searchContactsAction = (query: string) => {

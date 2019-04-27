@@ -3,9 +3,9 @@ import {
   TRANSACTION_CONFIRMATION_EVENT,
   TRANSACTION_PENDING_EVENT,
   TX_PENDING_STATUS,
-} from 'constants/historyConstants';
+} from '../constants/historyConstants';
 import { utils } from 'ethers';
-import type { Transaction, TransactionEthers } from 'models/Transaction';
+import type { Transaction, TransactionEthers } from '../models/Transaction';
 
 export const buildHistoryTransaction = ({
   from,

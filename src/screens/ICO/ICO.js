@@ -11,16 +11,16 @@ import {
 import styled from 'styled-components/native';
 import { format } from 'date-fns';
 import type { NavigationScreenProp } from 'react-navigation';
-import { baseColors, fontSizes, spacing, fontTrackings } from 'utils/variables';
-import { BaseText } from 'components/Typography';
-import Icon from 'components/Icon';
-import Header from 'components/Header';
-import Button from 'components/Button';
-import { Container, Wrapper, ScrollWrapper, Footer } from 'components/Layout';
-import IcoCard from 'components/IcoCard';
-import { PARTICIPATE_IN_ICO_FLOW, ICO_LINKS } from 'constants/navigationConstants';
-import { getCurrencySymbol, formatMoney } from 'utils/common';
-import Countdown from 'components/Countdown';
+import { baseColors, fontSizes, spacing, fontTrackings } from '../../utils/variables';
+import { BaseText } from '../../components/Typography';
+import Icon from '../../components/Icon';
+import Header from '../../components/Header';
+import Button from '../../components/Button';
+import { Container, Wrapper, ScrollWrapper, Footer } from '../../components/Layout';
+import IcoCard from '../../components/IcoCard';
+import { PARTICIPATE_IN_ICO_FLOW, ICO_LINKS } from '../../constants/navigationConstants';
+import { getCurrencySymbol, formatMoney } from '../../utils/common';
+import Countdown from '../../components/Countdown';
 
 type Props = {
   navigation: NavigationScreenProp<*>,
@@ -111,8 +111,8 @@ const ContactsLabel = styled(BaseText)`
   padding-right: ${spacing.rhythm}px;
 `;
 
-const twitter = require('assets/icons/icon_twitter.png');
-const telegram = require('assets/icons/icon_telegram.png');
+const twitter = require('../../assets/icons/icon_twitter.png');
+const telegram = require('../../assets/icons/icon_telegram.png');
 
 class ICOScreen extends React.Component<Props, {}> {
   navigateBack = () => {

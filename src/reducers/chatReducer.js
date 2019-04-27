@@ -6,7 +6,7 @@ import {
   RESET_UNREAD_MESSAGE,
   FETCHING_CHATS,
   DELETE_CHAT,
-} from 'constants/chatConstants';
+} from '../constants/chatConstants';
 import merge from 'lodash.merge';
 
 type Message = {

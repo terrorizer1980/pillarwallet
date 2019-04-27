@@ -15,22 +15,22 @@ import orderBy from 'lodash.orderby';
 import isEqual from 'lodash.isequal';
 import styled from 'styled-components/native';
 import { Icon } from 'native-base';
-import { searchContactsAction, resetSearchContactsStateAction } from 'actions/contactsActions';
-import { fetchInviteNotificationsAction } from 'actions/invitationsActions';
-import { CONTACT, CONNECTION_REQUESTS } from 'constants/navigationConstants';
-import { TYPE_RECEIVED } from 'constants/invitationsConstants';
-import { FETCHING, FETCHED } from 'constants/contactsConstants';
-import { baseColors, UIColors, fontSizes, spacing } from 'utils/variables';
-import { Container, Wrapper } from 'components/Layout';
-import SearchBlock from 'components/SearchBlock';
-import ListItemWithImage from 'components/ListItem/ListItemWithImage';
-import Separator from 'components/Separator';
-import Spinner from 'components/Spinner';
-import { BaseText } from 'components/Typography';
-import NotificationCircle from 'components/NotificationCircle';
-import PeopleSearchResults from 'components/PeopleSearchResults';
-import EmptyStateParagraph from 'components/EmptyState/EmptyStateParagraph';
-import type { SearchResults } from 'models/Contacts';
+import { searchContactsAction, resetSearchContactsStateAction } from '../../actions/contactsActions';
+import { fetchInviteNotificationsAction } from '../../actions/invitationsActions';
+import { CONTACT, CONNECTION_REQUESTS } from '../../constants/navigationConstants';
+import { TYPE_RECEIVED } from '../../constants/invitationsConstants';
+import { FETCHING, FETCHED } from '../../constants/contactsConstants';
+import { baseColors, UIColors, fontSizes, spacing } from '../../utils/variables';
+import { Container, Wrapper } from '../../components/Layout';
+import SearchBlock from '../../components/SearchBlock';
+import ListItemWithImage from '../../components/ListItem/ListItemWithImage';
+import Separator from '../../components/Separator';
+import Spinner from '../../components/Spinner';
+import { BaseText } from '../../components/Typography';
+import NotificationCircle from '../../components/NotificationCircle';
+import PeopleSearchResults from '../../components/PeopleSearchResults';
+import EmptyStateParagraph from '../../components/EmptyState/EmptyStateParagraph';
+import type { SearchResults } from '../../models/Contacts';
 
 const ConnectionRequestBanner = styled.TouchableHighlight`
   height: 60px;
@@ -70,7 +70,7 @@ const EmptyStateBGWrapper = styled.View`
 
 const MIN_QUERY_LENGTH = 2;
 
-const esBackground = require('assets/images/esLeftLong.png');
+const esBackground = require('../../assets/images/esLeftLong.png');
 
 type Props = {
   navigation: NavigationScreenProp<*>,

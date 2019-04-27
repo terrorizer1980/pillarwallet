@@ -2,8 +2,8 @@
 import * as React from 'react';
 import styled from 'styled-components/native';
 import { transparentize } from 'polished';
-import { BaseText, BoldText } from 'components/Typography';
-import { baseColors, fontSizes } from 'utils/variables';
+import { BaseText, BoldText } from '../Typography';
+import { baseColors, fontSizes } from '../../utils/variables';
 
 const MnemonicPhraseWrapper = styled.View`
   flex-direction: row;

@@ -1,5 +1,5 @@
 // @flow
-import { transformAssetsToObject } from 'utils/assets';
+import { transformAssetsToObject } from '../utils/assets';
 import { PillarSdk } from '@pillarwallet/pillarwallet-nodejs-sdk';
 import BCX from 'blockchain-explorer-sdk';
 import {
@@ -8,19 +8,19 @@ import {
   NOTIFICATIONS_URL,
   INVESTMENTS_URL,
 } from 'react-native-dotenv'; // SDK_PROVIDER, ONLY if you have platform running locally
-import type { Asset } from 'models/Asset';
-import type { Transaction } from 'models/Transaction';
+import type { Asset } from '../models/Asset';
+import type { Transaction } from '../models/Transaction';
 import {
   fetchAssetBalances,
   fetchLastBlockNumber,
   fetchTransactionInfo,
   fetchTransactionReceipt,
-} from 'services/assets';
-import { USERNAME_EXISTS, REGISTRATION_FAILED } from 'constants/walletConstants';
-import { isTransactionEvent } from 'utils/history';
+} from '../services/assets';
+import { USERNAME_EXISTS, REGISTRATION_FAILED } from '../constants/walletConstants';
+import { isTransactionEvent } from '../utils/history';
 
 // temporary here
-import { icoFundingInstructions as icoFundingInstructionsFixtures } from 'fixtures/icos';
+import { icoFundingInstructions as icoFundingInstructionsFixtures } from '../fixtures/icos';
 
 const USERNAME_EXISTS_ERROR_CODE = 409;
 

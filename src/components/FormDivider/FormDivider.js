@@ -1,8 +1,8 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components/native';
-import { baseColors } from 'utils/variables';
-import { BaseText } from 'components/Typography';
+import { baseColors } from '../../utils/variables';
+import { BaseText } from '../Typography';
 
 type Props = {
   children?: React.Node,

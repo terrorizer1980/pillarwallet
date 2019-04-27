@@ -6,7 +6,7 @@ import {
   TYPE_BLOCKED,
   TYPE_REJECTED,
   TYPE_RECEIVED,
-} from 'constants/invitationsConstants';
+} from '../constants/invitationsConstants';
 
 
 const parseNotification = (notificationBody: string): ?Object => {

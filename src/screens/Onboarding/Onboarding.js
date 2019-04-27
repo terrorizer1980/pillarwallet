@@ -2,11 +2,11 @@
 import * as React from 'react';
 
 import type { NavigationScreenProp } from 'react-navigation';
-import { SECURITY_CONFIRM, IMPORT_WALLET } from 'constants/navigationConstants';
-import { Container, Wrapper, Footer } from 'components/Layout';
-import Header from 'components/Header';
-import { Paragraph } from 'components/Typography';
-import Button from 'components/Button';
+import { SECURITY_CONFIRM, IMPORT_WALLET } from '../../constants/navigationConstants';
+import { Container, Wrapper, Footer } from '../../components/Layout';
+import Header from '../../components/Header';
+import { Paragraph } from '../../components/Typography';
+import Button from '../../components/Button';
 
 type Props = {
   navigation: NavigationScreenProp<*>,

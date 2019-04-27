@@ -2,8 +2,8 @@
 import * as React from 'react';
 import { ImageBackground, Image } from 'react-native';
 import styled from 'styled-components/native';
-import { baseColors, fontSizes, fontTrackings } from 'utils/variables';
-import { BaseText } from 'components/Typography';
+import { baseColors, fontSizes, fontTrackings } from '../../utils/variables';
+import { BaseText } from '../Typography';
 
 type Props = {
   disabled?: boolean,
@@ -47,8 +47,8 @@ const CircleButtonText = styled(BaseText)`
   margin-top: -6px;
 `;
 
-const actionButtonBackground = require('assets/images/bg_action_button.png');
-const actionButtonBackgroundDisabled = require('assets/images/bg_action_button_disabled.png');
+const actionButtonBackground = require('../../assets/images/bg_action_button.png');
+const actionButtonBackgroundDisabled = require('../../assets/images/bg_action_button_disabled.png');
 
 
 const CircleButton = (props: Props) => {

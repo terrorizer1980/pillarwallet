@@ -4,8 +4,8 @@ import {
   UPDATE_SEARCH_RESULTS,
   UPDATE_CONTACTS_STATE,
   FETCHED,
-} from 'constants/contactsConstants';
-import type { SearchResults } from 'models/Contacts';
+} from '../constants/contactsConstants';
+import type { SearchResults } from '../models/Contacts';
 
 export type ContactsReducerState = {
   data: Object[],

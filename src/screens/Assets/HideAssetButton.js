@@ -2,9 +2,9 @@
 import * as React from 'react';
 import { TouchableOpacity, Platform } from 'react-native';
 import styled from 'styled-components/native';
-import { BaseText } from 'components/Typography';
-import Icon from 'components/Icon';
-import { baseColors, fontSizes } from 'utils/variables';
+import { BaseText } from '../../components/Typography';
+import Icon from '../../components/Icon';
+import { baseColors, fontSizes } from '../../utils/variables';
 
 type Props = {
   onPress: Function,

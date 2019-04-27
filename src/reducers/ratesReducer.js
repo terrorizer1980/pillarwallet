@@ -1,5 +1,5 @@
 // @flow
-import { UPDATE_RATES } from 'constants/ratesConstants';
+import { UPDATE_RATES } from '../constants/ratesConstants';
 import merge from 'lodash.merge';
 
 export type RatesReducerState = {

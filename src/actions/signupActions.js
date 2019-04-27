@@ -1,7 +1,7 @@
 // @flow
 import { NavigationActions } from 'react-navigation';
-import { ONBOARDING_FLOW } from 'constants/navigationConstants';
-import { navigate } from 'services/navigation';
+import { ONBOARDING_FLOW } from '../constants/navigationConstants';
+import { navigate } from '../services/navigation';
 import { saveDbAction } from './dbActions';
 
 export const confirmOTPAction = (code: string) => {

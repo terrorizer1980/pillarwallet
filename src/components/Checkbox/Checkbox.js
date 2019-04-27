@@ -1,10 +1,10 @@
 // @flow
 import * as React from 'react';
 import { Animated, TouchableHighlight } from 'react-native';
-import { BaseText } from 'components/Typography';
+import { BaseText } from '../Typography';
 import styled from 'styled-components/native';
-import { UIColors, baseColors, fontSizes, spacing } from 'utils/variables';
-import Icon from 'components/Icon';
+import { UIColors, baseColors, fontSizes, spacing } from '../../utils/variables';
+import Icon from '../Icon';
 
 const CheckboxBox = styled.View`
   width: 24;

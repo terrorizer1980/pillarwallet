@@ -3,11 +3,11 @@ import * as React from 'react';
 import { Platform, View, Dimensions } from 'react-native';
 import isEqual from 'lodash.isequal';
 import styled from 'styled-components/native';
-import { LightText, BoldText } from 'components/Typography';
-import { Shadow } from 'components/Shadow';
+import { LightText, BoldText } from '../Typography';
+import { Shadow } from '../Shadow';
 import { CachedImage } from 'react-native-cached-image';
-import { getCurrencySymbol } from 'utils/common';
-import { fontSizes, fontTrackings, baseColors, fontWeights, spacing } from 'utils/variables';
+import { getCurrencySymbol } from '../../utils/common';
+import { fontSizes, fontTrackings, baseColors, fontWeights, spacing } from '../../utils/variables';
 
 const { width } = Dimensions.get('window');
 
@@ -43,7 +43,7 @@ const AssetOutter = styled.View`
 
 const defaultCardColor = '#ACBCCD';
 const innerCardHeight = (Dimensions.get('window').width - 40) / 1.59; // 343X215 card size proportions
-const genericToken = require('assets/images/tokens/genericToken.png');
+const genericToken = require('../../assets/images/tokens/genericToken.png');
 
 const AssetWrapper = styled.View`
   height: ${props => props.innerCard ? innerCardHeight : 140}px;

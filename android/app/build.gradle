@@ -157,6 +157,19 @@ android {
 
 
 dependencies {
+    compile project(':react-native-sentry')
+    compile project(':react-native-scrypt')
+    compile project(':react-native-randombytes')
+    compile project(':react-native-os')
+    compile project(':react-native-linear-gradient')
+    compile project(':react-native-intercom')
+    compile project(':react-native-image-crop-picker')
+    compile project(':react-native-firebase')
+    compile project(':react-native-device-info')
+    compile project(':react-native-color-matrix-image-filters')
+    compile project(':react-native-camera')
+    compile project(':react-native-background-timer')
+    compile project(':lottie-react-native')
   compile project(':react-native-color-matrix-image-filters')
   compile project(':react-native-image-crop-picker')
   compile project(':react-native-svg')

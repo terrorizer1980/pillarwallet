@@ -1,14 +1,14 @@
 // @flow
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Container } from 'components/Layout';
+import { Container } from '../../components/Layout';
 import type { NavigationScreenProp } from 'react-navigation';
-import Header from 'components/Header';
-import PinCode from 'components/PinCode';
-import ErrorMessage from 'components/ErrorMessage';
-import { confirmPinForNewWalletAction } from 'actions/walletActions';
-import { validatePin } from 'utils/validators';
-import { PIN_CODE_CONFIRMATION } from 'constants/navigationConstants';
+import Header from '../../components/Header';
+import PinCode from '../../components/PinCode';
+import ErrorMessage from '../../components/ErrorMessage';
+import { confirmPinForNewWalletAction } from '../../actions/walletActions';
+import { validatePin } from '../../utils/validators';
+import { PIN_CODE_CONFIRMATION } from '../../constants/navigationConstants';
 
 type Props = {
   confirmPinForNewWallet: (pin: string) => Function,

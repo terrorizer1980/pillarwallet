@@ -3,17 +3,17 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import type { NavigationScreenProp, NavigationEventSubscription } from 'react-navigation';
 
-import { Paragraph } from 'components/Typography';
-import Header from 'components/Header';
-import { Container, ScrollWrapper, Footer } from 'components/Layout';
-import MnemonicPhrase from 'components/MnemonicPhrase';
-import Button from 'components/Button';
-import CheckPin from 'components/CheckPin';
+import { Paragraph } from '../../components/Typography';
+import Header from '../../components/Header';
+import { Container, ScrollWrapper, Footer } from '../../components/Layout';
+import MnemonicPhrase from '../../components/MnemonicPhrase';
+import Button from '../../components/Button';
+import CheckPin from '../../components/CheckPin';
 
-import { generateWalletMnemonicAction } from 'actions/walletActions';
-import { resetIncorrectPasswordAction } from 'actions/authActions';
+import { generateWalletMnemonicAction } from '../../actions/walletActions';
+import { resetIncorrectPasswordAction } from '../../actions/authActions';
 
-import { BACKUP_PHRASE_VALIDATE } from 'constants/navigationConstants';
+import { BACKUP_PHRASE_VALIDATE } from '../../constants/navigationConstants';
 
 type Props = {
   wallet: Object,

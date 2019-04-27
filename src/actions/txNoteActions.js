@@ -1,12 +1,12 @@
 // @flow
-import ChatService from 'services/chat';
-import Toast from 'components/Toast';
-import { saveDbAction } from 'actions/dbActions';
-import { extractTxNotesFromMessages } from 'utils/txNotes';
+import ChatService from '../services/chat';
+import Toast from '../components/Toast';
+import { saveDbAction } from '../actions/dbActions';
+import { extractTxNotesFromMessages } from '../utils/txNotes';
 import {
   UPDATE_TX_NOTES,
   ADD_TX_NOTE,
-} from 'constants/txNoteConstants';
+} from '../constants/txNoteConstants';
 
 const chat = new ChatService();
 

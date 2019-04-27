@@ -3,8 +3,8 @@ import * as React from 'react';
 import { Dimensions } from 'react-native';
 import Modal from 'react-native-modal';
 import styled from 'styled-components/native';
-import Title from 'components/Title';
-import Button from 'components/Button';
+import Title from '../../Title';
+import Button from '../../Button';
 
 type Props = {
   title?: string,

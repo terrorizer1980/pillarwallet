@@ -2,9 +2,9 @@
 import * as React from 'react';
 import { Image } from 'react-native';
 import styled from 'styled-components/native';
-import { Wrapper } from 'components/Layout';
-import EmptyStateParagraph from 'components/EmptyState/EmptyStateParagraph';
-import { spacing } from 'utils/variables';
+import { Wrapper } from '../../Layout';
+import EmptyStateParagraph from '../EmptyStateParagraph';
+import { spacing } from '../../../utils/variables';
 
 const EmptyStateBGWrapper = styled.View`
   flex-direction: row;
@@ -21,8 +21,8 @@ type Props = {
   bodyText: string,
 }
 
-const esLeft = require('assets/images/esLeft.png');
-const esRight = require('assets/images/esRight.png');
+const esLeft = require('../../../assets/images/esLeft.png');
+const esRight = require('../../../assets/images/esRight.png');
 
 const EmptyTransactions = (props: Props) => {
   const {

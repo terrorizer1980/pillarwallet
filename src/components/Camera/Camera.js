@@ -5,19 +5,19 @@ import type { NavigationScreenProp } from 'react-navigation';
 import Modal from 'react-native-modal';
 import styled from 'styled-components/native';
 import ImagePicker from 'react-native-image-crop-picker';
-import Button from 'components/Button';
-import ButtonText from 'components/ButtonText';
-import Header from 'components/Header';
-import { Footer } from 'components/Layout';
-import IconButton from 'components/IconButton';
-import Spinner from 'components/Spinner';
-import { BaseText } from 'components/Typography';
+import Button from '../Button';
+import ButtonText from '../ButtonText';
+import Header from '../Header';
+import { Footer } from '../Layout';
+import IconButton from '../IconButton';
+import Spinner from '../Spinner';
+import { BaseText } from '../Typography';
 import { RNCamera } from 'react-native-camera';
 import { connect } from 'react-redux';
-import { updateUserAvatarAction } from 'actions/userActions';
-import { baseColors, fontSizes, UIColors } from 'utils/variables';
+import { updateUserAvatarAction } from '../../actions/userActions';
+import { baseColors, fontSizes, UIColors } from '../../utils/variables';
 import Svg, { Path, LinearGradient, Stop } from 'react-native-svg';
-import { handleImagePickAction } from 'actions/appSettingsActions';
+import { handleImagePickAction } from '../../actions/appSettingsActions';
 
 type Props = {
   onModalHide?: Function,

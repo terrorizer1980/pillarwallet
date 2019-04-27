@@ -3,19 +3,19 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components/native';
 import { Keyboard } from 'react-native';
-import Separator from 'components/Separator';
-import { SEND_TOKEN_AMOUNT } from 'constants/navigationConstants';
+import Separator from '../../components/Separator';
+import { SEND_TOKEN_AMOUNT } from '../../constants/navigationConstants';
 import t from 'tcomb-form-native';
-import { fontSizes, spacing } from 'utils/variables';
-import { Container, Footer } from 'components/Layout';
-import Button from 'components/Button';
-import SingleInput from 'components/TextInput/SingleInput';
-import ListItemWithImage from 'components/ListItem/ListItemWithImage';
+import { fontSizes, spacing } from '../../utils/variables';
+import { Container, Footer } from '../../components/Layout';
+import Button from '../../components/Button';
+import SingleInput from '../../components/TextInput/SingleInput';
+import ListItemWithImage from '../../components/ListItem/ListItemWithImage';
 import type { NavigationScreenProp } from 'react-navigation';
-import QRCodeScanner from 'components/QRCodeScanner';
-import Header from 'components/Header';
-import { isValidETHAddress } from 'utils/validators';
-import { pipe, decodeETHAddress } from 'utils/common';
+import QRCodeScanner from '../../components/QRCodeScanner';
+import Header from '../../components/Header';
+import { isValidETHAddress } from '../../utils/validators';
+import { pipe, decodeETHAddress } from '../../utils/common';
 
 type Props = {
   navigation: NavigationScreenProp<*>,
@@ -31,7 +31,7 @@ type State = {
   formStructure: t.struct,
 };
 
-const qrCode = require('assets/images/qr.png');
+const qrCode = require('../../assets/images/qr.png');
 
 const FormWrapper = styled.View`
   padding: 0 ${spacing.rhythm}px;

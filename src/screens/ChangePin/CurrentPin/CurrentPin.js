@@ -2,14 +2,14 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import type { NavigationScreenProp } from 'react-navigation';
-import { Container } from 'components/Layout';
-import Header from 'components/Header';
-import CheckPin from 'components/CheckPin';
-import { BaseText } from 'components/Typography';
-import Spinner from 'components/Spinner';
-import { resetIncorrectPasswordAction } from 'actions/authActions';
-import { DECRYPTING } from 'constants/walletConstants';
-import { CHANGE_PIN_NEW_PIN } from 'constants/navigationConstants';
+import { Container } from '../../../components/Layout';
+import Header from '../../../components/Header';
+import CheckPin from '../../../components/CheckPin';
+import { BaseText } from '../../../components/Typography';
+import Spinner from '../../../components/Spinner';
+import { resetIncorrectPasswordAction } from '../../../actions/authActions';
+import { DECRYPTING } from '../../../constants/walletConstants';
+import { CHANGE_PIN_NEW_PIN } from '../../../constants/navigationConstants';
 
 type Props = {
   navigation: NavigationScreenProp<*>,

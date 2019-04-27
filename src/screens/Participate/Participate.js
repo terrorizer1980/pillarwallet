@@ -8,25 +8,25 @@ import styled from 'styled-components/native';
 
 // components
 import { Switch } from 'native-base';
-import Header from 'components/Header';
-import Button from 'components/Button';
-import { ICO_INSTRUCTIONS } from 'constants/navigationConstants';
-import { Container, Wrapper, ScrollWrapper, Footer } from 'components/Layout';
-import { BaseText } from 'components/Typography';
-import SingleInput from 'components/TextInput/SingleInput';
-import Icon from 'components/Icon';
-import ListItemUnderlined from 'screens/Participate/ListItemUnderlined';
+import Header from '../../components/Header';
+import Button from '../../components/Button';
+import { ICO_INSTRUCTIONS } from '../../constants/navigationConstants';
+import { Container, Wrapper, ScrollWrapper, Footer } from '../../components/Layout';
+import { BaseText } from '../../components/Typography';
+import SingleInput from '../../components/TextInput/SingleInput';
+import Icon from '../../components/Icon';
+import ListItemUnderlined from '../Participate/ListItemUnderlined';
 
 // utils
-import { baseColors, fontSizes, spacing } from 'utils/variables';
-import { parseNumber, formatAmount, formatMoney } from 'utils/common';
-import { getRate } from 'utils/assets';
+import { baseColors, fontSizes, spacing } from '../../utils/variables';
+import { parseNumber, formatAmount, formatMoney } from '../../utils/common';
+import { getRate } from '../../utils/assets';
 
 // actions
-import { fetchICOFundingInstructionsAction } from 'actions/icosActions';
+import { fetchICOFundingInstructionsAction } from '../../actions/icosActions';
 
 // constants
-import { GBP, ETH } from 'constants/assetsConstants';
+import { GBP, ETH } from '../../constants/assetsConstants';
 
 const { Form } = t.form;
 const TO_FUND = 'amountToFund';

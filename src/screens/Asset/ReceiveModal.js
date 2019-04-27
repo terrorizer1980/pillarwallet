@@ -2,14 +2,14 @@
 import * as React from 'react';
 import { Clipboard } from 'react-native';
 import QRCode from 'react-native-qrcode';
-import { TextLink, BaseText } from 'components/Typography';
-import { Footer } from 'components/Layout';
-import { spacing, fontSizes } from 'utils/variables';
+import { TextLink, BaseText } from '../../components/Typography';
+import { Footer } from '../../components/Layout';
+import { spacing, fontSizes } from '../../utils/variables';
 import styled from 'styled-components/native';
-import SlideModal from 'components/Modals/SlideModal';
-import Button from 'components/Button';
-import WarningBanner from 'components/WarningBanner';
-import Toast from 'components/Toast';
+import SlideModal from '../../components/Modals/SlideModal';
+import Button from '../../components/Button';
+import WarningBanner from '../../components/WarningBanner';
+import Toast from '../../components/Toast';
 
 const ContentWrapper = styled.View`
   height: 300;

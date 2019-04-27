@@ -1,22 +1,22 @@
 // @flow
-import 'utils/setup';
+import './src/utils/setup';
 import * as React from 'react';
 import Intercom from 'react-native-intercom';
 import { StatusBar, NetInfo, AppState, Platform } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import { Provider, connect } from 'react-redux';
-import RootNavigation from 'navigation/rootNavigation';
+import RootNavigation from './src/navigation/rootNavigation';
 import { Sentry } from 'react-native-sentry';
-import { setTopLevelNavigator } from 'services/navigation';
+import { setTopLevelNavigator } from './src/services/navigation';
 import { SENTRY_DSN } from 'react-native-dotenv';
-import { initAppAndRedirectAction } from 'actions/appActions';
-import { updateSessionNetworkStatusAction, checkDBConflictsAction } from 'actions/sessionActions';
+import { initAppAndRedirectAction } from './src/actions/appActions';
+import { updateSessionNetworkStatusAction, checkDBConflictsAction } from './src/actions/sessionActions';
 import {
   startListeningOnOpenNotificationAction,
   stopListeningOnOpenNotificationAction,
-} from 'actions/notificationsActions';
-import Root from 'components/Root';
-import Toast from 'components/Toast';
+} from './src/actions/notificationsActions';
+import Root from './src/components/Root';
+import Toast from './src/components/Toast';
 import configureStore from './src/configureStore';
 
 const store = configureStore();

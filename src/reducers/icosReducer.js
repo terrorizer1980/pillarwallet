@@ -1,6 +1,6 @@
 // @flow
-import { SET_ICOS, SET_ICO_FUNDING_INSTRUCTIONS } from 'constants/icosConstants';
-import type { ICO, ICOFundingInstructions } from 'models/ICO';
+import { SET_ICOS, SET_ICO_FUNDING_INSTRUCTIONS } from '../constants/icosConstants';
+import type { ICO, ICOFundingInstructions } from '../models/ICO';
 
 export type ICOsReducerState = {
   data: ICO[],

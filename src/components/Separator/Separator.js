@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components/native';
-import { UIColors } from 'utils/variables';
+import { UIColors } from '../../utils/variables';
 
 type Props = {
   spaceOnLeft?: number,

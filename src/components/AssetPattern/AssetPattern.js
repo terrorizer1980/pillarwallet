@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { Dimensions, Image } from 'react-native';
 import styled from 'styled-components/native';
-import { baseColors } from 'utils/variables';
+import { baseColors } from '../../utils/variables';
 import { CachedImage } from 'react-native-cached-image';
 import {
   ColorMatrix,
@@ -32,7 +32,7 @@ const NoIconWrapper = styled.View`
   opacity: ${props => props.isUnlisted ? 0.7 : 1};
 `;
 
-const noIconImageSource = require('assets/images/no_logo.png');
+const noIconImageSource = require('../../assets/images/no_logo.png');
 
 const IconWrapper = styled.View`
   height: ${props => props.diameter}px;

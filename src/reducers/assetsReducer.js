@@ -15,9 +15,9 @@ import {
   UPDATE_ASSETS_SEARCH_RESULT,
   START_ASSETS_SEARCH,
   RESET_ASSETS_SEARCH_RESULT,
-} from 'constants/assetsConstants';
-import { transformAssetsToObject } from 'utils/assets';
-import type { Asset } from 'models/Asset';
+} from '../constants/assetsConstants';
+import { transformAssetsToObject } from '../utils/assets';
+import type { Asset } from '../models/Asset';
 import merge from 'lodash.merge';
 
 export type AssetsReducerState = {

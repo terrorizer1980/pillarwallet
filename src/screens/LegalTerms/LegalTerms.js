@@ -1,20 +1,20 @@
 // @flow
 import * as React from 'react';
-import { Container, ScrollWrapper, Footer } from 'components/Layout';
+import { Container, ScrollWrapper, Footer } from '../../components/Layout';
 import type { NavigationScreenProp } from 'react-navigation';
 import styled from 'styled-components/native/index';
-import Header from 'components/Header';
-import { Paragraph, TextLink, BaseText } from 'components/Typography';
-import Button from 'components/Button';
-import MultiButtonWrapper from 'components/MultiButtonWrapper';
-import Checkbox from 'components/Checkbox';
+import Header from '../../components/Header';
+import { Paragraph, TextLink, BaseText } from '../../components/Typography';
+import Button from '../../components/Button';
+import MultiButtonWrapper from '../../components/MultiButtonWrapper';
+import Checkbox from '../../components/Checkbox';
 import { connect } from 'react-redux';
-import { registerWalletAction } from 'actions/onboardingActions';
-import HTMLContentModal from 'components/Modals/HTMLContentModal';
-import { fontSizes, fontTrackings } from 'utils/variables';
-import SlideModal from 'components/Modals/SlideModal';
-import ButtonText from 'components/ButtonText';
-import { BACKUP_PHRASE } from 'constants/navigationConstants';
+import { registerWalletAction } from '../../actions/onboardingActions';
+import HTMLContentModal from '../../components/Modals/HTMLContentModal';
+import { fontSizes, fontTrackings } from '../../utils/variables';
+import SlideModal from '../../components/Modals/SlideModal';
+import ButtonText from '../../components/ButtonText';
+import { BACKUP_PHRASE } from '../../constants/navigationConstants';
 import PrivateKeyModal from './PrivateKeyModal';
 import BackupPhraseModal from './BackupPhraseModal';
 

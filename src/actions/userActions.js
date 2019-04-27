@@ -1,5 +1,5 @@
 // @flow
-import { UPDATE_USER, REGISTERED } from 'constants/userConstants';
+import { UPDATE_USER, REGISTERED } from '../constants/userConstants';
 import { saveDbAction } from './dbActions';
 
 export const updateUserAction = (walletId: string, field: Object) => {

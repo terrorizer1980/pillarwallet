@@ -1,9 +1,9 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components/native';
-import { baseColors, fontSizes, spacing, fontWeights } from 'utils/variables';
-import { BoldText, BaseText } from 'components/Typography';
-import Spinner from 'components/Spinner';
+import { baseColors, fontSizes, spacing, fontWeights } from '../../utils/variables';
+import { BoldText, BaseText } from '../Typography';
+import Spinner from '../Spinner';
 
 type Props = {
   label: string,

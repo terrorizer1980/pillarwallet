@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
-import { Wrapper } from 'components/Layout';
-import EmptyStateParagraph from 'components/EmptyState/EmptyStateParagraph';
+import { Wrapper } from '../../Layout';
+import EmptyStateParagraph from '../../EmptyState/EmptyStateParagraph';
 
 type Props = {
   title: string,

@@ -7,7 +7,7 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-helpers';
 import ReduxAsyncQueue from 'redux-async-queue';
-import PillarSdk from 'services/api';
+import PillarSdk from './services/api';
 import rootReducer from './reducers/rootReducer';
 
 const pillarSdk = new PillarSdk();

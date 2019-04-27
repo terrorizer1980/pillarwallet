@@ -1,8 +1,8 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components/native';
-import { baseColors, fontSizes, spacing, fontWeights, UIColors } from 'utils/variables';
-import { BaseText } from 'components/Typography';
+import { baseColors, fontSizes, spacing, fontWeights, UIColors } from '../../utils/variables';
+import { BaseText } from '../Typography';
 import { ScrollView, TouchableWithoutFeedback } from 'react-native';
 
 type Props = {

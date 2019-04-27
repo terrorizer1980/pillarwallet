@@ -1,5 +1,5 @@
 // @flow
-import { SET_ICOS, SET_ICO_FUNDING_INSTRUCTIONS } from 'constants/icosConstants';
+import { SET_ICOS, SET_ICO_FUNDING_INSTRUCTIONS } from '../constants/icosConstants';
 
 export const fetchICOsAction = () => {
   return async (dispatch: Function, getState: Function, api: Object) => {

@@ -3,10 +3,10 @@ import * as React from 'react';
 import { Platform, Dimensions } from 'react-native';
 import isEqual from 'lodash.isequal';
 import styled from 'styled-components/native';
-import { BoldText } from 'components/Typography';
-import { Shadow } from 'components/Shadow';
+import { BoldText } from '../Typography';
+import { Shadow } from '../Shadow';
 import { CachedImage } from 'react-native-cached-image';
-import { spacing, fontSizes, fontTrackings, baseColors } from 'utils/variables';
+import { spacing, fontSizes, fontTrackings, baseColors } from '../../utils/variables';
 import AssetInfo from './AssetInfo';
 
 type Props = {
@@ -28,7 +28,7 @@ type Props = {
 }
 
 const defaultCircleColor = '#ACBCCD';
-const genericToken = require('assets/images/tokens/genericToken.png');
+const genericToken = require('../../assets/images/tokens/genericToken.png');
 
 const AssetOutter = styled.View`
   padding: ${Platform.select({

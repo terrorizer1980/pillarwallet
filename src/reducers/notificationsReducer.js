@@ -4,8 +4,8 @@ import {
   UPDATE_INTERCOM_NOTIFICATIONS_COUNT,
   SET_UNREAD_NOTIFICATIONS_STATUS,
   SET_UNREAD_CHAT_NOTIFICATIONS_STATUS,
-} from 'constants/notificationConstants';
-import type { Notification } from 'models/Notification';
+} from '../constants/notificationConstants';
+import type { Notification } from '../models/Notification';
 
 type NotificationReducerState = {
   data: Notification[],

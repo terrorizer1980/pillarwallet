@@ -1,6 +1,6 @@
 // @flow
-import Storage from 'services/storage';
-import { UPDATE_SESSION } from 'constants/sessionConstants';
+import Storage from '../services/storage';
+import { UPDATE_SESSION } from '../constants/sessionConstants';
 
 const storage = Storage.getInstance('db');
 

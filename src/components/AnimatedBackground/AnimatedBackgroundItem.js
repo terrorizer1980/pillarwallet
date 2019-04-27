@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { getRandomInt } from 'utils/common';
+import { getRandomInt } from '../../utils/common';
 import { Animated } from 'react-native';
 
 type State = {

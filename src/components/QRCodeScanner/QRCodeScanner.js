@@ -5,10 +5,10 @@ import { RNCamera } from 'react-native-camera';
 import throttle from 'lodash.throttle';
 import Modal from 'react-native-modal';
 import Permissions from 'react-native-permissions';
-import { noop } from 'utils/common';
-import { baseColors } from 'utils/variables';
-import Header from 'components/Header';
-import { BaseText } from 'components/Typography';
+import { noop } from '../../utils/common';
+import { baseColors } from '../../utils/variables';
+import Header from '../Header';
+import { BaseText } from '../Typography';
 import styled from 'styled-components/native';
 
 const AUTHORIZED = 'AUTHORIZED';

@@ -2,7 +2,7 @@
 import { combineReducers } from 'redux';
 
 // constants
-import { LOG_OUT } from 'constants/authConstants';
+import { LOG_OUT } from '../constants/authConstants';
 
 // reducers
 import walletReducer from './walletReducer';

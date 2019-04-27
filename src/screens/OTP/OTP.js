@@ -2,13 +2,13 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { Paragraph, Label } from 'components/Typography';
-import { Center, Container, Wrapper } from 'components/Layout';
-import Title from 'components/Title';
-import Button from 'components/Button';
+import { Paragraph, Label } from '../../components/Typography';
+import { Center, Container, Wrapper } from '../../components/Layout';
+import Title from '../../components/Title';
+import Button from '../../components/Button';
 import { Picker } from 'native-base';
-import countries from 'utils/countries.json';
-import { confirmOTPAction } from 'actions/signupActions';
+import countries from '../../utils/countries.json';
+import { confirmOTPAction } from '../../actions/signupActions';
 import SMSConfirmationInput from './SMSConfirmationInput';
 
 type Props = {

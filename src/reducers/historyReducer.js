@@ -1,7 +1,7 @@
 // @flow
-import { SET_HISTORY, ADD_TRANSACTION, SET_GAS_INFO } from 'constants/historyConstants';
-import type { Transaction } from 'models/Transaction';
-import type { GasInfo } from 'models/GasInfo';
+import { SET_HISTORY, ADD_TRANSACTION, SET_GAS_INFO } from '../constants/historyConstants';
+import type { Transaction } from '../models/Transaction';
+import type { GasInfo } from '../models/GasInfo';
 
 export type HistoryReducerState = {
   data: Transaction[],

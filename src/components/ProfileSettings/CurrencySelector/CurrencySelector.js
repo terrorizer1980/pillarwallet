@@ -1,9 +1,9 @@
 // @flow
 import * as React from 'react';
 import { Icon, Picker } from 'native-base';
-import { supportedFiatCurrencies } from 'constants/assetsConstants';
+import { supportedFiatCurrencies } from '../../../constants/assetsConstants';
 import { connect } from 'react-redux';
-import { saveBaseFiatCurrencyAction } from 'actions/appSettingsActions';
+import { saveBaseFiatCurrencyAction } from '../../../actions/appSettingsActions';
 
 type Props = {
   baseFiatCurrency: string,

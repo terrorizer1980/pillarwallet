@@ -8,32 +8,32 @@ import { utils } from 'ethers';
 import { format as formatDate } from 'date-fns';
 import { BigNumber } from 'bignumber.js';
 
-import { resetUnreadAction } from 'actions/chatActions';
-import { baseColors, spacing } from 'utils/variables';
-import type { Notification } from 'models/Notification';
-import type { Transaction } from 'models/Transaction';
-import type { Asset } from 'models/Asset';
+import { resetUnreadAction } from '../../actions/chatActions';
+import { baseColors, spacing } from '../../utils/variables';
+import type { Notification } from '../../models/Notification';
+import type { Transaction } from '../../models/Transaction';
+import type { Asset } from '../../models/Asset';
 
-import EmptyTransactions from 'components/EmptyState/EmptyTransactions';
-import Separator from 'components/Separator';
-import SlideModal from 'components/Modals/SlideModal';
-import Title from 'components/Title';
-import EventDetails from 'components/EventDetails';
-import ListItemWithImage from 'components/ListItem/ListItemWithImage';
+import EmptyTransactions from '../EmptyState/EmptyTransactions';
+import Separator from '../Separator';
+import SlideModal from '../Modals/SlideModal';
+import Title from '../Title';
+import EventDetails from '../EventDetails';
+import ListItemWithImage from '../ListItem/ListItemWithImage';
 
-import { getUserName } from 'utils/contacts';
-import { partial, uniqBy, formatAmount } from 'utils/common';
-import { createAlert } from 'utils/alerts';
+import { getUserName } from '../../utils/contacts';
+import { partial, uniqBy, formatAmount } from '../../utils/common';
+import { createAlert } from '../../utils/alerts';
 import {
   TYPE_RECEIVED,
   TYPE_ACCEPTED,
   TYPE_REJECTED,
   TYPE_SENT,
-} from 'constants/invitationsConstants';
-import { TRANSACTIONS, SOCIAL } from 'constants/activityConstants';
-import { TRANSACTION_EVENT, CONNECTION_EVENT } from 'constants/historyConstants';
-import { CONTACT } from 'constants/navigationConstants';
-import { CHAT } from 'constants/chatConstants';
+} from '../../constants/invitationsConstants';
+import { TRANSACTIONS, SOCIAL } from '../../constants/activityConstants';
+import { TRANSACTION_EVENT, CONNECTION_EVENT } from '../../constants/historyConstants';
+import { CONTACT } from '../../constants/navigationConstants';
+import { CHAT } from '../../constants/chatConstants';
 
 const SOCIAL_TYPES = [
   TYPE_RECEIVED,

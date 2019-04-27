@@ -5,17 +5,17 @@ import type { NavigationScreenProp } from 'react-navigation';
 import { View, TouchableOpacity } from 'react-native';
 
 // components
-import { Container, Wrapper } from 'components/Layout';
-import { Paragraph, BoldText } from 'components/Typography';
-import Title from 'components/Title';
-import Button from 'components/Button';
-import Animation from 'components/Animation';
+import { Container, Wrapper } from '../../components/Layout';
+import { Paragraph, BoldText } from '../../components/Typography';
+import Title from '../../components/Title';
+import Button from '../../components/Button';
+import Animation from '../../components/Animation';
 
 // utils
-import { baseColors, fontSizes } from 'utils/variables';
+import { baseColors, fontSizes } from '../../utils/variables';
 
 // constants
-import { SEND_TOKEN_CONFIRM } from 'constants/navigationConstants';
+import { SEND_TOKEN_CONFIRM } from '../../constants/navigationConstants';
 import { connect } from 'react-redux';
 import { sendTxNoteByContactAction } from '../../actions/txNoteActions';
 
@@ -29,8 +29,8 @@ type State = {
   noteSent: boolean,
 }
 
-const animationSuccess = require('assets/animations/transactionSentConfirmationAnimation.json');
-const animationFailure = require('assets/animations/transactionFailureAnimation.json');
+const animationSuccess = require('../../assets/animations/transactionSentConfirmationAnimation.json');
+const animationFailure = require('../../assets/animations/transactionFailureAnimation.json');
 
 const transactionSuccessText =
   'It will be settled in a few moments, depending on your gas price settings and Ethereum network load';

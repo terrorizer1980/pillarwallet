@@ -19,7 +19,7 @@ import {
   RESET_WALLET_IMPORT,
   UPDATE_WALLET_IMPORT_STATE,
   BACKUP_WALLET,
-} from 'constants/walletConstants';
+} from '../constants/walletConstants';
 
 export type Wallet = {
   address: string,

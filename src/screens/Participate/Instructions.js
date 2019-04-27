@@ -7,17 +7,17 @@ import { Clipboard, Share } from 'react-native';
 import QRCode from 'react-native-qrcode';
 
 // components
-import Header from 'components/Header';
-import Button from 'components/Button';
-import { Container, Wrapper, ScrollWrapper, Footer } from 'components/Layout';
-import { BoldText, Label } from 'components/Typography';
-import ListItemUnderlined from 'screens/Participate/ListItemUnderlined';
+import Header from '../../components/Header';
+import Button from '../../components/Button';
+import { Container, Wrapper, ScrollWrapper, Footer } from '../../components/Layout';
+import { BoldText, Label } from '../../components/Typography';
+import ListItemUnderlined from '../Participate/ListItemUnderlined';
 
 // models
-import type { ICOFundingInstructions } from 'models/ICO';
+import type { ICOFundingInstructions } from '../../models/ICO';
 
 // utils
-import { fontSizes, baseColors, spacing } from 'utils/variables';
+import { fontSizes, baseColors, spacing } from '../../utils/variables';
 
 const BANK_TRANSFER = 'bank_transfer';
 

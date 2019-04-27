@@ -4,14 +4,14 @@ import { Platform } from 'react-native';
 import isEqualWith from 'lodash.isequalwith';
 import styled from 'styled-components/native';
 import { CachedImage } from 'react-native-cached-image';
-import { baseColors, fontSizes, spacing, fontWeights, fontTrackings } from 'utils/variables';
-import { BaseText, BoldText } from 'components/Typography';
-import ProfileImage from 'components/ProfileImage';
-import Icon from 'components/Icon';
-import IconButton from 'components/IconButton';
-import Button from 'components/Button';
-import { Shadow } from 'components/Shadow';
-import { Wrapper } from 'components/Layout';
+import { baseColors, fontSizes, spacing, fontWeights, fontTrackings } from '../../utils/variables';
+import { BaseText, BoldText } from '../Typography';
+import ProfileImage from '../ProfileImage';
+import Icon from '../Icon';
+import IconButton from '../IconButton';
+import Button from '../Button';
+import { Shadow } from '../Shadow';
+import { Wrapper } from '../Layout';
 
 type Props = {
   label: string,

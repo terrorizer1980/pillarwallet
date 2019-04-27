@@ -3,7 +3,7 @@ import * as React from 'react';
 import styled from 'styled-components/native';
 import { Alert, View, Platform, Linking, BackHandler } from 'react-native';
 import { connect } from 'react-redux';
-import { Container, Wrapper } from 'components/Layout';
+import { Container, Wrapper } from '../../components/Layout';
 import type { NavigationScreenProp } from 'react-navigation';
 import {
   GiftedChat,
@@ -17,20 +17,20 @@ import {
   LoadEarlier,
   Message,
 } from 'react-native-gifted-chat';
-import { baseColors, fontSizes, spacing } from 'utils/variables';
-import Header from 'components/Header';
-import ProfileImage from 'components/ProfileImage';
-import Icon from 'components/Icon';
+import { baseColors, fontSizes, spacing } from '../../utils/variables';
+import Header from '../../components/Header';
+import ProfileImage from '../../components/ProfileImage';
+import Icon from '../../components/Icon';
 import {
   sendMessageByContactAction,
   getChatByContactAction,
   resetUnreadAction,
-} from 'actions/chatActions';
-import Spinner from 'components/Spinner';
-import { getUserName } from 'utils/contacts';
-import { isIphoneX } from 'utils/common';
-import { CONTACT } from 'constants/navigationConstants';
-import { UNDECRYPTABLE_MESSAGE } from 'constants/messageStatus';
+} from '../../actions/chatActions';
+import Spinner from '../../components/Spinner';
+import { getUserName } from '../../utils/contacts';
+import { isIphoneX } from '../../utils/common';
+import { CONTACT } from '../../constants/navigationConstants';
+import { UNDECRYPTABLE_MESSAGE } from '../../constants/messageStatus';
 
 type Props = {
   navigation: NavigationScreenProp<*>,

@@ -20,22 +20,22 @@ import Swipeout from 'react-native-swipeout';
 import { SDK_PROVIDER } from 'react-native-dotenv';
 
 // components
-import { BaseText } from 'components/Typography';
-import Spinner from 'components/Spinner';
-import Button from 'components/Button';
-import Toast from 'components/Toast';
-// import AssetCard from 'components/AssetCard';
-import AssetCardSimplified from 'components/AssetCard/AssetCardSimplified';
-import AssetCardMinimized from 'components/AssetCard/AssetCardMinimized';
-import { Container, Wrapper } from 'components/Layout';
-import HideAssetButton from 'screens/Assets/HideAssetButton';
-import EmptyStateParagraph from 'components/EmptyState/EmptyStateParagraph';
-import SearchBlock from 'components/SearchBlock';
-import ListItemWithImage from 'components/ListItem/ListItemWithImage';
-import Separator from 'components/Separator';
+import { BaseText } from '../../components/Typography';
+import Spinner from '../../components/Spinner';
+import Button from '../../components/Button';
+import Toast from '../../components/Toast';
+// import AssetCard from '../../components/AssetCard';
+import AssetCardSimplified from '../../components/AssetCard/AssetCardSimplified';
+import AssetCardMinimized from '../../components/AssetCard/AssetCardMinimized';
+import { Container, Wrapper } from '../../components/Layout';
+import HideAssetButton from './HideAssetButton';
+import EmptyStateParagraph from '../../components/EmptyState/EmptyStateParagraph';
+import SearchBlock from '../../components/SearchBlock';
+import ListItemWithImage from '../../components/ListItem/ListItemWithImage';
+import Separator from '../../components/Separator';
 
 // types
-import type { Assets, Balances, Asset } from 'models/Asset';
+import type { Assets, Balances, Asset } from '../../models/Asset';
 
 // actions
 import {
@@ -47,20 +47,20 @@ import {
   resetSearchAssetsResultAction,
   addAssetAction,
   removeAssetAction,
-} from 'actions/assetsActions';
+} from '../../actions/assetsActions';
 
 // constants
-import { FETCH_INITIAL_FAILED, defaultFiatCurrency, FETCHED, FETCHING, ETH } from 'constants/assetsConstants';
-import { EXPANDED, SIMPLIFIED, MINIMIZED, EXTRASMALL } from 'constants/assetsLayoutConstants';
-import { ASSET } from 'constants/navigationConstants';
+import { FETCH_INITIAL_FAILED, defaultFiatCurrency, FETCHED, FETCHING, ETH } from '../../constants/assetsConstants';
+import { EXPANDED, SIMPLIFIED, MINIMIZED, EXTRASMALL } from '../../constants/assetsLayoutConstants';
+import { ASSET } from '../../constants/navigationConstants';
 
 // configs
-import assetsConfig from 'configs/assetsConfig';
+import assetsConfig from '../../configs/assetsConfig';
 
 // utils
-import { formatMoney } from 'utils/common';
-import { spacing, baseColors } from 'utils/variables';
-import { getBalance, getRate } from 'utils/assets';
+import { formatMoney } from '../../utils/common';
+import { spacing, baseColors } from '../../utils/variables';
+import { getBalance, getRate } from '../../utils/assets';
 import debounce from 'lodash.debounce';
 
 type Props = {
@@ -91,7 +91,7 @@ type State = {
 
 const IS_IOS = Platform.OS === 'ios';
 const MIN_QUERY_LENGTH = 2;
-const genericToken = require('assets/images/tokens/genericToken.png');
+const genericToken = require('../../assets/images/tokens/genericToken.png');
 
 const smallScreen = () => {
   if (IS_IOS) {

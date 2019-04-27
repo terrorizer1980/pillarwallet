@@ -7,21 +7,21 @@ import type { NavigationScreenProp } from 'react-navigation';
 import styled from 'styled-components/native/index';
 
 // components
-import Header from 'components/Header';
-import { Container } from 'components/Layout';
-import { spacing } from 'utils/variables';
-import IcoCard from 'components/IcoCard';
-import { ICO } from 'constants/navigationConstants';
-import { SubHeading } from 'components/Typography';
+import Header from '../../components/Header';
+import { Container } from '../../components/Layout';
+import { spacing } from '../../utils/variables';
+import IcoCard from '../../components/IcoCard';
+import { ICO } from '../../constants/navigationConstants';
+import { SubHeading } from '../../components/Typography';
 
 // actions
-import { fetchICOsAction } from 'actions/icosActions';
+import { fetchICOsAction } from '../../actions/icosActions';
 
 // types
-import type { ICO as ICOT } from 'models/ICO';
+import type { ICO as ICOT } from '../../models/ICO';
 
 // screens
-import MarketplaceComingSoon from 'screens/MarketplaceComingSoon';
+import MarketplaceComingSoon from '../MarketplaceComingSoon';
 
 type Props = {
   navigation: NavigationScreenProp<*>,

@@ -1,17 +1,17 @@
 // @flow
 import * as React from 'react';
 import { Platform } from 'react-native';
-import { BoldText, BaseText } from 'components/Typography';
-import { fontTrackings, baseColors, fontSizes, spacing } from 'utils/variables';
+import { BoldText, BaseText } from '../Typography';
+import { fontTrackings, baseColors, fontSizes, spacing } from '../../utils/variables';
 import styled from 'styled-components/native';
-import IconButton from 'components/IconButton';
-import Icon from 'components/Icon';
+import IconButton from '../IconButton';
+import Icon from '../Icon';
 
-import { TRANSACTION_EVENT } from 'constants/historyConstants';
+import { TRANSACTION_EVENT } from '../../constants/historyConstants';
 import {
   TYPE_RECEIVED,
   TYPE_ACCEPTED,
-} from 'constants/invitationsConstants';
+} from '../../constants/invitationsConstants';
 
 type Props = {
   onClose: Function,

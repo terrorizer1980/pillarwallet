@@ -2,12 +2,12 @@
 import * as React from 'react';
 import styled from 'styled-components/native';
 import { Input, ActionSheet } from 'native-base';
-import Icon from 'components/Icon';
-import { BaseText, MediumText } from 'components/Typography';
-import { baseColors, UIColors, fontSizes, fontWeights, spacing } from 'utils/variables';
+import Icon from '../Icon';
+import { BaseText, MediumText } from '../Typography';
+import { baseColors, UIColors, fontSizes, fontWeights, spacing } from '../../utils/variables';
 import { Platform } from 'react-native';
 import { CachedImage } from 'react-native-cached-image';
-import IconButton from 'components/IconButton';
+import IconButton from '../IconButton';
 
 type inputPropsType = {
   placeholder?: string,

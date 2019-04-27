@@ -1,5 +1,5 @@
 // @flow
-import { UPDATE_USER } from 'constants/userConstants';
+import { UPDATE_USER } from '../constants/userConstants';
 import merge from 'lodash.merge';
 
 export type UserReducerState = {

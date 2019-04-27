@@ -2,13 +2,13 @@
 import * as React from 'react';
 import styled from 'styled-components/native';
 import type { NavigationScreenProp } from 'react-navigation';
-import { IMPORT_WALLET } from 'constants/navigationConstants';
-import { Wrapper, Container, Footer } from 'components/Layout';
-import { fontSizes } from 'utils/variables';
-import Button from 'components/Button';
-import AnimatedBackground from 'components/AnimatedBackground';
-import ButtonText from 'components/ButtonText';
-import { navigateToNewWalletPageAction } from 'actions/walletActions';
+import { IMPORT_WALLET } from '../../constants/navigationConstants';
+import { Wrapper, Container, Footer } from '../../components/Layout';
+import { fontSizes } from '../../utils/variables';
+import Button from '../../components/Button';
+import AnimatedBackground from '../../components/AnimatedBackground';
+import ButtonText from '../../components/ButtonText';
+import { navigateToNewWalletPageAction } from '../../actions/walletActions';
 import { CachedImage } from 'react-native-cached-image';
 import { connect } from 'react-redux';
 
@@ -21,7 +21,7 @@ type State = {
   shouldAnimate: boolean,
 }
 
-const pillarLogoSource = require('assets/images/landing-pillar-logo.png');
+const pillarLogoSource = require('../../assets/images/landing-pillar-logo.png');
 
 const PillarLogo = styled(CachedImage)`
   height: 60;

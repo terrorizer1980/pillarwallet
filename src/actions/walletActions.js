@@ -13,15 +13,15 @@ import {
   IMPORT_WALLET_TWORDS_PHRASE,
   RESET_WALLET_IMPORT,
   BACKUP_WALLET,
-} from 'constants/walletConstants';
+} from '../constants/walletConstants';
 import {
   LEGAL_TERMS,
   PIN_CODE_CONFIRMATION,
   NEW_PROFILE,
-} from 'constants/navigationConstants';
+} from '../constants/navigationConstants';
 import shuffle from 'shuffle-array';
-import { generateMnemonicPhrase, generateWordsToValidate } from 'utils/wallet';
-import { navigate } from 'services/navigation';
+import { generateMnemonicPhrase, generateWordsToValidate } from '../utils/wallet';
+import { navigate } from '../services/navigation';
 import { saveDbAction } from './dbActions';
 
 export const importWalletFromTWordsPhraseAction = (tWordsPhrase: string) => {

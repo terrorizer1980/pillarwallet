@@ -1,9 +1,9 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components/native';
-import { LightText, BoldText } from 'components/Typography';
-import { getCurrencySymbol } from 'utils/common';
-import { fontSizes, baseColors } from 'utils/variables';
+import { LightText, BoldText } from '../Typography';
+import { getCurrencySymbol } from '../../utils/common';
+import { fontSizes, baseColors } from '../../utils/variables';
 
 type Props = {
   token: string,

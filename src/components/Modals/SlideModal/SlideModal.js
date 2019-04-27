@@ -2,12 +2,12 @@
 import * as React from 'react';
 import Modal from 'react-native-modal';
 import styled from 'styled-components/native';
-import Header from 'components/Header';
-import Root from 'components/Root';
-import Toast from 'components/Toast';
-import { Wrapper } from 'components/Layout';
-import { spacing, baseColors, UIColors } from 'utils/variables';
-import { SubTitle } from 'components/Typography';
+import Header from '../../Header';
+import Root from '../../Root';
+import Toast from '../../Toast';
+import { Wrapper } from '../../Layout';
+import { spacing, baseColors, UIColors } from '../../../utils/variables';
+import { SubTitle } from '../../Typography';
 import { Keyboard } from 'react-native';
 
 type Props = {

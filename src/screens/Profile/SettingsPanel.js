@@ -1,8 +1,8 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components/native';
-import { baseColors, fontSizes, spacing } from 'utils/variables';
-import { BaseText, BoldText } from 'components/Typography';
+import { baseColors, fontSizes, spacing } from '../../utils/variables';
+import { BaseText, BoldText } from '../../components/Typography';
 import { Platform, StyleSheet } from 'react-native';
 
 const SettingsPanelIOS = styled.View`

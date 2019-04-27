@@ -3,11 +3,11 @@ import * as React from 'react';
 import styled from 'styled-components/native';
 import { Animated } from 'react-native';
 import merge from 'lodash.merge';
-import IconButton from 'components/IconButton';
-import Icon from 'components/Icon';
-import { baseColors, fontSizes, spacing } from 'utils/variables';
-import { BoldText, BaseText } from 'components/Typography';
-import { isIphoneX } from 'utils/common';
+import IconButton from '../IconButton';
+import Icon from '../Icon';
+import { baseColors, fontSizes, spacing } from '../../utils/variables';
+import { BoldText, BaseText } from '../Typography';
+import { isIphoneX } from '../../utils/common';
 
 type ToastOptions = {
   autoClose?: boolean,

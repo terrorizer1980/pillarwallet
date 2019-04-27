@@ -2,9 +2,9 @@
 import * as React from 'react';
 import styled from 'styled-components/native';
 import { StyleSheet } from 'react-native';
-import Icon from 'components/Icon';
-import { BaseText } from 'components/Typography';
-import { fontSizes, baseColors, fontWeights } from 'utils/variables';
+import Icon from '../../components/Icon';
+import { BaseText } from '../../components/Typography';
+import { fontSizes, baseColors, fontWeights } from '../../utils/variables';
 
 type Props = {
   icon: string,

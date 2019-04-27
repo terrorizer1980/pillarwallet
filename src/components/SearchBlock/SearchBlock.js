@@ -2,10 +2,10 @@
 import * as React from 'react';
 import styled from 'styled-components/native';
 import { Animated, Keyboard } from 'react-native';
-import { Wrapper } from 'components/Layout';
-import Header from 'components/Header';
-import SearchBar from 'components/SearchBar';
-import { baseColors } from 'utils/variables';
+import { Wrapper } from '../Layout';
+import Header from '../Header';
+import SearchBar from '../SearchBar';
+import { baseColors } from '../../utils/variables';
 import type { NavigationEventSubscription, NavigationScreenProp } from 'react-navigation';
 
 type State = {

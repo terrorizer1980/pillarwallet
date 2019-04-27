@@ -1,5 +1,5 @@
 // @flow
-import { UPDATE_ACCESS_TOKENS } from 'constants/accessTokensConstants';
+import { UPDATE_ACCESS_TOKENS } from '../constants/accessTokensConstants';
 
 export type AccessToken = {
   userId: string,

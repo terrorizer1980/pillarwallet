@@ -1,13 +1,13 @@
 // @flow
 import * as React from 'react';
 import { connect } from 'react-redux';
-import NewProfile from 'screens/NewProfile';
-import { BaseText } from 'components/Typography';
-import { registerOnBackendAction } from 'actions/onboardingActions';
-import { Container } from 'components/Layout';
-import Button from 'components/Button';
-import Spinner from 'components/Spinner';
-import { REGISTRATION_FAILED, USERNAME_EXISTS, USERNAME_OK, CHECKING_USERNAME } from 'constants/walletConstants';
+import NewProfile from '../../screens/NewProfile';
+import { BaseText } from '../Typography';
+import { registerOnBackendAction } from '../../actions/onboardingActions';
+import { Container } from '../Layout';
+import Button from '../Button';
+import Spinner from '../Spinner';
+import { REGISTRATION_FAILED, USERNAME_EXISTS, USERNAME_OK, CHECKING_USERNAME } from '../../constants/walletConstants';
 
 type Props = {
   wallet: Object,
