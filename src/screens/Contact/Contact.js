@@ -18,7 +18,7 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 import * as React from 'react';
-import { RefreshControl, Platform, View } from 'react-native';
+import { Platform, View } from 'react-native';
 import { connect } from 'react-redux';
 import styled from 'styled-components/native';
 import type { NavigationScreenProp } from 'react-navigation';
@@ -31,8 +31,7 @@ import {
   blockContactAction,
 } from 'actions/contactsActions';
 import { fetchContactTransactionsAction } from 'actions/historyActions';
-import { ScrollWrapper } from 'components/Layout';
-import ContainerWithBottomSheet from 'components/Layout/ContainerWithBottomSheet';
+import ContainerWithBottomSheetRelative from 'components/Layout/ContainerWithBottomSheetRelative';
 import { SEND_TOKEN_FROM_CONTACT_FLOW } from 'constants/navigationConstants';
 import { DISCONNECT, MUTE, BLOCK } from 'constants/connectionsConstants';
 import { TRANSACTIONS } from 'constants/activityConstants';
@@ -102,7 +101,7 @@ type State = {
   activeTab: string,
   isSheetOpen: boolean,
   forceOpen: boolean,
-  collapseHeight: ?number,
+  collapseHeight: number,
 };
 
 class Contact extends React.Component<Props, State> {
@@ -125,7 +124,7 @@ class Contact extends React.Component<Props, State> {
       activeTab: 'CHAT',
       isSheetOpen: shouldOpenSheet,
       forceOpen: shouldOpenSheet,
-      collapseHeight: null,
+      collapseHeight: 0,
     };
   }
 
@@ -322,20 +321,10 @@ class Contact extends React.Component<Props, State> {
     ];
 
     return (
-      <ContainerWithBottomSheet
+      <ContainerWithBottomSheetRelative
         inset={{ bottom: 0 }}
         color={baseColors.white}
         hideSheet={!isAccepted}
-        bottomSheetProps={{
-          forceOpen,
-          sheetHeight: activeTab === CHAT ? collapseHeight + 120 : collapseHeight,
-          swipeToCloseHeight: 62,
-          onSheetOpen: this.handleSheetOpen,
-          onSheetClose: () => { this.setState({ isSheetOpen: false }); },
-          tabs: contactTabs,
-          activeTab,
-          inverse: activeTab === CHAT,
-        }}
         bottomSheetChildren={
           (
             <SheetContentWrapper>
@@ -343,6 +332,15 @@ class Contact extends React.Component<Props, State> {
             </SheetContentWrapper>
           )
         }
+        forceOpen={forceOpen}
+        sheetHeight={activeTab === CHAT ? collapseHeight + 120 : collapseHeight}
+        swipeToCloseHeight={62}
+        onSheetOpen={this.handleSheetOpen}
+        onSheetClose={() => { this.setState({ isSheetOpen: false }); }}
+        tabs={contactTabs}
+        activeTab={activeTab}
+        inverse={activeTab === CHAT}
+        onRefresh={() => fetchContactTransactions(wallet.address, displayContact.ethAddress)}
       >
         <Header
           title={displayContact.username}
@@ -351,37 +349,26 @@ class Contact extends React.Component<Props, State> {
           onNextPress={this.showManageContactModalTrigger}
           nextIcon={displayContact.status ? 'more' : null}
         />
-        <ScrollWrapper
-          refreshControl={
-            <RefreshControl
-              refreshing={false}
-              onRefresh={() => {
-                fetchContactTransactions(wallet.address, displayContact.ethAddress);
-              }}
-            />
-          }
-        >
-          <ContactWrapper>
-            <ProfileImage
-              uri={userAvatar}
-              userName={displayContact.username}
-              borderWidth={4}
-              initialsSize={fontSizes.extraGiant}
-              diameter={172}
-              style={{ backgroundColor: baseColors.geyser }}
-              imageUpdateTimeStamp={displayContact.lastUpdateTime}
-            />
-          </ContactWrapper>
-          {isAccepted &&
-          <CircleButtonsWrapper>
-            <CircleButton
-              label="Send"
-              icon={iconSend}
-              onPress={() => navigation.navigate(SEND_TOKEN_FROM_CONTACT_FLOW, { contact: displayContact })}
-            />
-          </CircleButtonsWrapper>
-         }
-        </ScrollWrapper>
+        <ContactWrapper>
+          <ProfileImage
+            uri={userAvatar}
+            userName={displayContact.username}
+            borderWidth={4}
+            initialsSize={fontSizes.extraGiant}
+            diameter={172}
+            style={{ backgroundColor: baseColors.geyser }}
+            imageUpdateTimeStamp={displayContact.lastUpdateTime}
+          />
+        </ContactWrapper>
+        {isAccepted &&
+        <CircleButtonsWrapper>
+          <CircleButton
+            label="Send"
+            icon={iconSend}
+            onPress={() => navigation.navigate(SEND_TOKEN_FROM_CONTACT_FLOW, { contact: displayContact })}
+          />
+        </CircleButtonsWrapper>
+        }
         <ManageContactModal
           showManageContactModal={showManageContactModal}
           onManageContact={this.manageContact}
@@ -399,7 +386,7 @@ class Contact extends React.Component<Props, State> {
             this.setState({ showConfirmationModal: false });
           }}
         />
-      </ContainerWithBottomSheet>
+      </ContainerWithBottomSheetRelative>
     );
   }
 }
