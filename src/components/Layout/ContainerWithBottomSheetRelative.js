@@ -131,6 +131,16 @@ const Cover = styled.View`
   padding-top: 6px;
 `;
 
+const SheetCover = styled.View`
+  width: 100%;
+  height: 20px;
+  position: absolute;
+  bottom: -20;
+  left: 0;
+  z-index: -1;
+  background-color: white;
+`;
+
 const HandlebarsWrapper = styled.View`
   flex-direction: row;
   position: relative;
@@ -577,6 +587,7 @@ export default class ContainerWithBottomSheetRelative extends React.Component<Pr
                     {bottomSheetChildren}
                   </View>
                 </AnimatedModalWrapper>
+                <SheetCover />
               </AnimatedSheet>
             }
             {(isSheetOpen || isDragging) &&

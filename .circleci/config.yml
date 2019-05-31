@@ -845,14 +845,16 @@ workflows:
           filters:
             branches:
               only:
-                  - develop
+#                  - develop
+                  - fix/166113222_additional_sliding_modal_fixes
       - hockeyapp_android:
           requires:
             - build-and-test
           filters:
             branches:
               only:
-                  - develop
+#                  - develop
+                  - fix/166113222_additional_sliding_modal_fixes
       - stage_ios:
           requires:
             - build-and-test
