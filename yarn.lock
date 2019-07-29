@@ -12970,6 +12970,13 @@ react-native-permissions@^1.1.1:
   resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/react-native-permissions/-/react-native-permissions-1.1.1.tgz#4876004681ff8556454613d85249b01baff9b35b"
   integrity sha1-SHYARoH/hVZFRhPYUkmwG6/5s1s=
 
+react-native-popover-view@^2.0.2:
+  version "2.0.2"
+  resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/react-native-popover-view/-/react-native-popover-view-2.0.2.tgz#294f3e34249d3bdac55b46070ee8772f8300c9cc"
+  integrity sha1-KU8+NCSdO9rFW0YHDuh3L4MAycw=
+  dependencies:
+    react-native-safe-area-view "^0.14.6"
+
 react-native-qrcode-svg@^5.1.2:
   version "5.1.2"
   resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/react-native-qrcode-svg/-/react-native-qrcode-svg-5.1.2.tgz#1368a1142b7d4916c3d8b1903fd2046185340fd0"
@@ -12985,6 +12992,13 @@ react-native-randombytes@^3.5.2:
   dependencies:
     buffer "^4.9.1"
     sjcl "^1.0.3"
+
+react-native-safe-area-view@^0.14.6:
+  version "0.14.6"
+  resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/react-native-safe-area-view/-/react-native-safe-area-view-0.14.6.tgz#9a9d37d9f8f3887d60c4076eae7b5d2319539446"
+  integrity sha1-mp032fjziH1gxAdurntdIxlTlEY=
+  dependencies:
+    hoist-non-react-statics "^2.3.1"
 
 react-native-safe-area-view@^0.7.0:
   version "0.7.0"
