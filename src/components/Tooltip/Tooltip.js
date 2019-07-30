@@ -18,13 +18,17 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 import * as React from 'react';
-import { Text } from 'react-native';
 import styled from 'styled-components';
 import Popover from 'react-native-popover-view';
 
+import { spacing } from 'utils/variables';
+import { BaseText } from 'components/Typography';
+
 const PopoverWrapper = styled.TouchableOpacity`
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: ${spacing.small}px;
+`;
+const PopoverText = styled(BaseText)`
+
 `;
 
 type Props = {
@@ -53,7 +57,7 @@ const Tooltip = (props: Props) => {
       {...popoverProps}
     >
       <PopoverWrapper onPress={() => !!onPress && onPress()}>
-        {children || <Text>{text}</Text>}
+        {children || <PopoverText>{text}</PopoverText>}
       </PopoverWrapper>
     </Popover>
   );
