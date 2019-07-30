@@ -18,7 +18,7 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 import * as React from 'react';
-import { Platform, TouchableOpacity, TouchableNativeFeedback } from 'react-native';
+import { Platform, TouchableOpacity, TouchableNativeFeedback, View } from 'react-native';
 import styled from 'styled-components/native';
 import { BaseText } from 'components/Typography';
 import { fontSizes, baseColors } from 'utils/variables';
@@ -48,11 +48,6 @@ const ButtonText = styled(BaseText)`
   border-radius: ${props => (props.buttonSize || defaultButtonSize) / 2}px;
 `;
 
-const Wrapper = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
 const ButtonTextView = <ButtonText>?</ButtonText>;
 
 export default class ButtonTooltip extends React.Component<Props, State> {
@@ -75,7 +70,7 @@ export default class ButtonTooltip extends React.Component<Props, State> {
 
   render() {
     return (
-      <Wrapper>
+      <View>
         {(Platform.OS === 'ios' &&
           <TouchableOpacity
             ref={this.setRef}
@@ -103,7 +98,7 @@ export default class ButtonTooltip extends React.Component<Props, State> {
             }}
           />
         }
-      </Wrapper>
+      </View>
     );
   }
 }
