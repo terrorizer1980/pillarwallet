@@ -130,7 +130,7 @@ export const resetOffersAction = () => {
   };
 };
 
-export const searchOffersAction = (fromAssetCode: string, toAssetCode: string, fromAmount: number) => {
+export const searchOffersAction = (fromAssetCode: string, toAssetCode: string, fromAmount: number = 1) => {
   return async (dispatch: Function, getState: Function, api: Object) => {
     const {
       user: { data: { walletId: userWalletId } },

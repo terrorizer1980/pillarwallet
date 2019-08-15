@@ -26,7 +26,6 @@ import debounce from 'lodash.debounce';
 import { formatAmount, formatMoney, getCurrencySymbol, isValidNumber } from 'utils/common';
 import t from 'tcomb-form-native';
 import { CachedImage } from 'react-native-cached-image';
-import { utils } from 'ethers';
 import { BigNumber } from 'bignumber.js';
 import { createStructuredSelector } from 'reselect';
 import Intercom from 'react-native-intercom';
@@ -58,7 +57,7 @@ import {
 import { deploySmartWalletAction } from 'actions/smartWalletActions';
 
 import type { Offer, ExchangeSearchRequest, Allowance, ExchangeProvider } from 'models/Offer';
-import type { Asset, Assets, Balances, Rates } from 'models/Asset';
+import type { Asset, Balances, Rates } from 'models/Asset';
 import type { SmartWalletStatus } from 'models/SmartWalletStatus';
 import type { Accounts } from 'models/Account';
 
@@ -162,7 +161,6 @@ type Props = {
   navigation: NavigationScreenProp<*>,
   baseFiatCurrency: string,
   user: Object,
-  assets: Assets,
   searchOffers: (string, string, number) => void,
   offers: Offer[],
   takeOffer: (string, string, number, string, Function) => Object,
@@ -225,48 +223,28 @@ const MIN_TX_AMOUNT = 0.000000000000000001;
 
 const settingsIcon = require('assets/icons/icon_key.png');
 
-const calculateMaxAmount = (token: string, balance: number | string): number => {
-  if (typeof balance !== 'string') {
-    balance = balance.toString();
-  }
-  if (token !== ETH) {
-    return +balance;
-  }
-  const maxAmount = utils.parseUnits(balance, 'ether');
-  if (maxAmount.lt(0)) return 0;
-  return new BigNumber(utils.formatEther(maxAmount)).toNumber();
-};
-
 const calculateAmountToBuy = (askRate: number | string, amountToSell: number | string) => {
   return (new BigNumber(askRate)).multipliedBy(amountToSell).toFixed();
 };
 
-const generateFormStructure = (balances: Balances) => {
-  let balance;
-  let maxAmount;
+const generateFormStructure = () => {
   let amount;
 
   const FromOption = t.refinement(t.Object, ({ selector, input }) => {
-    if (!selector
-      || !Object.keys(selector).length
-      || !input
-      || !isValidNumber(input)) return false;
-
-    const { symbol, decimals } = selector;
-
-    const isFiat = isFiatCurrency(symbol);
-
-    amount = parseFloat(input);
-
-    if (decimals === 0 && amount.toString().indexOf('.') > -1 && !isFiat) {
-      return false;
-    } else if (isFiat) {
-      return true;
+    if (!selector || !Object.keys(selector).length) return false;
+    // we allow validation if nothing is entered, but we want to validate the input to be number is something is present
+    if (input && isValidNumber(input)) {
+      const { symbol, decimals } = selector;
+      const isFiat = isFiatCurrency(symbol);
+      amount = parseFloat(input);
+      if (decimals === 0 && amount.toString().indexOf('.') > -1 && !isFiat) {
+        return false;
+      } else if (isFiat) {
+        return true;
+      }
+      return amount >= MIN_TX_AMOUNT;
     }
-    balance = getBalance(balances, symbol);
-    maxAmount = calculateMaxAmount(symbol, balance);
-
-    return amount <= maxAmount && amount >= MIN_TX_AMOUNT;
+    return true;
   });
 
   FromOption.getValidationErrorMessage = ({ selector, input }) => {
@@ -276,21 +254,14 @@ const generateFormStructure = (balances: Balances) => {
 
     if (!isValidNumber(input.toString())) {
       return 'Incorrect number entered.';
-    }
-
-    if (!Object.keys(selector).length) {
-      return 'Asset should be selected.';
-    } else if (!input) {
-      return false; // should still validate (to not trigger search if empty), yet error should not be visible to user
     } else if (parseFloat(input) < 0) {
       return 'Amount should be bigger than 0.';
-    } else if (amount > maxAmount && !isFiat) {
-      return `Amount should not be bigger than your balance - ${balance} ${symbol}.`;
     } else if (amount < MIN_TX_AMOUNT && !isFiat) {
       return 'Amount should be greater than 1 Wei (0.000000000000000001 ETH).';
     } else if (decimals === 0 && amount.toString().indexOf('.') > -1) {
       return 'Amount should not contain decimal places';
     }
+
     return true;
   };
 
@@ -440,7 +411,6 @@ class ExchangeScreen extends React.Component<Props, State> {
     const { exchangeSearchRequest = {}, baseFiatCurrency } = this.props;
     this.provideOptions();
     const fiatCurrency = baseFiatCurrency || defaultFiatCurrency;
-
     const defaultFrom = this.checkIfAssetsExchangeIsAllowed() ? ETH : fiatCurrency;
     const { fromAssetCode = defaultFrom, toAssetCode, fromAmount } = exchangeSearchRequest;
     this.setInitialSelection(fromAssetCode, toAssetCode, fromAmount);
@@ -448,13 +418,12 @@ class ExchangeScreen extends React.Component<Props, State> {
 
   componentDidUpdate(prevProps: Props) {
     const {
-      assets,
       supportedAssets,
       navigation,
       oAuthAccessToken,
       resetOffers,
     } = this.props;
-    if (assets !== prevProps.assets || supportedAssets !== prevProps.supportedAssets) {
+    if (supportedAssets !== prevProps.supportedAssets) {
       this.provideOptions();
     }
 
@@ -482,17 +451,16 @@ class ExchangeScreen extends React.Component<Props, State> {
   };
 
   provideOptions = () => {
-    const { assets, supportedAssets, exchangeWithFiatEnabled } = this.props;
+    const { supportedAssets, exchangeWithFiatEnabled } = this.props;
     const fiatOptionsFrom = this.generateFiatOptions();
-    const assetsOptionsFrom = this.generateAssetsOptions(assets);
-    const assetsOptionsBuying = this.generateSupportedAssetsOptions(supportedAssets);
-    const initialAssetsOptionsBuying = assetsOptionsBuying.filter((option) => option.value !== ETH);
+    const assetsOptions = this.generateAssetsOptions(supportedAssets);
+    const assetsOptionsTo = assetsOptions.filter((option) => option.value !== ETH);
     const thisStateFormOptionsCopy = { ...this.state.formOptions };
-    thisStateFormOptionsCopy.fields.fromInput.config.options = assetsOptionsFrom;
+    thisStateFormOptionsCopy.fields.fromInput.config.options = assetsOptions;
     if (exchangeWithFiatEnabled) {
       thisStateFormOptionsCopy.fields.fromInput.config.horizontalOptions = fiatOptionsFrom;
     }
-    thisStateFormOptionsCopy.fields.toInput.config.options = initialAssetsOptionsBuying;
+    thisStateFormOptionsCopy.fields.toInput.config.options = assetsOptionsTo;
 
     this.setState({
       formOptions: thisStateFormOptionsCopy,
@@ -500,24 +468,29 @@ class ExchangeScreen extends React.Component<Props, State> {
   };
 
   setInitialSelection = (fromAssetCode: string, toAssetCode?: string, fromAmount?: number) => {
-    const { assets, supportedAssets } = this.props;
-    const fromAsset = fiatCurrencies.find(currency => currency.symbol === fromAssetCode) || assets[fromAssetCode];
-    const selectedAssetOptions = isFiatCurrency(fromAssetCode)
-      ? this.generateFiatOptions().find(({ symbol }) => symbol === fromAssetCode)
-      : this.generateAssetsOptions({ [fromAssetCode]: fromAsset })[0];
+    const { supportedAssets } = this.props;
+    let fromAssetOption;
+    if (isFiatCurrency(fromAssetCode)) {
+      fromAssetOption = this.generateFiatOptions().find(({ symbol }) => symbol === fromAssetCode);
+    } else {
+      const fromAsset = supportedAssets.find(({ symbol }) => symbol === fromAssetCode);
+      // $FlowFixMe
+      ([fromAssetOption] = this.generateAssetsOptions([fromAsset])); // take first
+    }
+
     const initialFormState = {
       ...this.state.value,
       fromInput: {
-        selector: selectedAssetOptions,
+        selector: fromAssetOption,
         input: fromAmount ? fromAmount.toString() : '',
       },
     };
     if (toAssetCode) {
       const toAsset = supportedAssets.find(({ symbol }) => symbol === toAssetCode);
       if (toAsset) {
-        const supportedAssetsOptions = this.generateSupportedAssetsOptions([toAsset]);
+        const [toAssetOption] = this.generateAssetsOptions([toAsset]); // take first
         initialFormState.toInput = {
-          selector: supportedAssetsOptions[0],
+          selector: toAssetOption,
         };
       }
     }
@@ -532,7 +505,7 @@ class ExchangeScreen extends React.Component<Props, State> {
       value: {
         fromInput: {
           selector: { value: from },
-          input: amountString = 0,
+          input: amountString = 1, // 1 is default quantity in exchange back-end
         } = {},
         toInput: {
           selector: {
@@ -541,7 +514,8 @@ class ExchangeScreen extends React.Component<Props, State> {
         } = {},
       } = {},
     } = this.state;
-    const amount = parseFloat(amountString);
+    // if value is empty string set it to 1 as default quantity in exchange back-end
+    const amount = parseFloat(amountString === '' ? 1 : amountString);
     if (!from || !to || !amount) return;
     searchOffers(from, to, amount);
   };
@@ -826,15 +800,12 @@ class ExchangeScreen extends React.Component<Props, State> {
     );
   };
 
-  generateAssetsOptions = (assets) => {
+  generateAssetsOptions = (assets: Asset[]) => {
     const { balances, paymentNetworkBalances } = this.props;
-    const assetsList = Object.keys(assets).map((key: string) => assets[key]);
-    const nonEmptyAssets = assetsList.filter(({ symbol }): any => {
-      return getBalance(balances, symbol) !== 0 || symbol === ETH;
-    });
-    const alphabeticalAssets = nonEmptyAssets.sort((a, b) => a.symbol.localeCompare(b.symbol));
+    const alphabeticalAssets = assets.sort((a, b) => a.symbol.localeCompare(b.symbol));
     return alphabeticalAssets.map(({ symbol, iconUrl, ...rest }) => {
-      const assetBalance = formatAmount(getBalance(balances, symbol));
+      const rawAssetBalance = getBalance(balances, symbol);
+      const assetBalance = rawAssetBalance ? formatAmount(rawAssetBalance) : null;
       const paymentNetworkBalance = getBalance(paymentNetworkBalances, symbol);
 
       return ({
@@ -861,27 +832,6 @@ class ExchangeScreen extends React.Component<Props, State> {
     paymentNetworkBalance: null,
   }));
 
-  generateSupportedAssetsOptions = (assets) => {
-    const { balances, paymentNetworkBalances } = this.props;
-    const alphabeticalSupportedAssets = assets.sort((a, b) => a.symbol.localeCompare(b.symbol));
-    return alphabeticalSupportedAssets.map(({ symbol, iconUrl, ...rest }) => {
-      const rawAssetBalance = getBalance(balances, symbol);
-      const assetBalance = rawAssetBalance ? formatAmount(rawAssetBalance) : null;
-      const paymentNetworkBalance = getBalance(paymentNetworkBalances, symbol);
-
-      return ({
-        key: symbol,
-        value: symbol,
-        icon: iconUrl,
-        iconUrl,
-        symbol,
-        ...rest,
-        assetBalance,
-        paymentNetworkBalance,
-      });
-    });
-  };
-
   handleFormChange = (value: Object) => {
     this.props.resetOffers(); // reset all cards before they change according to input values
     this.setState({ value });
@@ -892,7 +842,6 @@ class ExchangeScreen extends React.Component<Props, State> {
 
   updateOptions = (value) => {
     const {
-      assets,
       supportedAssets,
       rates,
       baseFiatCurrency,
@@ -912,39 +861,36 @@ class ExchangeScreen extends React.Component<Props, State> {
       valueInFiatToShow = totalInFiat > 0 ? `${fiatSymbol}${amountValueInFiat}` : null;
     }
 
-    const optionsFrom = this.generateAssetsOptions(assets);
-    let newOptionsFrom = optionsFrom;
-    if (Object.keys(selectedToOption).length) {
-      newOptionsFrom = optionsFrom.filter((option) => option.value !== selectedToOption.value);
-    }
+    const assetsOptions = this.generateAssetsOptions(supportedAssets);
 
-    const optionsTo = this.generateSupportedAssetsOptions(supportedAssets);
-    let newOptionsTo = optionsTo;
-    if (Object.keys(selectedFromOption).length) {
-      newOptionsTo = optionsTo.filter((option) => option.value !== selectedFromOption.value);
-    }
+    const optionsFrom = Object.keys(selectedToOption).length
+      ? assetsOptions.filter((option) => option.value !== selectedToOption.value)
+      : assetsOptions;
 
-    const newOptions = t.update(this.state.formOptions, {
+    const optionsTo = Object.keys(selectedFromOption).length
+      ? assetsOptions.filter((option) => option.value !== selectedFromOption.value)
+      : assetsOptions;
+
+    const formOptions = t.update(this.state.formOptions, {
       fields: {
         fromInput: {
           config: {
-            options: { $set: newOptionsFrom },
+            options: { $set: optionsFrom },
             inputAddonText: { $set: valueInFiatToShow },
           },
         },
         toInput: {
-          config: { options: { $set: newOptionsTo } },
+          config: { options: { $set: optionsTo } },
         },
       },
     });
 
-    this.setState({ formOptions: newOptions });
+    this.setState({ formOptions });
   };
 
   render() {
     const {
       offers,
-      balances,
       navigation,
       exchangeAllowances,
       connectedProviders,
@@ -962,7 +908,7 @@ class ExchangeScreen extends React.Component<Props, State> {
     const { fromInput } = value;
     const { selector: selectedFromOption } = fromInput;
 
-    const formStructure = generateFormStructure(balances);
+    const formStructure = generateFormStructure();
     const reorderedOffers = offers.sort((a, b) => (new BigNumber(b.askRate)).minus(a.askRate).toNumber());
     const rightItems = [{ label: 'Get help', onPress: () => Intercom.displayMessenger(), key: 'getHelp' }];
     if ((!!exchangeAllowances.length || !!connectedProviders.length)
@@ -984,7 +930,8 @@ class ExchangeScreen extends React.Component<Props, State> {
       && smartWalletStatus.status !== SMART_WALLET_UPGRADE_STATUSES.ACCOUNT_CREATED;
     const deploymentData = get(smartWalletState, 'upgrade.deploymentData', {});
     const isSelectedFiat = !!(Object.keys(fiatCurrencies.find(
-      (currency) => currency.symbol === selectedFromOption.symbol) || {}).length);
+      (currency) => currency.symbol === selectedFromOption.symbol,
+    ) || {}).length);
 
     const disableNonFiatExchange = !this.checkIfAssetsExchangeIsAllowed() && !isSelectedFiat;
 
@@ -1067,7 +1014,7 @@ const mapStateToProps = ({
       hasNotification: hasUnreadExchangeNotification,
     },
   },
-  assets: { data: assets, supportedAssets },
+  assets: { supportedAssets },
   rates: { data: rates },
   featureFlags: {
     data: {
@@ -1080,7 +1027,6 @@ const mapStateToProps = ({
 }) => ({
   baseFiatCurrency,
   offers,
-  assets,
   supportedAssets,
   rates,
   exchangeSearchRequest,
