@@ -30,6 +30,7 @@ import Button from 'components/Button';
 import SlideModal from 'components/Modals/SlideModal';
 import CheckPin from 'components/CheckPin';
 import { LabelBadge } from 'components/LabelBadge';
+import VideoPlayer from 'components/VideoPlayer';
 
 import { baseColors, fontSizes } from 'utils/variables';
 import { responsiveSize } from 'utils/ui';
@@ -131,6 +132,28 @@ const ButtonWrapper = styled(Wrapper)`
   padding: 0 46px 20px;
 `;
 
+const VideoPlayerWrapper = styled.View`
+  margin-top: ${responsiveSize(38)}px;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const VideoCTAWrapper = styled.View`
+  padding-left: ${responsiveSize(20)}px;
+`;
+
+const CallToActionTitle = styled(BoldText)`
+  color: ${baseColors.pomegranate};
+  font-size: ${fontSizes.rMedium}px;
+  line-height: ${fontSizes.rExtraLarger}px;
+`;
+
+const CallToActionBody = styled(BoldText)`
+  color: ${baseColors.pomegranate};
+  font-size: ${fontSizes.rExtraSmall}px;
+  line-height: ${fontSizes.rMedium}px;
+`;
+
 const features = [
   {
     key: 'instant',
@@ -223,6 +246,17 @@ class PillarNetworkIntro extends React.Component<Props, State> {
               PLR acts as a meta token allowing you to send and receive any asset that is supported by the Pillar
               Payment Network.
             </BodyText>
+            <VideoPlayerWrapper>
+              <VideoPlayer
+                videoUri="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4"
+                buttonColor="#3b3ca0"
+                buttonArrowColor={baseColors.pomegranate}
+              />
+              <VideoCTAWrapper>
+                <CallToActionTitle>Watch video</CallToActionTitle>
+                <CallToActionBody>Learn more</CallToActionBody>
+              </VideoCTAWrapper>
+            </VideoPlayerWrapper>
             <LabelBadge
               label="COMING SOON"
               containerStyle={{ backgroundColor: baseColors.darkOrange, marginTop: 57, paddingVertical: 2 }}

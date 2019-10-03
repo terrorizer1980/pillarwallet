@@ -11,6 +11,7 @@ PODS:
   - Crashlytics (3.10.9):
     - Fabric (~> 1.7.13)
   - DoubleConversion (1.1.6)
+  - DVAssetLoaderDelegate (0.3.2)
   - Fabric (1.7.13)
   - Firebase/Analytics (5.0.1):
     - Firebase/Core
@@ -163,6 +164,13 @@ PODS:
     - React
   - react-native-udp (2.6.0):
     - React
+  - react-native-video/Video (5.0.2):
+    - React
+  - react-native-video/VideoCaching (5.0.2):
+    - DVAssetLoaderDelegate (~> 0.3.1)
+    - React
+    - react-native-video/Video
+    - SPTPersistentCache (~> 1.1.0)
   - react-native-webview (5.12.0):
     - React
   - React/ART (0.59.10):
@@ -244,6 +252,7 @@ PODS:
   - SentryReactNative (0.39.1):
     - React
     - Sentry (~> 4.0.1)
+  - SPTPersistentCache (1.1.0)
   - yoga (0.59.10.React)
 
 DEPENDENCIES:
@@ -269,6 +278,7 @@ DEPENDENCIES:
   - react-native-intercom (from `../node_modules/react-native-intercom`)
   - react-native-randombytes (from `../node_modules/react-native-randombytes`)
   - react-native-udp (from `../node_modules/react-native-udp`)
+  - react-native-video/VideoCaching (from `../node_modules/react-native-video/react-native-video.podspec`)
   - react-native-webview (from `../node_modules/react-native-webview`)
   - React/ART (from `../node_modules/react-native`)
   - React/Core (from `../node_modules/react-native`)
@@ -298,6 +308,7 @@ SPEC REPOS:
     - boost-for-react-native
     - BoringSSL-GRPC
     - Crashlytics
+    - DVAssetLoaderDelegate
     - Fabric
     - Firebase
     - FirebaseABTesting
@@ -326,6 +337,7 @@ SPEC REPOS:
     - QBImagePickerController
     - RSKImageCropper
     - Sentry
+    - SPTPersistentCache
 
 EXTERNAL SOURCES:
   BVLinearGradient:
@@ -350,6 +362,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-randombytes"
   react-native-udp:
     :path: "../node_modules/react-native-udp"
+  react-native-video:
+    :path: "../node_modules/react-native-video/react-native-video.podspec"
   react-native-webview:
     :path: "../node_modules/react-native-webview"
   ReactNativeFabric:
@@ -377,6 +391,7 @@ SPEC CHECKSUMS:
   BVLinearGradient: b0b70acf63ee888829b7c2ebbf6b50e227396e55
   Crashlytics: 55e24fc23989680285a21cb1146578d9d18e432c
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
+  DVAssetLoaderDelegate: 38a24530292bf77900fdfdf635434f7f9b49486d
   Fabric: 25d0963b691fc97be566392243ff0ecef5a68338
   Firebase: d6861c2059d8c32d1e6dd8932e22ada346d90a3a
   FirebaseABTesting: 1f50b8d50f5e3469eea54e7463a7b7fe221d1f5e
@@ -412,6 +427,7 @@ SPEC CHECKSUMS:
   react-native-intercom: a8a5902058c14d7359bd1044d57fe409b0ed0df7
   react-native-randombytes: d3184d351604f78e019535178766590188bbc133
   react-native-udp: 1dc04d3429ff13a251126092feeb35e175a1b0d8
+  react-native-video: 44c6befbc1526283ca1919891fcebe4680feade4
   react-native-webview: a42108b827082f8f0333529b0772102031d5960d
   ReactNativeFabric: 01c1333f76fd4708a5833d71f0a4832a9266bf0f
   ReactNativePermissions: 9f2d9c45c98800795e6c2ed330e25d11a66a8169
@@ -423,8 +439,9 @@ SPEC CHECKSUMS:
   RSKImageCropper: 98296ad26b41753f796b6898d015509598f13d97
   Sentry: a38f7879924c02239e121b19d993d23bdd1684db
   SentryReactNative: d476259b21060a59dc637a29a40d60f0aac09cf7
+  SPTPersistentCache: df36ea46762d7cf026502bbb86a8b79d0080dff4
   yoga: 128daf064cacaede0c3bb27424b6b4c71052e6cd
 
-PODFILE CHECKSUM: 42e7a551dffe95bc74db51cdfd535a756cb632ab
+PODFILE CHECKSUM: 67103d9a06d1440f323763f606a4789a18c6f52c
 
 COCOAPODS: 1.5.3

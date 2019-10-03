@@ -825,13 +825,13 @@
     "@ethersproject/constants" ">5.0.0-beta.0"
     "@ethersproject/errors" ">5.0.0-beta.0"
 
-"@expo/react-native-action-sheet@^2.0.1":
-  version "2.1.0"
-  resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/@expo/react-native-action-sheet/-/react-native-action-sheet-2.1.0.tgz#7c3f6def52aee15ca7bd9e03cc0529e64618592c"
-  integrity sha1-fD9t71Ku4VynvZ4DzAUp5kYYWSw=
+"@expo/react-native-action-sheet@^3.1.0":
+  version "3.2.0"
+  resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/@expo/react-native-action-sheet/-/react-native-action-sheet-3.2.0.tgz#1254adf0f633f557dfc343324fb7e39f293badf4"
+  integrity sha1-ElSt8PYz9Vffw0MyT7fjnyk7rfQ=
   dependencies:
-    hoist-non-react-statics "^2.2.2"
-    prop-types "^15.5.10"
+    "@types/hoist-non-react-statics" "^3.3.1"
+    hoist-non-react-statics "^3.3.0"
 
 "@netgum/types@^0.1.8":
   version "0.1.8"
@@ -1064,6 +1064,14 @@
   dependencies:
     "@types/node" "*"
 
+"@types/hoist-non-react-statics@^3.3.1":
+  version "3.3.1"
+  resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
+  integrity sha1-ESSq/lEYy1kZd66xzqrtEHDrA58=
+  dependencies:
+    "@types/react" "*"
+    hoist-non-react-statics "^3.3.0"
+
 "@types/long@^4.0.0":
   version "4.0.0"
   resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/@types/long/-/long-4.0.0.tgz#719551d2352d301ac8b81db732acb6bdc28dbdef"
@@ -1088,6 +1096,19 @@
   version "12.0.0"
   resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/@types/node/-/node-12.0.0.tgz#d11813b9c0ff8aaca29f04cbc12817f4c7d656e5"
   integrity sha1-0RgTucD/iqyinwTLwSgX9MfWVuU=
+
+"@types/prop-types@*":
+  version "15.7.3"
+  resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/@types/prop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
+  integrity sha1-KrDV2i5YFflLC51LldHl8kOrLKc=
+
+"@types/react@*":
+  version "16.9.4"
+  resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/@types/react/-/react-16.9.4.tgz#de8cf5e5e2838659fb78fa93181078469eeb19fc"
+  integrity sha1-3oz15eKDhln7ePqTGBB4Rp7rGfw=
+  dependencies:
+    "@types/prop-types" "*"
+    csstype "^2.2.0"
 
 "@types/uuid@3.4.4":
   version "3.4.4"
@@ -1965,13 +1986,6 @@ babel-messages@^6.23.0:
   version "6.23.0"
   resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/babel-messages/-/babel-messages-6.23.0.tgz#f3cdf4703858035b2a2951c6ec5edf6c62f2630e"
   integrity sha1-8830cDhYA1sqKVHG7F7fbGLyYw4=
-  dependencies:
-    babel-runtime "^6.22.0"
-
-babel-plugin-check-es2015-constants@6.22.0:
-  version "6.22.0"
-  resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/babel-plugin-check-es2015-constants/-/babel-plugin-check-es2015-constants-6.22.0.tgz#35157b101426fd2ffd3da3f75c7d1e91835bbf8a"
-  integrity sha1-NRV7EBQm/S/9PaP3XH0ekYNbv4o=
   dependencies:
     babel-runtime "^6.22.0"
 
@@ -3398,6 +3412,11 @@ cssstyle@^1.0.0:
   integrity sha1-Qn6k1YWxhiT2/b+d56Kho7pxMHc=
   dependencies:
     cssom "0.3.x"
+
+csstype@^2.2.0:
+  version "2.6.6"
+  resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/csstype/-/csstype-2.6.6.tgz#c34f8226a94bbb10c32cc0d714afdf942291fc41"
+  integrity sha1-w0+CJqlLuxDDLMDXFK/flCKR/EE=
 
 ctx-polyfill@^1.1.4:
   version "1.1.4"
@@ -5668,12 +5687,12 @@ hoist-non-react-statics@^1.0.5:
   resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/hoist-non-react-statics/-/hoist-non-react-statics-1.2.0.tgz#aa448cf0986d55cc40773b17174b7dd066cb7cfb"
   integrity sha1-qkSM8JhtVcxAdzsXF0t90GbLfPs=
 
-hoist-non-react-statics@^2.2.0, hoist-non-react-statics@^2.2.2, hoist-non-react-statics@^2.3.1, hoist-non-react-statics@^2.5.0:
+hoist-non-react-statics@^2.2.0, hoist-non-react-statics@^2.3.1, hoist-non-react-statics@^2.5.0:
   version "2.5.5"
   resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/hoist-non-react-statics/-/hoist-non-react-statics-2.5.5.tgz#c5903cf409c0dfd908f388e619d86b9c1174cb47"
   integrity sha1-xZA89AnA39kI84jmGdhrnBF0y0c=
 
-hoist-non-react-statics@^3.1.0:
+hoist-non-react-statics@^3.1.0, hoist-non-react-statics@^3.3.0:
   version "3.3.0"
   resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/hoist-non-react-statics/-/hoist-non-react-statics-3.3.0.tgz#b09178f0122184fb95acf525daaecb4d8f45958b"
   integrity sha1-sJF48BIhhPuVrPUl2q7LTY9FlYs=
@@ -7403,7 +7422,7 @@ keccak@^2.0.0:
     nan "^2.2.1"
     safe-buffer "^5.1.0"
 
-keymirror@0.1.1:
+keymirror@^0.1.1:
   version "0.1.1"
   resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/keymirror/-/keymirror-0.1.1.tgz#918889ea13f8d0a42e7c557250eee713adc95c35"
   integrity sha1-kYiJ6hP40KQufFVyUO7nE63JXDU=
@@ -9972,7 +9991,7 @@ prop-types-exact@^1.2.0:
     object.assign "^4.1.0"
     reflect.ownkeys "^0.2.0"
 
-prop-types@*, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@*, prop-types@15.7.2, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha1-UsQedbjIfnK52TYOAga5ncv/psU=
@@ -10436,17 +10455,20 @@ react-native-firebase@^4.2.0:
     postinstall-build "^5.0.1"
     prop-types "^15.6.1"
 
-"react-native-gifted-chat@https://github.com/FaridSafi/react-native-gifted-chat#v0.7.3":
-  version "0.7.2"
-  resolved "https://github.com/FaridSafi/react-native-gifted-chat#c90f86ab452f5f128ec43721953aa5006d0d5469"
+react-native-gifted-chat@^0.10.2:
+  version "0.10.2"
+  resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/react-native-gifted-chat/-/react-native-gifted-chat-0.10.2.tgz#c3b25a75e602b6991d31f9bd9f1effd310431280"
+  integrity sha1-w7JadeYCtpkdMfm9nx7/0xBDEoA=
   dependencies:
-    "@expo/react-native-action-sheet" "^2.0.1"
+    "@expo/react-native-action-sheet" "^3.1.0"
     moment "^2.19.0"
+    prop-types "15.7.2"
     react-native-communications "2.2.1"
+    react-native-iphone-x-helper "^1.2.0"
     react-native-lightbox "^0.7.0"
-    react-native-parsed-text "^0.0.20"
-    react-native-video "^3.2.1"
-    uuid "3.3.0"
+    react-native-maps "~0.25.0"
+    react-native-parsed-text "https://github.com/EvanBacon/react-native-parsed-text.git"
+    uuid "3.3.3"
 
 react-native-htmlview@^0.13.0:
   version "0.13.0"
@@ -10470,6 +10492,11 @@ react-native-iphone-x-helper@^1.0.1:
   version "1.2.0"
   resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.2.0.tgz#9f8a376eb00bc712115abff4420318a0063fa796"
   integrity sha1-n4o3brALxxIRWr/0QgMYoAY/p5Y=
+
+react-native-iphone-x-helper@^1.2.0:
+  version "1.2.1"
+  resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.2.1.tgz#645e2ffbbb49e80844bb4cbbe34a126fda1e6772"
+  integrity sha1-ZF4v+7tJ6AhEu0y740oSb9oeZ3I=
 
 react-native-keyboard-aware-scroll-view@0.5.0, react-native-keyboard-aware-scroll-view@^0.5.0:
   version "0.5.0"
@@ -10503,6 +10530,11 @@ react-native-linear-gradient@2.5.4:
   resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/react-native-linear-gradient/-/react-native-linear-gradient-2.5.4.tgz#dce133526f5a5510a639af94544f1ed0c984bd1e"
   integrity sha1-3OEzUm9aVRCmOa+UVE8e0MmEvR4=
 
+react-native-maps@~0.25.0:
+  version "0.25.0"
+  resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/react-native-maps/-/react-native-maps-0.25.0.tgz#81bc51eb50e33811a9e1c345cc48869413ead67d"
+  integrity sha1-gbxR61DjOBGp4cNFzEiGlBPq1n0=
+
 react-native-modal@^9.0.0:
   version "9.0.0"
   resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/react-native-modal/-/react-native-modal-9.0.0.tgz#0bfd0770361a2e5c6e0072bfdb0f1277f9662dba"
@@ -10516,18 +10548,16 @@ react-native-os@^1.0.1:
   resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/react-native-os/-/react-native-os-1.2.2.tgz#402cee00ac00a0588200a66b90e1d2b5a593fec0"
   integrity sha1-QCzuAKwAoFiCAKZrkOHStaWT/sA=
 
-react-native-parsed-text@^0.0.20:
-  version "0.0.20"
-  resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/react-native-parsed-text/-/react-native-parsed-text-0.0.20.tgz#7bd35fec88c3ca0eb0e8250a98e24092b4ee7fef"
-  integrity sha1-e9Nf7IjDyg6w6CUKmOJAkrTuf+8=
-  dependencies:
-    babel-plugin-check-es2015-constants "6.22.0"
-    prop-types "^15.5.10"
-
 react-native-parsed-text@^0.0.21:
   version "0.0.21"
   resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/react-native-parsed-text/-/react-native-parsed-text-0.0.21.tgz#86cf233aedc7a848b801b674c81d6b5ee37162df"
   integrity sha1-hs8jOu3HqEi4AbZ0yB1rXuNxYt8=
+  dependencies:
+    prop-types "^15.5.10"
+
+"react-native-parsed-text@https://github.com/EvanBacon/react-native-parsed-text.git":
+  version "0.0.22"
+  resolved "https://github.com/EvanBacon/react-native-parsed-text.git#24939951b13a8223882c74610d758903eed652ab"
   dependencies:
     prop-types "^15.5.10"
 
@@ -10682,13 +10712,19 @@ react-native-vector-icons@^6.4.2:
     prop-types "^15.6.2"
     yargs "^13.2.2"
 
-react-native-video@^3.2.1:
-  version "3.2.1"
-  resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/react-native-video/-/react-native-video-3.2.1.tgz#7ba3cbdfc5c747b5b00452811e98193824b16ce3"
-  integrity sha1-e6PL38XHR7WwBFKBHpgZOCSxbOM=
+react-native-video-player@^0.10.0:
+  version "0.10.0"
+  resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/react-native-video-player/-/react-native-video-player-0.10.0.tgz#3ea9c334479710c77f880c24a2fde34a0fd94f98"
+  integrity sha1-PqnDNEeXEMd/iAwkov3jSg/ZT5g=
+
+react-native-video@^5.0.2:
+  version "5.0.2"
+  resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/react-native-video/-/react-native-video-5.0.2.tgz#8f07da0cd85a1d4b316d115f3786409efc9e39fb"
+  integrity sha1-jwfaDNhaHUsxbRFfN4ZAnvyeOfs=
   dependencies:
-    keymirror "0.1.1"
+    keymirror "^0.1.1"
     prop-types "^15.5.10"
+    shaka-player "^2.4.4"
 
 react-native-webview@^5.12.0:
   version "5.12.0"
@@ -11886,6 +11922,11 @@ sha.js@^2.4.0, sha.js@^2.4.8:
   dependencies:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
+
+shaka-player@^2.4.4:
+  version "2.5.5"
+  resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/shaka-player/-/shaka-player-2.5.5.tgz#81e7265f28f631afd3837c06ec6637824bda71e4"
+  integrity sha1-gecmXyj2Ma/Tg3wG7GY3gkvaceQ=
 
 shebang-command@^1.2.0:
   version "1.2.0"
@@ -13267,15 +13308,15 @@ uuid@3.2.1:
   resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/uuid/-/uuid-3.2.1.tgz#12c528bb9d58d0b9265d9a2f6f0fe8be17ff1f14"
   integrity sha1-EsUou51Y0LkmXZovbw/ovhf/HxQ=
 
-uuid@3.3.0:
-  version "3.3.0"
-  resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/uuid/-/uuid-3.3.0.tgz#b237147804881d7b86f40a7ff8f590f15c37de32"
-  integrity sha1-sjcUeASIHXuG9Ap/+PWQ8Vw33jI=
-
 uuid@3.3.2, uuid@^3.1.0, uuid@^3.3.2:
   version "3.3.2"
   resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
   integrity sha1-G0r0lV6zB3xQHCOHL8ZROBFYcTE=
+
+uuid@3.3.3:
+  version "3.3.3"
+  resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/uuid/-/uuid-3.3.3.tgz#4568f0216e78760ee1dbf3a4d2cf53e224112866"
+  integrity sha1-RWjwIW54dg7h2/Ok0s9T4iQRKGY=
 
 v8-compile-cache@^2.0.0:
   version "2.0.2"
@@ -13695,9 +13736,9 @@ xcode@^2.0.0:
     simple-plist "^1.0.0"
     uuid "^3.3.2"
 
-"xcode@git+https://github.com/apache/cordova-node-xcode.git#e7646f0680d509b590b839e567c217590451505b":
+"xcode@https://github.com/apache/cordova-node-xcode#e7646f0680d509b590b839e567c217590451505b":
   version "1.0.1-dev"
-  resolved "git+https://github.com/apache/cordova-node-xcode.git#e7646f0680d509b590b839e567c217590451505b"
+  resolved "https://github.com/apache/cordova-node-xcode#e7646f0680d509b590b839e567c217590451505b"
   dependencies:
     simple-plist "^0.2.1"
     uuid "3.0.1"

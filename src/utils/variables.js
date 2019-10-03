@@ -170,6 +170,7 @@ export const fontSizes = {
   iosIcons: 32,
   androidCloseIcon: 22,
   androidCheckmarkIcon: 26,
+  rExtraSmall: responsiveSize(14),
   rJumbo: responsiveSize(64),
   rMedium: responsiveSize(19),
   rLarge: responsiveSize(25),

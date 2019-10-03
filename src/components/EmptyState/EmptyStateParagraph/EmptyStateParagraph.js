@@ -25,6 +25,7 @@ import { BaseText } from 'components/Typography';
 type Props = {
   title: string,
   bodyText?: string,
+  titleStyle?: Object,
 }
 
 const EmptySectionTextWrapper = styled.View`
@@ -50,11 +51,12 @@ const EmptyStateParagraph = (props: Props) => {
   const {
     title,
     bodyText,
+    titleStyle,
   } = props;
 
   return (
     <EmptySectionTextWrapper>
-      <EmptySectionTitle>{title}</EmptySectionTitle>
+      <EmptySectionTitle style={titleStyle}>{title}</EmptySectionTitle>
       {!!bodyText && <EmptySectionText>{bodyText}</EmptySectionText>}
     </EmptySectionTextWrapper>
   );
