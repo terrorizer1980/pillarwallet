@@ -231,6 +231,8 @@ PODS:
     - React
   - RNDeviceInfo (1.6.0):
     - React
+  - RNFS (2.13.3):
+    - React
   - RNGestureHandler (1.4.1):
     - React
   - RNImageCropPicker (0.23.1):
@@ -248,6 +250,14 @@ PODS:
   - SentryReactNative (0.39.1):
     - React
     - Sentry (~> 4.0.1)
+  - Textile (2.0.11):
+    - Protobuf (~> 3.7)
+    - TextileCore (= 0.7.4)
+  - textile-react-native-sdk (3.0.13):
+    - React
+    - Textile (= 2.0.11)
+  - TextileCore (0.7.4):
+    - Protobuf (~> 3.7)
   - yoga (0.59.10.React)
 
 DEPENDENCIES:
@@ -292,11 +302,13 @@ DEPENDENCIES:
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - RNColorMatrixImageFilters (from `../node_modules/react-native-color-matrix-image-filters`)
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
+  - RNFS (from `../node_modules/react-native-fs`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
   - RNKeychain (from `../node_modules/react-native-keychain`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - SentryReactNative (from `../node_modules/react-native-sentry`)
+  - "textile-react-native-sdk (from `../node_modules/@textile/react-native-sdk`)"
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -332,6 +344,8 @@ SPEC REPOS:
     - QBImagePickerController
     - RSKImageCropper
     - Sentry
+    - Textile
+    - TextileCore
 
 EXTERNAL SOURCES:
   BVLinearGradient:
@@ -368,6 +382,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-color-matrix-image-filters"
   RNDeviceInfo:
     :path: "../node_modules/react-native-device-info"
+  RNFS:
+    :path: "../node_modules/react-native-fs"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNImageCropPicker:
@@ -378,6 +394,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-vector-icons"
   SentryReactNative:
     :path: "../node_modules/react-native-sentry"
+  textile-react-native-sdk:
+    :path: "../node_modules/@textile/react-native-sdk"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -428,6 +446,7 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: e99188b8a89ea0edddc82d8831cd5142f4550fdc
   RNColorMatrixImageFilters: cf425050c778106f5f9844b69fc169758212b74d
   RNDeviceInfo: 08dd79c5adef48b6dc103bf3ddf208039aa78664
+  RNFS: bbb1a64eb245763daf34aea86f97c97c4e85f74c
   RNGestureHandler: 311e3b1cef021a7c9ef31e97e7dc31970cc6288d
   RNImageCropPicker: 32ca4b9fef4e1b7b85ba69494242122948117e06
   RNKeychain: 5381e340056c23de103d73ae59cbddc6ffc21d97
@@ -435,8 +454,11 @@ SPEC CHECKSUMS:
   RSKImageCropper: 98296ad26b41753f796b6898d015509598f13d97
   Sentry: a38f7879924c02239e121b19d993d23bdd1684db
   SentryReactNative: d476259b21060a59dc637a29a40d60f0aac09cf7
+  Textile: d36bb21f333f282f69f23569d3e255b3d1883e37
+  textile-react-native-sdk: 471bc6784e84066441de37dbc90b297f2224e70a
+  TextileCore: c3b7d9a1dfb36eaa772a942fa13fae80c7a6d0cd
   yoga: 128daf064cacaede0c3bb27424b6b4c71052e6cd
 
-PODFILE CHECKSUM: fc73357a99d119256c02dc20a2ca9363dff03ad6
+PODFILE CHECKSUM: 7edb0d2455139ced6d69ffe96e3b6a6dbf12f8e1
 
 COCOAPODS: 1.5.3

@@ -19,6 +19,8 @@
 */
 import { NavigationActions } from 'react-navigation';
 import { Sentry } from 'react-native-sentry';
+import textile from '@textile/react-native-sdk';
+import FS from 'react-native-fs';
 
 // services
 import Storage from 'services/storage';
@@ -95,6 +97,15 @@ export const initAppAndRedirectAction = (appState: string, platform: string) => 
     const { wallet, walletTimestamp } = await getWalletFromStorage(dispatch, appSettings, api);
 
     if (walletTimestamp) {
+      // const textileRepoPath = `${FS.DocumentDirectoryPath}/textile-go`;
+
+      // const recoveryPhrase = '';
+      // const textileWallet = await textile.walletAccountAt(recoveryPhrase, 0);
+      // console.log({ textileWallet });
+
+      // const result = await textile.initialize(textileRepoPath, textileWallet.seed, false, false).catch(console.log);
+      // console.log({ result });
+
       const accounts = await loadAndMigrate('accounts', dispatch, getState);
       dispatch({ type: UPDATE_ACCOUNTS, payload: accounts });
 

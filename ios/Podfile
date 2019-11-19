@@ -1,5 +1,5 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '9.0'
+platform :ios, '10.0'
 
 target 'pillarwallet' do
   pod 'Fabric', '~> 1.7.5'
@@ -77,6 +77,10 @@ target 'pillarwallet' do
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
 
   pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
+
+  pod 'textile-react-native-sdk', :path => '../node_modules/@textile/react-native-sdk'
+
+  pod 'RNFS', :path => '../node_modules/react-native-fs'
 
   post_install do |installer|
     installer.pods_project.main_group.tab_width = '2';

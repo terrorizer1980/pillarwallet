@@ -1086,6 +1086,21 @@
     rxjs "6.4.0"
     rxjs-addons "^0.0.4"
 
+"@textile/js-types@0.7.4":
+  version "0.7.4"
+  resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/@textile/js-types/-/js-types-0.7.4.tgz#2b3dd5a6465b2a2ab60a978406911d070a3da91e"
+  integrity sha1-Kz3VpkZbKiq2CpeEBpEdBwo9qR4=
+  dependencies:
+    protobufjs "^6.8.8"
+
+"@textile/react-native-sdk@^3.0.13":
+  version "3.0.13"
+  resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/@textile/react-native-sdk/-/react-native-sdk-3.0.13.tgz#45dbacbe71e43ece2f4306b310ad4be6c48e8351"
+  integrity sha1-RdusvnHkPs4vQwazEK1L5sSOg1E=
+  dependencies:
+    "@textile/js-types" "0.7.4"
+    buffer "^5.2.1"
+
 "@tradle/react-native-http@^2.0.0":
   version "2.0.1"
   resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/@tradle/react-native-http/-/react-native-http-2.0.1.tgz#af19e240e1e580bfa249563924d1be472686f48b"
@@ -2245,7 +2260,7 @@ balanced-match@^1.0.0:
   resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
   integrity sha1-ibTRmasr7kneFk6gK4nORi1xt2c=
 
-base-64@0.1.0:
+base-64@0.1.0, base-64@^0.1.0:
   version "0.1.0"
   resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/base-64/-/base-64-0.1.0.tgz#780a99c84e7d600260361511c4877613bf24f6bb"
   integrity sha1-eAqZyE59YAJgNhURxId2E78k9rs=
@@ -10638,6 +10653,14 @@ react-native-firebase@^4.2.0:
     opencollective "^1.0.3"
     postinstall-build "^5.0.1"
     prop-types "^15.6.1"
+
+react-native-fs@2.13.3:
+  version "2.13.3"
+  resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/react-native-fs/-/react-native-fs-2.13.3.tgz#a422f0ecd8a093a7e99d8d51ff51440e090a18a8"
+  integrity sha1-pCLw7Nigk6fpnY1R/1FEDgkKGKg=
+  dependencies:
+    base-64 "^0.1.0"
+    utf8 "^2.1.1"
 
 react-native-gesture-handler@1.4.1:
   version "1.4.1"
