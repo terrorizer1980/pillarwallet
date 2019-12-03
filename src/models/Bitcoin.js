@@ -50,3 +50,31 @@ export type BitcoinAddress = {
   address: string,
   updatedAt: number,
 };
+
+export type BTCBalance = {
+  confirmed: number,
+  unconfirmed: number,
+  balance: number,
+};
+
+
+export type BitcoinBalance = {
+  [address: string]: BTCBalance,
+};
+
+export type BTCTransaction = {
+  _id: string,
+  chain: string,
+  network: string,
+  coinbase: boolean,
+  mintIndex: number,
+  spentTxid: string,
+  mintTxid: string,
+  mintHeight: number,
+  spentHeight: number,
+  address: string,
+  script: string,
+  value: number,
+  confirmations: number,
+  details: Object,
+};

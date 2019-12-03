@@ -17,7 +17,19 @@
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
-import { BITCOIN_INSIGHT_URL } from 'constants/bitcoinConstants';
+import { BITCOIN_INSIGHT_URL } from 'react-native-dotenv';
+
+const validateResponse = (name: string) => {
+  return (response) => {
+    if (!response.ok) {
+      const message = `${name} failed`;
+      console.error(message, { response }); // eslint-disable-line no-console
+      return new Error(message);
+    }
+
+    return response;
+  };
+};
 
 export const sendRawTransactionToNode = async (rawtx: string) => {
   return fetch(`${BITCOIN_INSIGHT_URL}/tx/send`, {
@@ -28,19 +40,51 @@ export const sendRawTransactionToNode = async (rawtx: string) => {
     },
     body: JSON.stringify({ rawtx }),
   })
-    .then(response => {
-      if (!response.ok) {
-        return new Error('failed');
-      }
-      return response;
-    });
+    .then(validateResponse('sendRawTransactionToNode'));
 };
 
 export const getAddressUtxosFromNode = (address: string) => {
-  return fetch(`${BITCOIN_INSIGHT_URL}/addr/${address}/utxo`, {
+  return fetch(`${BITCOIN_INSIGHT_URL}/address/${address}/?unspent=true`, {
+    method: 'GET',
     headers: {
       Accept: 'application/json',
     },
+  })
+    .then(validateResponse('getAddressUtxosFromNode'));
+};
+
+export const getAddressBalanceFromNode = (address: string) => {
+  return fetch(`${BITCOIN_INSIGHT_URL}/address/${address}/balance`, {
     method: 'GET',
-  });
+    headers: {
+      Accept: 'application/json',
+    },
+  })
+    .then(validateResponse('getAddressBalanceFromNode'));
+};
+
+export const getBTCTransactionsFromNode = (address: string) => {
+  return fetch(`${BITCOIN_INSIGHT_URL}/address/${address}/txs?limit=0`, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+    },
+  }).then(validateResponse('getBTCTransactionsFromNode'))
+    .then(response => response.json())
+    .then(txs => {
+      const fullTxs = txs.map(e => {
+        return fetch(`${BITCOIN_INSIGHT_URL}/tx/${e.mintTxid}/populated`, {
+          method: 'GET',
+          headers: {
+            Accept: 'application/json',
+          },
+        })
+          .then(resp => resp.json())
+          .then(txDetails => {
+            e.details = txDetails;
+            return e;
+          });
+      });
+      return Promise.all(fullTxs);
+    });
 };
