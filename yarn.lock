@@ -1086,19 +1086,19 @@
     rxjs "6.4.0"
     rxjs-addons "^0.0.4"
 
-"@textile/js-types@0.7.4":
-  version "0.7.4"
-  resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/@textile/js-types/-/js-types-0.7.4.tgz#2b3dd5a6465b2a2ab60a978406911d070a3da91e"
-  integrity sha1-Kz3VpkZbKiq2CpeEBpEdBwo9qR4=
+"@textile/js-types@0.7.6":
+  version "0.7.6"
+  resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/@textile/js-types/-/js-types-0.7.6.tgz#43209cc8c30682afdaabd6f781dc9386d39e1284"
+  integrity sha1-QyCcyMMGgq/aq9b3gdyThtOeEoQ=
   dependencies:
     protobufjs "^6.8.8"
 
-"@textile/react-native-sdk@^3.0.13":
-  version "3.0.13"
-  resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/@textile/react-native-sdk/-/react-native-sdk-3.0.13.tgz#45dbacbe71e43ece2f4306b310ad4be6c48e8351"
-  integrity sha1-RdusvnHkPs4vQwazEK1L5sSOg1E=
+"@textile/react-native-sdk@^3.1.1":
+  version "3.1.1"
+  resolved "https://pillarproject.jfrog.io/pillarproject/api/npm/npm/@textile/react-native-sdk/-/react-native-sdk-3.1.1.tgz#508cb9bc1e89d278c7064f157def448164ad341b"
+  integrity sha1-UIy5vB6J0njHBk8Vfe9EgWStNBs=
   dependencies:
-    "@textile/js-types" "0.7.4"
+    "@textile/js-types" "0.7.6"
     buffer "^5.2.1"
 
 "@tradle/react-native-http@^2.0.0":
