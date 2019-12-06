@@ -60,6 +60,7 @@ import userSettingsReducer from './userSettingsReducer';
 import bitcoinReducer from './bitcoinReducer';
 import userEventsReducer from './userEventsReducer';
 import syntheticsReducer from './syntheticsReducer';
+import textileReducer from './textileReducer';
 
 // types
 import type { OfflineQueueReducerState } from './offlineQueueReducer';
@@ -99,6 +100,7 @@ import type { UserSettingsReducerAction, UserSettingsReducerState } from './user
 import type { BitcoinReducerAction, BitcoinReducerState } from './bitcoinReducer';
 import type { UserEventsReducerAction, UserEventsReducerState } from './userEventsReducer';
 import type { SyntheticsReducerAction, SyntheticsReducerState } from './syntheticsReducer';
+import type { TextileReducerAction, TextileReducerState } from './textileReducer';
 
 export type RootReducerState = {|
   offlineQueue: OfflineQueueReducerState,
@@ -135,6 +137,7 @@ export type RootReducerState = {|
   bitcoin: BitcoinReducerState,
   userEvents: UserEventsReducerState,
   synthetics: SyntheticsReducerState,
+  textile: TextileReducerState,
 |};
 
 type RootReducerAction =
@@ -156,7 +159,8 @@ type RootReducerAction =
   | BitcoinReducerAction
   | UserEventsReducerAction
   | DbAction
-  | SyntheticsReducerAction;
+  | SyntheticsReducerAction
+  | TextileReducerAction;
 
 export type GetState = () => RootReducerState;
 export type ThunkAction = (
@@ -203,6 +207,7 @@ const appReducer = combineReducers({
   bitcoin: bitcoinReducer,
   userEvents: userEventsReducer,
   synthetics: syntheticsReducer,
+  textile: textileReducer,
 });
 
 export const initialState = appReducer(undefined, {});

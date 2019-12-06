@@ -20,8 +20,7 @@
 import { NavigationActions } from 'react-navigation';
 import { Sentry } from 'react-native-sentry';
 import get from 'lodash.get';
-import textile from '@textile/react-native-sdk';
-import FS from 'react-native-fs';
+import { TEXTILE_MNEMONIC } from 'react-native-dotenv';
 
 // services
 import Storage from 'services/storage';
@@ -29,7 +28,7 @@ import { navigate } from 'services/navigation';
 import { loadAndMigrate } from 'services/dataMigration';
 
 // constants
-import { AUTH_FLOW, ONBOARDING_FLOW } from 'constants/navigationConstants';
+import { AUTH_FLOW, ONBOARDING_FLOW, TEXTILE_FLOW } from 'constants/navigationConstants';
 import { UPDATE_APP_SETTINGS } from 'constants/appSettingsConstants';
 import {
   UPDATE_ASSETS,
@@ -101,15 +100,6 @@ export const initAppAndRedirectAction = (appState: string, platform: string) => 
     const { wallet, walletTimestamp } = await getWalletFromStorage(dispatch, appSettings, api);
 
     if (walletTimestamp) {
-      // const textileRepoPath = `${FS.DocumentDirectoryPath}/textile-go`;
-
-      // const recoveryPhrase = '';
-      // const textileWallet = await textile.walletAccountAt(recoveryPhrase, 0);
-      // console.log({ textileWallet });
-
-      // const result = await textile.initialize(textileRepoPath, textileWallet.seed, false, false).catch(console.log);
-      // console.log({ result });
-
       const accounts = await loadAndMigrate('accounts', dispatch, getState);
       dispatch({ type: UPDATE_ACCOUNTS, payload: accounts });
 
@@ -243,7 +233,8 @@ export const initAppAndRedirectAction = (appState: string, platform: string) => 
 
       if (wallet.backupStatus) dispatch({ type: UPDATE_WALLET_IMPORT_STATE, payload: wallet.backupStatus });
 
-      navigate(NavigationActions.navigate({ routeName: AUTH_FLOW }));
+      const navigateToFlow = TEXTILE_MNEMONIC ? TEXTILE_FLOW : AUTH_FLOW;
+      navigate(NavigationActions.navigate({ routeName: navigateToFlow }));
       return;
     }
     dispatch({ type: UPDATE_APP_SETTINGS, payload: appSettings });
