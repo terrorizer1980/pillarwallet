@@ -17,10 +17,11 @@
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
-import { SET_TEXTILE_INITIALIZED } from 'constants/textileConstants';
+import { SET_TEXTILE_INITIALIZED, SET_TEXTILE_VERSION } from 'constants/textileConstants';
 
 export type TextileReducerState = {
   initialized: boolean,
+  textileVersion: string,
 }
 
 export type TextileReducerAction = {
@@ -30,6 +31,7 @@ export type TextileReducerAction = {
 
 const initialState = {
   initialized: false,
+  textileVersion: '',
 };
 
 export default function textileReducer(
@@ -39,6 +41,8 @@ export default function textileReducer(
   switch (action.type) {
     case SET_TEXTILE_INITIALIZED:
       return { ...state, initialized: true };
+    case SET_TEXTILE_VERSION:
+      return { ...state, version: action.payload };
     default:
       return state;
   }

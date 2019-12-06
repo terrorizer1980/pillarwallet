@@ -22,7 +22,7 @@ import Textile from '@textile/react-native-sdk';
 import { TEXTILE_MNEMONIC } from 'react-native-dotenv';
 
 import type { Dispatch, GetState } from 'reducers/rootReducer';
-import { SET_TEXTILE_INITIALIZED } from 'constants/textileConstants';
+import { SET_TEXTILE_INITIALIZED, SET_TEXTILE_VERSION } from 'constants/textileConstants';
 
 export const initTextileAction = () => {
   return async (dispatch: Dispatch) => {
@@ -42,6 +42,9 @@ export const initTextileAction = () => {
     // console.log('fromApp', await Textile.gitSummary());
 
     dispatch({ type: SET_TEXTILE_INITIALIZED });
+
+    const version = await Textile.version();
+    dispatch({ type: SET_TEXTILE_VERSION, version });
   };
 };
 

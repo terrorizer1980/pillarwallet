@@ -19,6 +19,7 @@
 */
 import * as React from 'react';
 import { connect } from 'react-redux';
+import Textile from '@textile/react-native-sdk';
 import type { NavigationScreenProp } from 'react-navigation';
 
 import { Container, Wrapper } from 'components/Layout';
@@ -27,37 +28,34 @@ import { initTextileAction } from 'actions/textileActions';
 
 type Props = {
   navigation: NavigationScreenProp<*>,
-  navigateToNewWalletPage: Function,
+  initTextile: () => void,
   initialized: boolean,
-}
+  textileVersion: string,
+};
 
 type State = {
-  // shouldAnimate: boolean,
-}
+  nodeStarted: boolean,
+};
 
 class TextileHome extends React.Component<Props, State> {
   listeners: Object[] = [];
-  state = {};
-  // shouldAnimate: true,
-  // };
+  state = {
+    nodeStarted: false,
+  };
 
   componentDidMount() {
-    // this.props.initTextile()
-    /* const { navigation } = this.props;
+    this.props.initTextile();
 
-    this.listeners = [
-      navigation.addListener('willFocus', () => this.setState({ shouldAnimate: true })),
-      navigation.addListener('willBlur', () => this.setState({ shouldAnimate: false })),
-    ]; */
+    this.listeners.push(
+      Textile.events.addNodeStartedListener(() => {
+        this.setState({ nodeStarted: true });
+      }),
+    );
   }
 
   componentWillUnmount() {
-    this.listeners.forEach(listenerItem => listenerItem.remove());
+    this.listeners.forEach(listenerItem => listenerItem.cancel()); // TODO: cancel() or remove()?
   }
-
-  loginAction = () => {
-    this.props.navigateToNewWalletPage();
-  };
 
   /* navigateToWalletImportPage = () => {
     const { navigation } = this.props;
@@ -65,11 +63,14 @@ class TextileHome extends React.Component<Props, State> {
   }; */
 
   render() {
-    const { initialized } = this.props;
+    const { initialized, textileVersion } = this.props;
+    const { nodeStarted } = this.state;
     return (
       <Container>
         <Wrapper fullScreen>
           <MediumText>Textile initialized: {initialized.toString()}</MediumText>
+          <MediumText>Textile version: {textileVersion}</MediumText>
+          <MediumText>Textile node started: {nodeStarted.toString()}</MediumText>
         </Wrapper>
       </Container>
     );
@@ -77,9 +78,10 @@ class TextileHome extends React.Component<Props, State> {
 }
 
 const mapStateToProps = ({
-  textile: { initialized },
+  textile: { initialized, textileVersion },
 }) => ({
   initialized,
+  textileVersion,
 });
 
 const mapDispatchToProps = (dispatch: Function) => ({
