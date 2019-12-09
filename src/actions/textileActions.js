@@ -44,7 +44,7 @@ export const initTextileAction = () => {
     dispatch({ type: SET_TEXTILE_INITIALIZED });
 
     const version = await Textile.version();
-    dispatch({ type: SET_TEXTILE_VERSION, version });
+    dispatch({ type: SET_TEXTILE_VERSION, payload: version });
   };
 };
 

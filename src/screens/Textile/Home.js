@@ -69,7 +69,7 @@ class TextileHome extends React.Component<Props, State> {
       <Container>
         <Wrapper fullScreen>
           <MediumText>Textile initialized: {initialized.toString()}</MediumText>
-          <MediumText>Textile version: {textileVersion}</MediumText>
+          <MediumText>Textile version: {textileVersion || '-'}</MediumText>
           <MediumText>Textile node started: {nodeStarted.toString()}</MediumText>
         </Wrapper>
       </Container>

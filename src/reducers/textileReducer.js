@@ -19,15 +19,15 @@
 */
 import { SET_TEXTILE_INITIALIZED, SET_TEXTILE_VERSION } from 'constants/textileConstants';
 
-export type TextileReducerState = {
+export type TextileReducerState = {|
   initialized: boolean,
   textileVersion: string,
-}
+|};
 
 export type TextileReducerAction = {
   type: string,
   payload: any,
-}
+};
 
 const initialState = {
   initialized: false,
@@ -37,12 +37,12 @@ const initialState = {
 export default function textileReducer(
   state: TextileReducerState = initialState,
   action: TextileReducerAction,
-) {
+): TextileReducerState {
   switch (action.type) {
     case SET_TEXTILE_INITIALIZED:
       return { ...state, initialized: true };
     case SET_TEXTILE_VERSION:
-      return { ...state, version: action.payload };
+      return { ...state, textileVersion: action.payload };
     default:
       return state;
   }
