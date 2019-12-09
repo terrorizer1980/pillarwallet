@@ -17,12 +17,22 @@
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
+import isEmpty from 'lodash.isempty';
+import get from 'lodash.get';
 import FS from 'react-native-fs';
-import Textile from '@textile/react-native-sdk';
+import Textile, { IAddThreadConfig, Thread, AddThreadConfig, ThreadList, IThread } from '@textile/react-native-sdk';
 import { TEXTILE_MNEMONIC } from 'react-native-dotenv';
 
 import type { Dispatch, GetState } from 'reducers/rootReducer';
-import { SET_TEXTILE_INITIALIZED, SET_TEXTILE_VERSION } from 'constants/textileConstants';
+import type { ThreadMeta } from 'models/Textile';
+import {
+  SET_TEXTILE_INITIALIZED,
+  SET_TEXTILE_VERSION,
+  SET_TEXTILE_NODE_STARTED,
+  UPDATE_TEXTILE_THREADS,
+  ADD_TEXTILE_THREAD,
+} from 'constants/textileConstants';
+import { walletSettingsThreadMeta } from 'configs/textileConfig';
 
 export const initTextileAction = () => {
   return async (dispatch: Dispatch) => {
@@ -33,14 +43,11 @@ export const initTextileAction = () => {
     const textileWallet = await Textile.walletAccountAt(recoveryPhrase, 0);
 
     const initialized = await Textile.isInitialized(textileRepoPath);
-    console.log({ initialized });
     if (!initialized) {
       await Textile.initialize(textileRepoPath, textileWallet.seed, true, false);
     }
 
     await Textile.launch(textileRepoPath, true);
-    // console.log('fromApp', await Textile.gitSummary());
-
     dispatch({ type: SET_TEXTILE_INITIALIZED });
 
     const version = await Textile.version();
@@ -48,9 +55,64 @@ export const initTextileAction = () => {
   };
 };
 
-export const getThreadsAction = () => {
+export const loadAllThreadsAction = () => {
   return async (dispatch: Dispatch, getState: GetState) => {
     const { textile: { initialized } } = getState();
     if (!initialized) throw new Error('Textile is not initialized');
+
+    const threads: ThreadList = await Textile.threads.list();
+    if (!isEmpty(get(threads, 'items'))) {
+      dispatch({ type: UPDATE_TEXTILE_THREADS, payload: threads.items });
+    }
+  };
+};
+
+export const findOrCreateThreadAction = (threadMeta: ThreadMeta) => {
+  return async (dispatch: Dispatch, getState: GetState) => {
+    const { threads } = getState().textile;
+    const threadExists = threads.find((thread: IThread) => thread.key === threadMeta.key);
+    if (threadExists) return;
+
+    const schema = {
+      id: '',
+      json: JSON.stringify(threadMeta.schema),
+      preset: AddThreadConfig.Schema.Preset.NONE,
+    };
+    const config: IAddThreadConfig = {
+      key: threadMeta.key,
+      name: threadMeta.key,
+      type: Thread.Type.PRIVATE,
+      sharing: Thread.Sharing.NOT_SHARED,
+      schema,
+      force: false,
+      whitelist: [],
+    };
+
+    const newThread = await Textile.threads.add(config);
+    dispatch({
+      type: ADD_TEXTILE_THREAD,
+      payload: newThread,
+    });
+  };
+};
+
+export const loadOrCreateThreadsAction = () => {
+  return async (dispatch: Dispatch) => {
+    try {
+      await dispatch(loadAllThreadsAction());
+      await dispatch(findOrCreateThreadAction(walletSettingsThreadMeta));
+    } catch (e) {
+      console.log('Error loading textile threads', e);
+    }
+  };
+};
+
+export const onNodeStartedAction = () => {
+  return async (dispatch: Dispatch, getState: GetState) => {
+    const { textile: { initialized } } = getState();
+    if (!initialized) throw new Error('Textile is not initialized');
+
+    dispatch({ type: SET_TEXTILE_NODE_STARTED });
+    await dispatch(loadOrCreateThreadsAction());
   };
 };

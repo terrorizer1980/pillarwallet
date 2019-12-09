@@ -17,9 +17,33 @@
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
+import type { ThreadMeta } from 'models/Textile';
 
-export const SET_TEXTILE_INITIALIZED = 'SET_TEXTILE_INITIALIZED';
-export const SET_TEXTILE_VERSION = 'SET_TEXTILE_VERSION';
-export const SET_TEXTILE_NODE_STARTED = 'SET_TEXTILE_NODE_STARTED';
-export const UPDATE_TEXTILE_THREADS = 'UPDATE_TEXTILE_THREADS';
-export const ADD_TEXTILE_THREAD = 'ADD_TEXTILE_THREAD';
+export const walletSettingsThreadMeta: ThreadMeta = {
+  name: 'wallet_settings_blob',
+  key: 'io.textile.pillar_wallet_settings_v1',
+  schema: {
+    name: 'io.textile.pillar_wallet_settings_v0.0.1',
+    mill: '/json',
+    json_schema: {
+      definitions: {},
+      type: 'object',
+      title: '',
+      required: ['key', 'value', 'updated', 'created'],
+      properties: {
+        key: {
+          type: 'string',
+        },
+        value: {
+          type: 'object',
+        },
+        updated: {
+          type: 'integer',
+        },
+        created: {
+          type: 'integer',
+        },
+      },
+    },
+  },
+};

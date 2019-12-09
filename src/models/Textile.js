@@ -18,8 +18,24 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
-export const SET_TEXTILE_INITIALIZED = 'SET_TEXTILE_INITIALIZED';
-export const SET_TEXTILE_VERSION = 'SET_TEXTILE_VERSION';
-export const SET_TEXTILE_NODE_STARTED = 'SET_TEXTILE_NODE_STARTED';
-export const UPDATE_TEXTILE_THREADS = 'UPDATE_TEXTILE_THREADS';
-export const ADD_TEXTILE_THREAD = 'ADD_TEXTILE_THREAD';
+type JSONSchema = {|
+  definitions: any,
+  type: string,
+  title: string,
+  required: string[],
+  properties: any,
+|};
+
+type NoteSchema = {|
+  name: string,
+  mill: string,
+  pin?: boolean,
+  plaintext?: boolean,
+  json_schema?: JSONSchema,
+|};
+
+export type ThreadMeta = {|
+  name: string,
+  key: string,
+  schema: NoteSchema,
+|};

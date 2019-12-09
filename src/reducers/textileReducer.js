@@ -17,11 +17,20 @@
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
-import { SET_TEXTILE_INITIALIZED, SET_TEXTILE_VERSION } from 'constants/textileConstants';
+import { IThread } from '@textile/react-native-sdk';
+import {
+  SET_TEXTILE_INITIALIZED,
+  SET_TEXTILE_VERSION,
+  SET_TEXTILE_NODE_STARTED,
+  UPDATE_TEXTILE_THREADS,
+  ADD_TEXTILE_THREAD,
+} from 'constants/textileConstants';
 
 export type TextileReducerState = {|
   initialized: boolean,
   textileVersion: string,
+  nodeStarted: boolean,
+  threads: IThread[],
 |};
 
 export type TextileReducerAction = {
@@ -32,6 +41,8 @@ export type TextileReducerAction = {
 const initialState = {
   initialized: false,
   textileVersion: '',
+  nodeStarted: false,
+  threads: [],
 };
 
 export default function textileReducer(
@@ -43,6 +54,12 @@ export default function textileReducer(
       return { ...state, initialized: true };
     case SET_TEXTILE_VERSION:
       return { ...state, textileVersion: action.payload };
+    case SET_TEXTILE_NODE_STARTED:
+      return { ...state, nodeStarted: true };
+    case UPDATE_TEXTILE_THREADS:
+      return { ...state, threads: action.payload };
+    case ADD_TEXTILE_THREAD:
+      return { ...state, threads: [...state.threads, action.payload] };
     default:
       return state;
   }
