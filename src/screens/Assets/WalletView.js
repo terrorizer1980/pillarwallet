@@ -163,10 +163,6 @@ const CustomKAWrapper = (props) => {
   } = props;
   const scrollWrapperProps = {
     stickyHeaderIndices: hasStickyTabs ? [2] : [0],
-    style: { backgroundColor: baseColors.white },
-    contentContainerStyle: {
-      backgroundColor: baseColors.white,
-    },
     refreshControl,
     onScroll: () => Keyboard.dismiss(),
   };
@@ -176,6 +172,7 @@ const CustomKAWrapper = (props) => {
       <ScrollWrapper
         {...scrollWrapperProps}
         innerRef={ref => getRef(ref)}
+        contentContainerStyle={{ flexGrow: 1 }}
       >
         {children}
       </ScrollWrapper>
@@ -185,8 +182,8 @@ const CustomKAWrapper = (props) => {
   return (
     <ScrollView
       {...scrollWrapperProps}
-      style={{ height: '100%' }}
-      contentContainerStyle={{ width: '100%' }}
+      style={{ height: '100%', flex: 1 }}
+      contentContainerStyle={{ width: '100%', flexGrow: 1 }}
       ref={(ref) => getRef(ref)}
     >
       {children}

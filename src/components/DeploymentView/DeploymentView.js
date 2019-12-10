@@ -20,47 +20,61 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components/native';
+import { Linking } from 'react-native';
 
 import { SMART_WALLET_UPGRADE_STATUSES } from 'constants/smartWalletConstants';
+import { TX_DETAILS_URL } from 'react-native-dotenv';
 
 import { BaseText, MediumText } from 'components/Typography';
 import { Wrapper } from 'components/Layout';
 import Button from 'components/Button';
-import Spinner from 'components/Spinner';
+import ButtonText from 'components/ButtonText';
 
-import { baseColors, fontStyles, spacing } from 'utils/variables';
+import { fontSizes, fontStyles, spacing } from 'utils/variables';
 import { getSmartWalletStatus } from 'utils/smartWallet';
 
 import type { SmartWalletStatus } from 'models/SmartWalletStatus';
 import type { Accounts } from 'models/Account';
+import type { SmartWalletReducerState } from 'reducers/smartWalletReducer';
 
+type DeploymentMessage = {
+  title: string,
+  message: string,
+}
 
 type Props = {
   buttonLabel?: string,
-  message: Object,
-  buttonAction?: ?Function,
-  smartWalletState: Object,
+  message: DeploymentMessage,
+  buttonAction?: ?() => void,
+  smartWalletState: SmartWalletReducerState,
   accounts: Accounts,
   forceRetry?: boolean,
 }
 
 const MessageTitle = styled(MediumText)`
-  ${fontStyles.big};
+  ${fontStyles.large};
   text-align: center;
+  margin: 0 10px 10px;
 `;
 
 const Message = styled(BaseText)`
   padding-top: ${spacing.small}px;
-  ${fontStyles.regular}
-  color: ${baseColors.darkGray};
-  text-align: center;
+  ${fontStyles.medium}
 `;
 
-const SpinnerWrapper = styled.View`
-  margin-top: ${spacing.mediumLarge}px;
+const ButtonsWrapper = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding: ${spacing.medium}px 0;
 `;
 
 class DeploymentView extends React.PureComponent<Props> {
+  openOnEtherscan = (hash) => {
+    const url = TX_DETAILS_URL + hash;
+    Linking.openURL(url);
+  };
+
   render() {
     const {
       message = {},
@@ -73,9 +87,8 @@ class DeploymentView extends React.PureComponent<Props> {
     const { title, message: bodyText } = message;
 
     const smartWalletStatus: SmartWalletStatus = getSmartWalletStatus(accounts, smartWalletState);
-    if (smartWalletStatus.status === SMART_WALLET_UPGRADE_STATUSES.DEPLOYMENT_COMPLETE) return null;
 
-    const { upgrade: { deploymentStarted } } = smartWalletState;
+    const { upgrade: { deploymentStarted, deploymentData: { hash } } } = smartWalletState;
     const isDeploying = deploymentStarted
       || [
         SMART_WALLET_UPGRADE_STATUSES.DEPLOYING,
@@ -83,15 +96,13 @@ class DeploymentView extends React.PureComponent<Props> {
       ].includes(smartWalletStatus.status);
 
     return (
-      <Wrapper regularPadding center style={{ marginTop: 40, marginBottom: spacing.large }}>
+      <Wrapper
+        flex={1}
+        style={{ marginTop: 8, padding: spacing.large }}
+      >
         <MessageTitle>{title}</MessageTitle>
         <Message>{bodyText}</Message>
-        <Wrapper style={{ margin: spacing.small, width: '100%', alignItems: 'center' }}>
-          {isDeploying && !forceRetry &&
-            <SpinnerWrapper>
-              <Spinner />
-            </SpinnerWrapper>
-          }
+        <Wrapper flex={1} style={{ margin: spacing.small, width: '100%', alignItems: 'center' }}>
           {(!isDeploying || forceRetry) && buttonAction && buttonLabel &&
             <Button
               marginTop={spacing.mediumLarge.toString()}
@@ -99,6 +110,21 @@ class DeploymentView extends React.PureComponent<Props> {
               title={buttonLabel}
               onPress={buttonAction}
             />
+          }
+          {isDeploying &&
+          <ButtonsWrapper>
+            <Button
+              title="Smart Wallet FAQ"
+              onPress={() => {}}
+            />
+            {!!hash &&
+            <ButtonText
+              buttonText="See on Etherscan"
+              onPress={() => this.openOnEtherscan(hash)}
+              fontSize={fontSizes.medium}
+              wrapperStyle={{ marginTop: 15 }}
+            />}
+          </ButtonsWrapper>
           }
         </Wrapper>
       </Wrapper>

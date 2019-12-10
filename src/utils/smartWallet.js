@@ -63,11 +63,10 @@ const getMessage = (
       };
     case SMART_WALLET_UPGRADE_STATUSES.DEPLOYING:
       if (!isSmartWalletActive) return {};
-      // TODO: get average time
       return {
-        title: 'Smart Wallet is being deployed now',
-        message: 'You will be able to send assets once it\'s deployed.' +
-          '\nCurrent average waiting time is 4 mins',
+        title: 'Smart Wallet is being activated',
+        message: 'It won’t take long. While activation is in progress, feel free to explore exciting features of ' +
+          'Pillar Smart Wallet',
       };
     case SMART_WALLET_UPGRADE_STATUSES.TRANSFERRING_ASSETS:
       const { upgrade: { transfer: { transactions } } } = smartWalletState;
