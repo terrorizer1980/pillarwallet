@@ -26,7 +26,7 @@ type JSONSchema = {|
   properties: any,
 |};
 
-type NoteSchema = {|
+type WalletSettingsSchema = {|
   name: string,
   mill: string,
   pin?: boolean,
@@ -37,5 +37,17 @@ type NoteSchema = {|
 export type ThreadMeta = {|
   name: string,
   key: string,
-  schema: NoteSchema,
+  schema: WalletSettingsSchema,
+|};
+
+export type WalletSettingsThreadItem = {|
+  key: string,
+  value: any,
+  created: number,
+  updated: number,
+|};
+
+export type UIWalletSettings = {|
+  block?: string,
+  stored: WalletSettingsThreadItem,
 |};

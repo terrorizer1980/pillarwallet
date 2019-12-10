@@ -20,17 +20,25 @@
 import isEmpty from 'lodash.isempty';
 import get from 'lodash.get';
 import FS from 'react-native-fs';
-import Textile, { IAddThreadConfig, Thread, AddThreadConfig, ThreadList, IThread } from '@textile/react-native-sdk';
+import Textile, {
+  IAddThreadConfig,
+  Thread,
+  AddThreadConfig,
+  ThreadList,
+  IThread,
+  IFilesList,
+} from '@textile/react-native-sdk';
 import { TEXTILE_MNEMONIC } from 'react-native-dotenv';
 
 import type { Dispatch, GetState } from 'reducers/rootReducer';
-import type { ThreadMeta } from 'models/Textile';
+import type { ThreadMeta, UIWalletSettings } from 'models/Textile';
 import {
   SET_TEXTILE_INITIALIZED,
   SET_TEXTILE_VERSION,
   SET_TEXTILE_NODE_STARTED,
   UPDATE_TEXTILE_THREADS,
   ADD_TEXTILE_THREAD,
+  SET_TEXTILE_WALLET_SETTINGS,
 } from 'constants/textileConstants';
 import { walletSettingsThreadMeta } from 'configs/textileConfig';
 
@@ -107,6 +115,46 @@ export const loadOrCreateThreadsAction = () => {
   };
 };
 
+export const refreshWalletSettingsAction = () => {
+  return async (dispatch: Dispatch, getState: GetState) => {
+    const { threads } = getState().textile;
+    // TODO: use selector
+    const walletSettingsThread = threads.find((thread: IThread) => thread.key === walletSettingsThreadMeta.key);
+    if (!walletSettingsThread) return;
+
+    const walletSettings: UIWalletSettings[] = [];
+    try {
+      const files: IFilesList = await Textile.files.list(walletSettingsThread.id, '', -1);
+      console.log({ files });
+
+      const promises = files.items.map(async file => {
+        const { block } = file;
+        const hashes = file.files.map((ffs) => ffs.file.hash);
+
+        await Promise.all(hashes.map(async hash => {
+          const content = await Textile.files.content(hash);
+          // const json = Buffer.from(data.split(',')[1], 'base64').toString()
+          const json = Buffer.from(content.data, 'base64').toString();
+          const data = JSON.parse(json);
+          walletSettings.push({
+            block,
+            stored: data,
+          });
+        }));
+      });
+      await Promise.all(promises);
+      console.log({ walletSettings });
+    } catch (err) {
+      console.error(err);
+    } finally {
+      dispatch({
+        type: SET_TEXTILE_WALLET_SETTINGS,
+        payload: walletSettings,
+      });
+    }
+  };
+};
+
 export const onNodeStartedAction = () => {
   return async (dispatch: Dispatch, getState: GetState) => {
     const { textile: { initialized } } = getState();
@@ -114,5 +162,11 @@ export const onNodeStartedAction = () => {
 
     dispatch({ type: SET_TEXTILE_NODE_STARTED });
     await dispatch(loadOrCreateThreadsAction());
+    await dispatch(refreshWalletSettingsAction());
+    /*
+    // yield put(MainActions.uploadAllNotes()) -> updates the state
+    +yield call(refreshNotes)
+    uploadAllNotes()
+     */
   };
 };
