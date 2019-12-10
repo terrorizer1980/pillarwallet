@@ -26,14 +26,14 @@ import {
   ADD_TEXTILE_THREAD,
   SET_TEXTILE_WALLET_SETTINGS,
 } from 'constants/textileConstants';
-import type { UIWalletSettings } from 'models/Textile';
+import type { UIThreadItem } from 'models/Textile';
 
 export type TextileReducerState = {|
   initialized: boolean,
   textileVersion: string,
   nodeStarted: boolean,
   threads: IThread[],
-  walletSettings: UIWalletSettings[],
+  walletSettings: UIThreadItem[],
 |};
 
 export type TextileReducerAction = {

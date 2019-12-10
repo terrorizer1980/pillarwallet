@@ -17,37 +17,11 @@
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
+import { IThread } from '@textile/react-native-sdk';
+import type { ThreadMeta } from 'models/Textile';
+import type { RootReducerState } from 'reducers/rootReducer';
 
-type JSONSchema = {|
-  definitions: any,
-  type: string,
-  title: string,
-  required: string[],
-  properties: any,
-|};
+export const threadSelector = (findThread: ThreadMeta, { textile: { threads } }: RootReducerState) => {
+  return threads.find((thread: IThread) => thread.key === findThread.key);
+};
 
-type WalletSettingsSchema = {|
-  name: string,
-  mill: string,
-  pin?: boolean,
-  plaintext?: boolean,
-  json_schema?: JSONSchema,
-|};
-
-export type ThreadMeta = {|
-  name: string,
-  key: string,
-  schema: WalletSettingsSchema,
-|};
-
-export type ThreadItem = {|
-  key: string,
-  value: any,
-  created: number,
-  updated: number,
-|};
-
-export type UIThreadItem = {|
-  block?: string,
-  stored: ThreadItem,
-|};

@@ -25,13 +25,12 @@ import Textile, {
   Thread,
   AddThreadConfig,
   ThreadList,
-  IThread,
   IFilesList,
 } from '@textile/react-native-sdk';
 import { TEXTILE_MNEMONIC } from 'react-native-dotenv';
 
 import type { Dispatch, GetState } from 'reducers/rootReducer';
-import type { ThreadMeta, UIWalletSettings } from 'models/Textile';
+import type { ThreadMeta, ThreadItem, UIThreadItem } from 'models/Textile';
 import {
   SET_TEXTILE_INITIALIZED,
   SET_TEXTILE_VERSION,
@@ -41,6 +40,7 @@ import {
   SET_TEXTILE_WALLET_SETTINGS,
 } from 'constants/textileConstants';
 import { walletSettingsThreadMeta } from 'configs/textileConfig';
+import { threadSelector } from 'selectors/textile';
 
 export const initTextileAction = () => {
   return async (dispatch: Dispatch) => {
@@ -77,8 +77,7 @@ export const loadAllThreadsAction = () => {
 
 export const findOrCreateThreadAction = (threadMeta: ThreadMeta) => {
   return async (dispatch: Dispatch, getState: GetState) => {
-    const { threads } = getState().textile;
-    const threadExists = threads.find((thread: IThread) => thread.key === threadMeta.key);
+    const threadExists = threadSelector(threadMeta, getState());
     if (threadExists) return;
 
     const schema = {
@@ -117,12 +116,10 @@ export const loadOrCreateThreadsAction = () => {
 
 export const refreshWalletSettingsAction = () => {
   return async (dispatch: Dispatch, getState: GetState) => {
-    const { threads } = getState().textile;
-    // TODO: use selector
-    const walletSettingsThread = threads.find((thread: IThread) => thread.key === walletSettingsThreadMeta.key);
+    const walletSettingsThread = threadSelector(walletSettingsThreadMeta, getState());
     if (!walletSettingsThread) return;
 
-    const walletSettings: UIWalletSettings[] = [];
+    const walletSettings: UIThreadItem[] = [];
     try {
       const files: IFilesList = await Textile.files.list(walletSettingsThread.id, '', -1);
       console.log({ files });
@@ -154,6 +151,43 @@ export const refreshWalletSettingsAction = () => {
     }
   };
 };
+const addToThread = (data: ThreadItem, threadId: string) => {
+  const payload = JSON.stringify(data);
+  const input = Buffer.from(payload).toString('base64');
+  // const input = Buffer.from(action.payload.note.trim()).toString('base64')
+  return Textile.files.addData(input, threadId);
+  // return Textile.files.addFiles(result.dir, threadId);
+};
+
+export const syncWalletSettingsAction = () => {
+  return async (dispatch: Dispatch, getState: GetState) => {
+    const walletSettingsThread = threadSelector(walletSettingsThreadMeta, getState());
+    if (!walletSettingsThread) return;
+
+    const walletSettings = [{
+      key: 'testKey',
+      value: { testKey: 'testValue' },
+      created: new Date().getTime(),
+      updated: new Date().getTime(),
+    }];
+    const block = undefined;
+    const stored = walletSettings[0];
+    // const { block, stored } = walletSettings[0]
+
+    try {
+      await addToThread(stored, walletSettingsThread.id);
+
+      // Mark block as ignored so it would be deleted from IPFS at some point
+      if (block) {
+        await Textile.ignores.add(block);
+      }
+    } catch (error) {
+      console.info(error);
+    } finally {
+      await dispatch(refreshWalletSettingsAction());
+    }
+  };
+};
 
 export const onNodeStartedAction = () => {
   return async (dispatch: Dispatch, getState: GetState) => {
@@ -163,10 +197,6 @@ export const onNodeStartedAction = () => {
     dispatch({ type: SET_TEXTILE_NODE_STARTED });
     await dispatch(loadOrCreateThreadsAction());
     await dispatch(refreshWalletSettingsAction());
-    /*
-    // yield put(MainActions.uploadAllNotes()) -> updates the state
-    +yield call(refreshNotes)
-    uploadAllNotes()
-     */
+    // await dispatch(syncWalletSettingsAction());
   };
 };
