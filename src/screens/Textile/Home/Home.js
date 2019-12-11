@@ -25,6 +25,7 @@ import type { NavigationScreenProp } from 'react-navigation';
 import { Container, Wrapper } from 'components/Layout';
 import { MediumText } from 'components/Typography';
 import { initTextileAction, onNodeStartedAction } from 'actions/textileActions';
+import { TEXTILE_THREAD } from 'constants/navigationConstants';
 
 type Props = {
   navigation: NavigationScreenProp<*>,
@@ -54,10 +55,10 @@ class TextileHome extends React.Component<Props, State> {
     this.listeners.forEach(listenerItem => listenerItem.cancel()); // TODO: cancel() or remove()?
   }
 
-  /* navigateToWalletImportPage = () => {
+  navigateToThreadPage = (threadKey: string) => {
     const { navigation } = this.props;
-    navigation.navigate(IMPORT_WALLET_LEGALS);
-  }; */
+    navigation.navigate(TEXTILE_THREAD, { threadKey });
+  };
 
   render() {
     const {
@@ -73,7 +74,9 @@ class TextileHome extends React.Component<Props, State> {
           <MediumText>Textile version: {textileVersion || '-'}</MediumText>
           <MediumText>Textile node started: {nodeStarted.toString()}</MediumText>
           <MediumText>Threads:</MediumText>
-          {threads.map(({ key }) => <MediumText key={key}>{key}</MediumText>)}
+          {threads.map(({ key }) => (
+            <MediumText key={key} onPress={() => this.navigateToThreadPage(key)}>{key}</MediumText>
+          ))}
         </Wrapper>
       </Container>
     );

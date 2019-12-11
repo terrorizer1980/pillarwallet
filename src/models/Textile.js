@@ -26,7 +26,7 @@ type JSONSchema = {|
   properties: any,
 |};
 
-type WalletSettingsSchema = {|
+type ThreadSchema = {|
   name: string,
   mill: string,
   pin?: boolean,
@@ -37,7 +37,7 @@ type WalletSettingsSchema = {|
 export type ThreadMeta = {|
   name: string,
   key: string,
-  schema: WalletSettingsSchema,
+  schema: ThreadSchema,
 |};
 
 export type ThreadItem = {|

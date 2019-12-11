@@ -24,7 +24,7 @@ import {
   SET_TEXTILE_NODE_STARTED,
   UPDATE_TEXTILE_THREADS,
   ADD_TEXTILE_THREAD,
-  SET_TEXTILE_WALLET_SETTINGS,
+  SET_TEXTILE_THREAD_ITEMS,
 } from 'constants/textileConstants';
 import type { UIThreadItem } from 'models/Textile';
 
@@ -33,7 +33,7 @@ export type TextileReducerState = {|
   textileVersion: string,
   nodeStarted: boolean,
   threads: IThread[],
-  walletSettings: UIThreadItem[],
+  threadItems: UIThreadItem[],
 |};
 
 export type TextileReducerAction = {
@@ -46,7 +46,7 @@ const initialState = {
   textileVersion: '',
   nodeStarted: false,
   threads: [],
-  walletSettings: [],
+  threadItems: [],
 };
 
 export default function textileReducer(
@@ -64,8 +64,8 @@ export default function textileReducer(
       return { ...state, threads: action.payload };
     case ADD_TEXTILE_THREAD:
       return { ...state, threads: [...state.threads, action.payload] };
-    case SET_TEXTILE_WALLET_SETTINGS:
-      return { ...state, walletSettings: action.payload };
+    case SET_TEXTILE_THREAD_ITEMS:
+      return { ...state, threadItems: action.payload };
     default:
       return state;
   }

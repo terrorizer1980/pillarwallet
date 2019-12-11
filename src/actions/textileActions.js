@@ -37,10 +37,12 @@ import {
   SET_TEXTILE_NODE_STARTED,
   UPDATE_TEXTILE_THREADS,
   ADD_TEXTILE_THREAD,
-  SET_TEXTILE_WALLET_SETTINGS,
+  SET_TEXTILE_THREAD_ITEMS,
 } from 'constants/textileConstants';
 import { walletSettingsThreadMeta } from 'configs/textileConfig';
 import { threadSelector } from 'selectors/textile';
+import { getRandomInt } from 'utils/common';
+import Toast from 'components/Toast';
 
 export const initTextileAction = () => {
   return async (dispatch: Dispatch) => {
@@ -77,7 +79,7 @@ export const loadAllThreadsAction = () => {
 
 export const findOrCreateThreadAction = (threadMeta: ThreadMeta) => {
   return async (dispatch: Dispatch, getState: GetState) => {
-    const threadExists = threadSelector(threadMeta, getState());
+    const threadExists = threadSelector(threadMeta.key, getState());
     if (threadExists) return;
 
     const schema = {
@@ -114,14 +116,14 @@ export const loadOrCreateThreadsAction = () => {
   };
 };
 
-export const refreshWalletSettingsAction = () => {
+export const loadThreadAction = (threadKey: string) => {
   return async (dispatch: Dispatch, getState: GetState) => {
-    const walletSettingsThread = threadSelector(walletSettingsThreadMeta, getState());
-    if (!walletSettingsThread) return;
+    const threadData = threadSelector(threadKey, getState());
+    if (!threadData) return;
 
-    const walletSettings: UIThreadItem[] = [];
+    const threadItems: UIThreadItem[] = [];
     try {
-      const files: IFilesList = await Textile.files.list(walletSettingsThread.id, '', -1);
+      const files: IFilesList = await Textile.files.list(threadData.id, '', -1);
       console.log({ files });
 
       const promises = files.items.map(async file => {
@@ -133,58 +135,74 @@ export const refreshWalletSettingsAction = () => {
           // const json = Buffer.from(data.split(',')[1], 'base64').toString()
           const json = Buffer.from(content.data, 'base64').toString();
           const data = JSON.parse(json);
-          walletSettings.push({
+          threadItems.push({
             block,
             stored: data,
           });
         }));
       });
       await Promise.all(promises);
-      console.log({ walletSettings });
     } catch (err) {
       console.error(err);
     } finally {
       dispatch({
-        type: SET_TEXTILE_WALLET_SETTINGS,
-        payload: walletSettings,
+        type: SET_TEXTILE_THREAD_ITEMS,
+        payload: threadItems,
       });
     }
   };
 };
+
 const addToThread = (data: ThreadItem, threadId: string) => {
   const payload = JSON.stringify(data);
   const input = Buffer.from(payload).toString('base64');
-  // const input = Buffer.from(action.payload.note.trim()).toString('base64')
   return Textile.files.addData(input, threadId);
   // return Textile.files.addFiles(result.dir, threadId);
 };
 
-export const syncWalletSettingsAction = () => {
-  return async (dispatch: Dispatch, getState: GetState) => {
-    const walletSettingsThread = threadSelector(walletSettingsThreadMeta, getState());
-    if (!walletSettingsThread) return;
+const updateRecord = (key: string, value: any, allRecords: UIThreadItem[]): UIThreadItem => {
+  const currentRecord = allRecords.find(({ stored }) => stored.key === key);
 
-    const walletSettings = [{
-      key: 'testKey',
-      value: { testKey: 'testValue' },
-      created: new Date().getTime(),
+  return {
+    block: get(currentRecord, 'block'),
+    stored: {
+      key,
+      value: { [key]: value },
+      created: get(currentRecord, 'stored.created', new Date().getTime()),
       updated: new Date().getTime(),
-    }];
-    const block = undefined;
-    const stored = walletSettings[0];
-    // const { block, stored } = walletSettings[0]
+    },
+  };
+};
+
+export const publishThreadItemsAction = (threadKey: string) => {
+  return async (dispatch: Dispatch, getState: GetState) => {
+    const threadData = threadSelector(threadKey, getState());
+    if (!threadData) return;
+
+    const { threadItems } = getState().textile;
+    const saveItems = [
+      updateRecord('testKey', `value${getRandomInt(1, 1000)}`, threadItems),
+    ];
 
     try {
-      await addToThread(stored, walletSettingsThread.id);
-
-      // Mark block as ignored so it would be deleted from IPFS at some point
-      if (block) {
-        await Textile.ignores.add(block);
-      }
+      await Promise.all(saveItems.map(async saveItem => {
+        const { block, stored } = saveItem;
+        await addToThread(stored, threadData.id);
+        // Mark block as ignored so it would be deleted from IPFS at some point
+        if (block) {
+          await Textile.ignores.add(block);
+        }
+      }));
     } catch (error) {
       console.info(error);
     } finally {
-      await dispatch(refreshWalletSettingsAction());
+      Toast.show({
+        message: 'Data updated',
+        type: 'success',
+        title: 'Success',
+        autoClose: true,
+      });
+      dispatch(loadThreadAction(threadKey));
     }
   };
 };
@@ -195,8 +213,6 @@ export const onNodeStartedAction = () => {
     if (!initialized) throw new Error('Textile is not initialized');
 
     dispatch({ type: SET_TEXTILE_NODE_STARTED });
-    await dispatch(loadOrCreateThreadsAction());
-    await dispatch(refreshWalletSettingsAction());
-    // await dispatch(syncWalletSettingsAction());
+    dispatch(loadOrCreateThreadsAction());
   };
 };

@@ -37,6 +37,7 @@ import PinCodeUnlockScreen from 'screens/PinCodeUnlock';
 import WelcomeScreen from 'screens/Welcome';
 import ForgotPinScreen from 'screens/ForgotPin';
 import TextileHomeScreen from 'screens/Textile/Home';
+import TextileThreadScreen from 'screens/Textile/Thread';
 
 import { modalTransition } from 'utils/common';
 
@@ -61,6 +62,7 @@ import {
   IMPORT_WALLET_LEGALS,
   TEXTILE_FLOW,
   TEXTILE_HOME,
+  TEXTILE_THREAD,
 } from 'constants/navigationConstants';
 
 import AppFlow from './appNavigation';
@@ -105,6 +107,7 @@ const authFlow = createStackNavigator({
 
 const textileFlow = createStackNavigator({
   [TEXTILE_HOME]: TextileHomeScreen,
+  [TEXTILE_THREAD]: TextileThreadScreen,
 }, StackNavigatorConfig);
 
 const RootSwitch: SwitchNavigatorType = createSwitchNavigator({

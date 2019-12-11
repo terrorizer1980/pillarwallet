@@ -18,10 +18,9 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 import { IThread } from '@textile/react-native-sdk';
-import type { ThreadMeta } from 'models/Textile';
 import type { RootReducerState } from 'reducers/rootReducer';
 
-export const threadSelector = (findThread: ThreadMeta, { textile: { threads } }: RootReducerState) => {
-  return threads.find((thread: IThread) => thread.key === findThread.key);
+export const threadSelector = (findThreadKey: string, { textile: { threads } }: RootReducerState) => {
+  return threads.find((thread: IThread) => thread.key === findThreadKey);
 };
 
