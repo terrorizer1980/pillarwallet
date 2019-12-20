@@ -303,7 +303,7 @@ class SendTokenAssetsScreen extends React.Component<Props, State> {
         {!disableSend &&
         <ContentBackground>
           <InnerWrapper>
-            <Tabs initialActiveTab={activeTab} tabs={assetsTabs} isFloating />
+            <Tabs tabs={assetsTabs} activeTab={activeTab} isFloating />
             {activeTab === TOKENS && this.renderAssets()}
             {activeTab === COLLECTIBLES && this.renderCollectibles()}
           </InnerWrapper>

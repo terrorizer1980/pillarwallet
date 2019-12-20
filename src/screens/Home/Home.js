@@ -400,10 +400,6 @@ class HomeScreen extends React.Component<Props, State> {
     );
   };
 
-  onTabChange = (isChanging?: boolean) => {
-    this.setState({ tabIsChanging: isChanging });
-  };
-
   render() {
     console.log('render started');
     const {
@@ -515,7 +511,7 @@ class HomeScreen extends React.Component<Props, State> {
             <Tabs
               tabs={activityFeedTabs}
               wrapperStyle={{ paddingTop: 16 }}
-              onTabChange={this.onTabChange}
+              activeTab={activeTab}
             />
           }
           {showActivityFeedTabs &&
@@ -528,10 +524,7 @@ class HomeScreen extends React.Component<Props, State> {
               activeTab={activeTab}
               hideTabs
               initialNumToRender={8}
-              wrapperStyle={{
-                flexGrow: 1,
-                opacity: tabIsChanging ? 0.5 : 1
-              }}
+              wrapperStyle={{ flexGrow: 1, opacity: tabIsChanging ? 0.5 : 1 }}
               contentContainerStyle={{ flexGrow: 1 }}
             />
           }
