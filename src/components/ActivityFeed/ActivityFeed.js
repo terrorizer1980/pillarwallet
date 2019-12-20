@@ -612,6 +612,8 @@ class ActivityFeed extends React.Component<Props, State> {
       maxScrollOffset,
     } = this.state;
 
+    const firstTab = tabs.length ? tabs[0].id : '';
+
     const additionalContentContainerStyle = !formattedFeedData.length
       ? { justifyContent: 'center', flex: 1 }
       : {};
@@ -626,10 +628,10 @@ class ActivityFeed extends React.Component<Props, State> {
         </ActivityFeedHeader>}
         {tabs.length > 1 && !hideTabs &&
           <Tabs
-            initialActiveTab={activeTab}
             tabs={tabsProps}
             wrapperStyle={{ paddingTop: 0 }}
             onTabChange={this.onTabChange}
+            activeTab={activeTab || firstTab}
           />
         }
         {!tabIsChanging &&
@@ -674,7 +676,6 @@ class ActivityFeed extends React.Component<Props, State> {
           onSwipeComplete={this.handleClose}
         >
           <EventDetails
-            eventData={selectedEventData}
             eventType={eventType}
             eventStatus={eventStatus}
             onClose={this.handleClose}

@@ -295,10 +295,6 @@ class HomeScreen extends React.Component<Props, State> {
     );
   };
 
-  onTabChange = (isChanging?: boolean) => {
-    this.setState({ tabIsChanging: isChanging });
-  };
-
   render() {
     const {
       cancelInvitation,
@@ -404,6 +400,8 @@ class HomeScreen extends React.Component<Props, State> {
     const badgesContainerStyle = !badges.length ? { width: '100%', justifyContent: 'center' } : {};
     const fiatCurrency = baseFiatCurrency || defaultFiatCurrency;
 
+    console.log('------> RENDER');
+
     return (
       <ContainerWithHeader
         backgroundColor={colors.card}
@@ -480,7 +478,7 @@ class HomeScreen extends React.Component<Props, State> {
           <Tabs
             tabs={activityFeedTabs}
             wrapperStyle={{ paddingTop: 16 }}
-            onTabChange={this.onTabChange}
+            activeTab={activeTab}
           />
           <ActivityFeed
             onCancelInvitation={cancelInvitation}
