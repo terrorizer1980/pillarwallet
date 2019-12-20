@@ -244,9 +244,9 @@ class ActivityFeed extends React.Component<Props, State> {
   }
 
   componentDidUpdate(prevProps: Props) {
-    const { tabs = [], feedData = [] } = this.props;
+    const { tabs = [], feedData = [], activeTab } = this.props;
     if ((tabs.length && !isEqual(tabs, prevProps.tabs))
-      || (feedData.length && !isEqual(feedData, prevProps.feedData))) {
+      || (feedData.length && !isEqual(feedData, prevProps.feedData)) || activeTab !== prevProps.activeTab) {
       this.generateFeedSections();
     }
   }
