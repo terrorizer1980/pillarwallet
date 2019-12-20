@@ -27,6 +27,7 @@ import { Label, MediumText } from 'components/Typography';
 import Button from 'components/Button';
 import ContainerWithHeader from 'components/Layout/ContainerWithHeader';
 import { baseColors, fontSizes, spacing } from 'utils/variables';
+import { formatUnits } from 'utils/common';
 import { SEND_BITCOIN_PIN_CONFIRM } from 'constants/navigationConstants';
 
 type Props = {
@@ -79,6 +80,7 @@ class SendBitcoinConfirm extends React.Component<Props, State> {
     } = this.props;
     const {
       outputs,
+      fee = '0.0',
     } = navigation.getParam('transactionPayload', {});
 
     const output = outputs[0];
@@ -104,6 +106,10 @@ class SendBitcoinConfirm extends React.Component<Props, State> {
           <LabeledRow>
             <Label>Recipient Address</Label>
             <Value>{to}</Value>
+          </LabeledRow>
+          <LabeledRow>
+            <Label>Estimated Transaction Fee</Label>
+            <Value>{formatUnits(fee, 8)}</Value>
           </LabeledRow>
         </ScrollWrapper>
       </ContainerWithHeader>

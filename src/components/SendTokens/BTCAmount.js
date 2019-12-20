@@ -24,6 +24,7 @@ import t from 'tcomb-form-native';
 import styled from 'styled-components/native';
 import get from 'lodash.get';
 import isEmpty from 'lodash.isempty';
+import coinselect from 'coinselect';
 
 // components
 import { Wrapper } from 'components/Layout';
@@ -33,11 +34,14 @@ import ContainerWithHeader from 'components/Layout/ContainerWithHeader';
 import SendTokenDetails from 'components/SendTokenDetails';
 
 // utils
-import { satoshisToBtc } from 'utils/bitcoin';
+import { satoshisToBtc, btcToSatoshis } from 'utils/bitcoin';
 import { spacing } from 'utils/variables';
 import { makeAmountForm, getAmountFormFields } from 'utils/btcFormHelpers';
 import { getRate } from 'utils/assets';
-import { formatFiat } from 'utils/common';
+import { formatFiat, formatUnits } from 'utils/common';
+
+// services
+import { feeRateFromSpeed } from 'services/bitcoin';
 
 // types
 import type { RootReducerState } from 'reducers/rootReducer';
@@ -53,7 +57,7 @@ import type { Rates } from 'models/Asset';
 
 // constants
 import { SEND_BITCOIN_CONFIRM } from 'constants/navigationConstants';
-import { BTC } from 'constants/assetsConstants';
+import { BTC, SPEED_TYPES } from 'constants/assetsConstants';
 
 const BTCIcon = require('assets/icons/icon_BTC.png');
 
@@ -91,6 +95,7 @@ type State = {
     amount: ?string,
   },
   inputHasError: boolean,
+  fee: number,
 };
 
 const { Form } = t.form;
@@ -106,6 +111,7 @@ class BTCAmount extends React.Component<Props, State> {
   state = {
     value: null,
     inputHasError: false,
+    fee: 0,
   };
 
   constructor(props: Props) {
@@ -121,11 +127,39 @@ class BTCAmount extends React.Component<Props, State> {
   handleChange = (value: Object) => {
     // first update the amount, then after state is updated check for errors
     this.setState({ value });
+    this.calculateFee(value);
     this.checkFormInputErrors();
+  };
+
+  calculateFee = (value: Object) => {
+    const { unspentTransactions } = this.props;
+    const transactionTarget: BitcoinTransactionTarget = {
+      address: this.receiver,
+      value: value.amount,
+      isChange: false,
+    };
+
+    const feeRate = feeRateFromSpeed(SPEED_TYPES.SLOW);
+    const transactionPayload: BitcoinTransactionPlan = {
+      inputs: unspentTransactions,
+      outputs: [transactionTarget],
+      fee: feeRate,
+      isValid: true,
+    };
+    const plannedOutputs =
+      transactionPayload.outputs.map(outs => ({ ...outs, value: btcToSatoshis(Number(outs.value)) }));
+    const utxos = transactionPayload.inputs.map(utxo => ({
+      ...utxo,
+      txid: utxo.mintTxid,
+      value: utxo.value,
+    }));
+    const { fee = 0 } = coinselect(utxos, plannedOutputs, feeRate);
+    this.setState({ fee });
   };
 
   handleFormSubmit = () => {
     const { unspentTransactions } = this.props;
+    const { fee } = this.state;
 
     if (this.formSubmitted) {
       return;
@@ -146,7 +180,7 @@ class BTCAmount extends React.Component<Props, State> {
     const transactionPayload: BitcoinTransactionPlan = {
       inputs: unspentTransactions,
       outputs: [transactionTarget],
-      fee: 0.00000001,
+      fee,
       isValid: true,
     };
     const { navigation } = this.props;
@@ -176,6 +210,7 @@ class BTCAmount extends React.Component<Props, State> {
     const {
       value,
       inputHasError,
+      fee = 0,
     } = this.state;
     const {
       balances,
@@ -193,9 +228,9 @@ class BTCAmount extends React.Component<Props, State> {
 
     const currentValue = (value && parseFloat(amount)) || 0;
     const balance = satoshisToBtc(satoshisBalance);
+    const btcFee = satoshisToBtc(fee);
 
-    const fee = 0.0001;
-    const isEnoughForFee = balance >= (currentValue + fee);
+    const isEnoughForFee = balance >= (currentValue + btcFee);
 
     // value in fiat
     const valueInFiat = currentValue * getRate(rates, BTC, fiatCurrency);
@@ -239,6 +274,7 @@ class BTCAmount extends React.Component<Props, State> {
                 fiatCurrency={fiatCurrency}
                 balance={balance}
                 token={token}
+                fee={formatUnits(fee.toString(), decimals)}
               />
             </ActionsWrapper>
           </Wrapper>

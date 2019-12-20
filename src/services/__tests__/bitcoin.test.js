@@ -161,7 +161,7 @@ describe('bitcoin service', () => {
 
         expect(collected.outputs).toEqual([
           { address, value: 4000000, isChange: false },
-          { address: 'change', value: 125988750, isChange: true },
+          { address: 'change', value: 125997750, isChange: true },
         ]);
       });
 

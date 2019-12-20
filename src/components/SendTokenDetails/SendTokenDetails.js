@@ -30,6 +30,7 @@ type Props = {
   token: string,
   rates: Rates,
   fiatCurrency: string,
+  fee?: string,
 };
 
 const TextRow = styled.View`
@@ -54,6 +55,7 @@ const SendTokenDetails = (props: Props) => {
     token,
     rates,
     fiatCurrency,
+    fee,
   } = props;
 
   const formattedBalance = formatAmount(balance);
@@ -69,6 +71,17 @@ const SendTokenDetails = (props: Props) => {
         </SendTokenDetailsValue>
         <HelperText>{formattedBalanceInFiat}</HelperText>
       </TextRow>
+      {
+        !!fee &&
+        <React.Fragment>
+          <Label small>Estimated Transaction Fee</Label>
+          <TextRow>
+            <SendTokenDetailsValue>
+              {fee} {token}
+            </SendTokenDetailsValue>
+          </TextRow>
+        </React.Fragment>
+      }
     </Details>
   );
 };

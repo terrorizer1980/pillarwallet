@@ -47,10 +47,10 @@ const coinselect = require('coinselect');
 
 const NETWORK = networks[DEFAULT_BTC_NETWORK];
 
-const feeRateFromSpeed = (speed: string): number => {
+export const feeRateFromSpeed = (speed: string): number => {
   switch (speed) {
     // TODO: define rates
-    case SPEED_TYPES.SLOW: return 50;
+    case SPEED_TYPES.SLOW: return 10;
     case SPEED_TYPES.NORMAL: return 50;
     case SPEED_TYPES.FAST: return 50;
     default: return 50;
