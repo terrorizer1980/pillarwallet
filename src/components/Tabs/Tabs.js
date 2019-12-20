@@ -312,7 +312,6 @@ export default class Tabs extends React.Component<Props, State> {
               onLayout={(e) => {
                 if (tabLengths[id]) return;
                 const thisTabLength = e.nativeEvent.layout.width;
-                if (thisTabLength === tabLengths[id]) return;
                 const newLengths = { ...tabLengths };
                 newLengths[id] = thisTabLength;
                 this.setState({ tabLengths: newLengths });

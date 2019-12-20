@@ -135,6 +135,7 @@ type State = {
   scrollY: Animated.Value,
   isScanning: boolean,
   tabIsChanging: boolean,
+  activityFeedTabs: any[],
 };
 
 const WalletConnectWrapper = styled.View`
@@ -180,6 +181,7 @@ class HomeScreen extends React.Component<Props, State> {
     usernameWidth: 0,
     isScanning: false,
     tabIsChanging: false,
+    activityFeedTabs: [],
   };
 
   componentDidMount() {
@@ -196,6 +198,7 @@ class HomeScreen extends React.Component<Props, State> {
     });
     fetchBadges();
     fetchBadgeAwardHistory();
+    this.buildActivityFeedData();
   }
 
   componentWillUnmount() {
@@ -218,6 +221,108 @@ class HomeScreen extends React.Component<Props, State> {
 
     return !isEq;
   }
+
+  componentDidUpdate(prevProps: Props) {
+    const {
+      history,
+      openSeaTxHistory,
+      contacts,
+    } = this.props;
+    if (!isEqual(history, prevProps.history)
+      || !isEqual(openSeaTxHistory, prevProps.openSeaTxHistory)
+      || !isEqual(contacts, prevProps.contacts)) {
+      this.buildActivityFeedData();
+    }
+  }
+
+  buildActivityFeedData = () => {
+    const {
+      history,
+      openSeaTxHistory,
+      contacts,
+      invitations,
+      contactsSmartAddresses,
+      accounts,
+      userEvents,
+      badgesEvents,
+    } = this.props;
+    const groupedHistory = history.reduce((grouped, transaction) => {
+      const { tranType } = transaction;
+      if (tranType === 'collectible') {
+        grouped.collectibles.push(transaction);
+      } else {
+        grouped.tokens.push(transaction);
+      }
+      return grouped;
+    }, { collectibles: [], tokens: [] });
+
+    const transactionsOnMainnet = mapTransactionsHistory(
+      groupedHistory.tokens,
+      contacts,
+      contactsSmartAddresses,
+      accounts,
+      TRANSACTION_EVENT,
+    );
+
+    const collectiblesTransactions = mapOpenSeaAndBCXTransactionsHistory(openSeaTxHistory, groupedHistory.collectibles);
+    const mappedCTransactions = mapTransactionsHistory(
+      collectiblesTransactions,
+      contacts,
+      contactsSmartAddresses,
+      accounts,
+      COLLECTIBLE_TRANSACTION,
+    );
+
+    const mappedContacts = contacts.map(({ ...rest }) => ({ ...rest, type: TYPE_ACCEPTED }));
+
+    const activityFeedTabs = [
+      {
+        id: ALL,
+        name: 'All',
+        tabImageNormal: allIconNormal,
+        tabImageActive: allIconActive,
+        onPress: () => this.setActiveTab(ALL),
+        data: [
+          ...transactionsOnMainnet,
+          ...mappedCTransactions,
+          ...mappedContacts,
+          ...invitations,
+          ...userEvents,
+          ...badgesEvents,
+        ],
+        emptyState: {
+          title: 'Make your first step',
+          bodyText: 'Your activity will appear here.',
+        },
+      },
+      {
+        id: TRANSACTIONS,
+        name: 'Transactions',
+        tabImageNormal: transactionsIconNormal,
+        tabImageActive: transactionsIconActive,
+        onPress: () => this.setActiveTab(TRANSACTIONS),
+        data: [...transactionsOnMainnet, ...mappedCTransactions],
+        emptyState: {
+          title: 'Make your first step',
+          bodyText: 'Your transactions will appear here. Send or receive tokens to start.',
+        },
+      },
+      {
+        id: SOCIAL,
+        name: 'Social',
+        tabImageNormal: socialIconNormal,
+        tabImageActive: socialIconActive,
+        onPress: () => this.setActiveTab(SOCIAL),
+        data: [...mappedContacts, ...invitations],
+        emptyState: {
+          title: 'Make your first step',
+          bodyText: 'Information on your connections will appear here. Send a connection request to start.',
+        },
+      },
+    ];
+
+    this.setState({ activityFeedTabs });
+  };
 
   closeCamera = () => this.setState({ showCamera: false });
 
@@ -300,23 +405,16 @@ class HomeScreen extends React.Component<Props, State> {
   };
 
   render() {
+    console.log('render started');
     const {
       cancelInvitation,
       acceptInvitation,
       rejectInvitation,
       intercomNotificationsCount,
       navigation,
-      history,
-      openSeaTxHistory,
-      contacts,
-      invitations,
       pendingConnector,
       badges,
       connectors,
-      contactsSmartAddresses,
-      accounts,
-      userEvents,
-      badgesEvents,
       theme,
       baseFiatCurrency,
     } = this.props;
@@ -326,74 +424,8 @@ class HomeScreen extends React.Component<Props, State> {
       activeTab,
       isScanning,
       tabIsChanging,
+      activityFeedTabs,
     } = this.state;
-
-    const tokenTxHistory = history.filter(({ tranType }) => tranType !== 'collectible');
-    const bcxCollectiblesTxHistory = history.filter(({ tranType }) => tranType === 'collectible');
-
-    const transactionsOnMainnet = mapTransactionsHistory(
-      tokenTxHistory,
-      contacts,
-      contactsSmartAddresses,
-      accounts,
-      TRANSACTION_EVENT,
-    );
-    const collectiblesTransactions = mapOpenSeaAndBCXTransactionsHistory(openSeaTxHistory, bcxCollectiblesTxHistory);
-    const mappedCTransactions = mapTransactionsHistory(
-      collectiblesTransactions,
-      contacts,
-      contactsSmartAddresses,
-      accounts,
-      COLLECTIBLE_TRANSACTION,
-    );
-
-    const mappedContacts = contacts.map(({ ...rest }) => ({ ...rest, type: TYPE_ACCEPTED }));
-
-    const activityFeedTabs = [
-      {
-        id: ALL,
-        name: 'All',
-        tabImageNormal: allIconNormal,
-        tabImageActive: allIconActive,
-        onPress: () => this.setActiveTab(ALL),
-        data: [
-          ...transactionsOnMainnet,
-          ...mappedCTransactions,
-          ...mappedContacts,
-          ...invitations,
-          ...userEvents,
-          ...badgesEvents,
-        ],
-        emptyState: {
-          title: 'Make your first step',
-          bodyText: 'Your activity will appear here.',
-        },
-      },
-      {
-        id: TRANSACTIONS,
-        name: 'Transactions',
-        tabImageNormal: transactionsIconNormal,
-        tabImageActive: transactionsIconActive,
-        onPress: () => this.setActiveTab(TRANSACTIONS),
-        data: [...transactionsOnMainnet, ...mappedCTransactions],
-        emptyState: {
-          title: 'Make your first step',
-          bodyText: 'Your transactions will appear here. Send or receive tokens to start.',
-        },
-      },
-      {
-        id: SOCIAL,
-        name: 'Social',
-        tabImageNormal: socialIconNormal,
-        tabImageActive: socialIconActive,
-        onPress: () => this.setActiveTab(SOCIAL),
-        data: [...mappedContacts, ...invitations],
-        emptyState: {
-          title: 'Make your first step',
-          bodyText: 'Information on your connections will appear here. Send a connection request to start.',
-        },
-      },
-    ];
 
     const hasIntercomNotifications = !!intercomNotificationsCount;
 
@@ -403,6 +435,8 @@ class HomeScreen extends React.Component<Props, State> {
 
     const badgesContainerStyle = !badges.length ? { width: '100%', justifyContent: 'center' } : {};
     const fiatCurrency = baseFiatCurrency || defaultFiatCurrency;
+
+    const showActivityFeedTabs = !!activityFeedTabs.length;
 
     return (
       <ContainerWithHeader
@@ -477,23 +511,30 @@ class HomeScreen extends React.Component<Props, State> {
               )}
             />
           </BadgesWrapper>
-          <Tabs
-            tabs={activityFeedTabs}
-            wrapperStyle={{ paddingTop: 16 }}
-            onTabChange={this.onTabChange}
-          />
-          <ActivityFeed
-            onCancelInvitation={cancelInvitation}
-            onRejectInvitation={rejectInvitation}
-            onAcceptInvitation={acceptInvitation}
-            navigation={navigation}
-            tabs={activityFeedTabs}
-            activeTab={activeTab}
-            hideTabs
-            initialNumToRender={8}
-            wrapperStyle={{ flexGrow: 1, opacity: tabIsChanging ? 0.5 : 1 }}
-            contentContainerStyle={{ flexGrow: 1 }}
-          />
+          {showActivityFeedTabs &&
+            <Tabs
+              tabs={activityFeedTabs}
+              wrapperStyle={{ paddingTop: 16 }}
+              onTabChange={this.onTabChange}
+            />
+          }
+          {showActivityFeedTabs &&
+            <ActivityFeed
+              onCancelInvitation={cancelInvitation}
+              onRejectInvitation={rejectInvitation}
+              onAcceptInvitation={acceptInvitation}
+              navigation={navigation}
+              tabs={activityFeedTabs}
+              activeTab={activeTab}
+              hideTabs
+              initialNumToRender={8}
+              wrapperStyle={{
+                flexGrow: 1,
+                opacity: tabIsChanging ? 0.5 : 1
+              }}
+              contentContainerStyle={{ flexGrow: 1 }}
+            />
+          }
         </ScrollView>
         <QRCodeScanner
           validator={this.validateQRCode}

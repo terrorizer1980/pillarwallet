@@ -554,7 +554,7 @@ class ActivityFeed extends React.Component<Props, State> {
         }
         actionLabel={this.getRightLabel(notification.type)}
         labelAsButton={notification.type === TYPE_SENT}
-        imageUpdateTimeStamp={notification.lastUpdateTime}
+        imageUpdateTimeStamp={notification.lastUpdateTime || 0}
         diameter={56}
       />
     );
