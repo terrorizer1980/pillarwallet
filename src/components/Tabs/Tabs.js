@@ -301,16 +301,18 @@ export default class Tabs extends React.Component<Props, State> {
               activeOpacity={1}
               active={isActive}
               onPress={() => {
-                if (onTabChange) onTabChange(true);
-                this.setState({ activeTab: id });
-                requestAnimationFrame(() => {
-                  onPress();
-                  if (onTabChange) onTabChange();
+                if (onTabChange) onTabChange();
+                this.setState({ activeTab: id }, () => {
+                  requestAnimationFrame(() => {
+                    onPress();
+                    if (onTabChange) onTabChange();
+                  });
                 });
               }}
               onLayout={(e) => {
                 if (tabLengths[id]) return;
                 const thisTabLength = e.nativeEvent.layout.width;
+                if (thisTabLength === tabLengths[id]) return;
                 const newLengths = { ...tabLengths };
                 newLengths[id] = thisTabLength;
                 this.setState({ tabLengths: newLengths });
