@@ -44,6 +44,7 @@ import { formatFiat, formatMoney } from 'utils/common';
 import { userHasSmartWallet } from 'utils/smartWallet';
 import { baseColors, fontStyles, spacing } from 'utils/variables';
 import { calculateBalanceInFiat } from 'utils/assets';
+import { calculateBitcoinBalanceInFiat } from 'utils/bitcoin';
 
 // types
 import type { NavigationScreenProp } from 'react-navigation';
@@ -51,7 +52,7 @@ import type { Assets, Balances, BalancesStore, Rates } from 'models/Asset';
 import type { Account, Accounts } from 'models/Account';
 import type { Dispatch, RootReducerState } from 'reducers/rootReducer';
 import type { BlockchainNetwork } from 'models/BlockchainNetwork';
-import type { BitcoinAddress } from 'models/Bitcoin';
+import type { BitcoinAddress, BitcoinBalance } from 'models/Bitcoin';
 import type { EthereumWallet } from 'models/Wallet';
 
 // constants
@@ -128,6 +129,7 @@ type Props = {|
   bitcoinAddresses: BitcoinAddress[],
   refreshBitcoinBalance: () => void,
   initializeBitcoinWallet: (wallet: EthereumWallet) => void;
+  bitcoinBalances: BitcoinBalance,
 |};
 
 type State = {|
@@ -187,6 +189,17 @@ class AccountsScreen extends React.Component<Props, State> {
       isLegacyWalletVisible: forceShowLegacyWallet,
       onPinValidAction: null,
     };
+  }
+
+  componentDidMount() {
+    const {
+      refreshBitcoinBalance,
+      bitcoinFeatureEnabled,
+    } = this.props;
+
+    if (bitcoinFeatureEnabled) {
+      refreshBitcoinBalance();
+    }
   }
 
   shouldComponentUpdate(nextProps: Props, nextState: State) {
@@ -398,6 +411,7 @@ class AccountsScreen extends React.Component<Props, State> {
     const networks: NetworkItem[] = [];
 
     const {
+      rates,
       blockchainNetworks,
       availableStake,
       isTankInitialised,
@@ -405,6 +419,7 @@ class AccountsScreen extends React.Component<Props, State> {
       bitcoinFeatureEnabled,
       accounts,
       bitcoinAddresses,
+      bitcoinBalances,
       baseFiatCurrency,
     } = this.props;
 
@@ -435,8 +450,10 @@ class AccountsScreen extends React.Component<Props, State> {
       const bitcoinNetwork = blockchainNetworks.find(
         ({ id }) => id === BLOCKCHAIN_NETWORK_TYPES.BITCOIN,
       );
-      // TODO: calculate balance
-      const formattedBitcoinBalance = formatFiat(0, baseFiatCurrency);
+      const btcBalance = calculateBitcoinBalanceInFiat(
+        rates, bitcoinBalances, baseFiatCurrency || defaultFiatCurrency,
+      );
+      const formattedBitcoinBalance = formatFiat(btcBalance, baseFiatCurrency);
 
       if (bitcoinNetwork) {
         networks.push({
@@ -585,7 +602,12 @@ const mapStateToProps = ({
   balances: { data: balances },
   rates: { data: rates },
   user: { data: user },
-  bitcoin: { data: { addresses: bitcoinAddresses } },
+  bitcoin: {
+    data: {
+      addresses: bitcoinAddresses,
+      balances: bitcoinBalances,
+    },
+  },
 }: RootReducerState): $Shape<Props> => ({
   accounts,
   blockchainNetworks,
@@ -597,6 +619,7 @@ const mapStateToProps = ({
   rates,
   user,
   bitcoinAddresses,
+  bitcoinBalances,
 });
 
 const structuredSelector = createStructuredSelector({

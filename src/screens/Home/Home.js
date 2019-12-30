@@ -50,6 +50,7 @@ import { ALL, TRANSACTIONS, SOCIAL } from 'constants/activityConstants';
 import { TRANSACTION_EVENT } from 'constants/historyConstants';
 import { COLLECTIBLE_TRANSACTION } from 'constants/collectiblesConstants';
 import { TYPE_ACCEPTED } from 'constants/invitationsConstants';
+import { BLOCKCHAIN_NETWORK_TYPES } from 'constants/blockchainNetworkConstants';
 
 // actions
 import {
@@ -71,6 +72,7 @@ import {
 } from 'actions/walletConnectActions';
 import { logScreenViewAction } from 'actions/analyticsActions';
 import { executeDeepLinkAction } from 'actions/deepLinkActions';
+import { refreshBitcoinBalanceAction } from 'actions/bitcoinActions';
 
 // selectors
 import { accountHistorySelector } from 'selectors/history';
@@ -96,23 +98,23 @@ type Props = {
   contacts: Object[],
   invitations: Object[],
   user: Object,
-  fetchTransactionsHistory: Function,
-  fetchTransactionsHistoryNotifications: Function,
-  fetchInviteNotifications: Function,
-  acceptInvitation: Function,
-  cancelInvitation: Function,
-  rejectInvitation: Function,
-  setUnreadNotificationsStatus: Function,
+  fetchTransactionsHistory: () => void,
+  fetchTransactionsHistoryNotifications: () => void,
+  fetchInviteNotifications: () => void,
+  acceptInvitation: (invitation: Object) => void,
+  cancelInvitation: (invitation: Object) => void,
+  rejectInvitation: (invitation: Object) => void,
+  setUnreadNotificationsStatus: (status: boolean) => void,
   homeNotifications: Object[],
   intercomNotificationsCount: number,
-  fetchAllCollectiblesData: Function,
+  fetchAllCollectiblesData: () => void,
   openSeaTxHistory: Object[],
   history: Object[],
   requestWalletConnectSession: (uri: string) => void,
   executeDeepLink: (uri: string) => void,
   cancelWaitingRequest: () => void,
   badges: Badges,
-  fetchBadges: Function,
+  fetchBadges: () => void,
   connectors: Connector[],
   pendingConnector: ?Connector,
   logScreenView: (view: string, screen: string) => void,
@@ -125,6 +127,8 @@ type Props = {
   badgesEvents: BadgeRewardEvent[],
   theme: Theme,
   baseFiatCurrency: ?string,
+  refreshBitcoinBalance: () => void,
+  blockchainNetwork: ?string,
 };
 
 type State = {
@@ -183,7 +187,13 @@ class HomeScreen extends React.Component<Props, State> {
   };
 
   componentDidMount() {
-    const { logScreenView, fetchBadges, fetchBadgeAwardHistory } = this.props;
+    const {
+      logScreenView,
+      fetchBadges,
+      fetchBadgeAwardHistory,
+      refreshBitcoinBalance,
+      blockchainNetwork,
+    } = this.props;
 
     logScreenView('View home', 'Home');
 
@@ -196,6 +206,10 @@ class HomeScreen extends React.Component<Props, State> {
     });
     fetchBadges();
     fetchBadgeAwardHistory();
+
+    if (blockchainNetwork === BLOCKCHAIN_NETWORK_TYPES.BITCOIN) {
+      refreshBitcoinBalance();
+    }
   }
 
   componentWillUnmount() {
@@ -516,7 +530,7 @@ const mapStateToProps = ({
   accounts: { data: accounts },
   session: { data: { isOnline } },
   userEvents: { data: userEvents },
-  appSettings: { data: { baseFiatCurrency } },
+  appSettings: { data: { baseFiatCurrency, blockchainNetwork } },
 }: RootReducerState): $Shape<Props> => ({
   contacts,
   user,
@@ -531,6 +545,7 @@ const mapStateToProps = ({
   isOnline,
   userEvents,
   baseFiatCurrency,
+  blockchainNetwork,
 });
 
 const structuredSelector = createStructuredSelector({
@@ -546,11 +561,11 @@ const combinedMapStateToProps = (state: RootReducerState): $Shape<Props> => ({
 const mapDispatchToProps = (dispatch: Dispatch): $Shape<Props> => ({
   cancelInvitation: (invitation) => dispatch(cancelInvitationAction(invitation)),
   acceptInvitation: (invitation) => dispatch(acceptInvitationAction(invitation)),
-  rejectInvitation: (invitation) => dispatch(rejectInvitationAction(invitation)),
+  rejectInvitation: (invitation: Object) => dispatch(rejectInvitationAction(invitation)),
   fetchTransactionsHistory: () => dispatch(fetchTransactionsHistoryAction()),
   fetchTransactionsHistoryNotifications: () => dispatch(fetchTransactionsHistoryNotificationsAction()),
   fetchInviteNotifications: () => dispatch(fetchInviteNotificationsAction()),
-  setUnreadNotificationsStatus: status => dispatch(setUnreadNotificationsStatusAction(status)),
+  setUnreadNotificationsStatus: (status: boolean) => dispatch(setUnreadNotificationsStatusAction(status)),
   fetchAllCollectiblesData: () => dispatch(fetchAllCollectiblesDataAction()),
   requestWalletConnectSession: uri => dispatch(requestSessionAction(uri)),
   executeDeepLink: uri => dispatch(executeDeepLinkAction(uri)),
@@ -558,6 +573,7 @@ const mapDispatchToProps = (dispatch: Dispatch): $Shape<Props> => ({
   fetchBadges: () => dispatch(fetchBadgesAction()),
   logScreenView: (view: string, screen: string) => dispatch(logScreenViewAction(view, screen)),
   fetchBadgeAwardHistory: () => dispatch(fetchBadgeAwardHistoryAction()),
+  refreshBitcoinBalance: () => dispatch(refreshBitcoinBalanceAction(false)),
 });
 
 export default withTheme(connect(combinedMapStateToProps, mapDispatchToProps)(HomeScreen));
