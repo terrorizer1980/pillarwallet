@@ -437,26 +437,38 @@ export const groupAndSortByDate = (
   dateField?: string = 'createdAt',
   sortDirection?: string = 'desc',
 ): GroupedAndSortedData[] => {
-  const grouped = [];
-  orderBy(data, [dateField], [sortDirection]).forEach(listItem => {
+  const groupedObject = orderBy(data, [dateField], [sortDirection]).reduce((grouped, listItem) => {
     const dateValue = timestampMultiplier
       ? listItem[dateField] * timestampMultiplier
       : listItem[dateField];
     const itemCreatedDate = new Date(dateValue);
     const formattedDate = formatDate(itemCreatedDate, 'MMM D YYYY');
-    // don't show the year if the event happened this year
-    const titleDateFormat = itemCreatedDate.getFullYear() === new Date().getFullYear()
-      ? 'MMM D'
-      : 'MMM D YYYY';
-    const sectionTitle = formatDate(itemCreatedDate, titleDateFormat);
-    const existingSection = grouped.find(({ date }) => date === formattedDate);
+    const existingSection = grouped[formattedDate];
     if (!existingSection) {
-      grouped.push({ title: sectionTitle, date: formattedDate, data: [{ ...listItem }] });
-    } else {
-      existingSection.data.push({ ...listItem });
+      // don't show the year if the event happened this year
+      const titleDateFormat = itemCreatedDate.getFullYear() === new Date().getFullYear()
+        ? 'MMM D'
+        : 'MMM D YYYY';
+      const sectionTitle = formatDate(itemCreatedDate, titleDateFormat);
+      const newSection = {
+        title: sectionTitle,
+        date: formattedDate,
+        data: [listItem],
+      };
+      return { ...grouped, [formattedDate]: newSection };
     }
-  });
-  return grouped;
+    return {
+      ...grouped,
+      [formattedDate]: {
+        ...existingSection,
+        data: [
+          ...existingSection.data,
+          listItem,
+        ],
+      },
+    };
+  }, {});
+  return (Object.values(groupedObject): any);
 };
 
 export const isCaseInsensitiveMatch = (a: ?string, b: ?string): boolean => {
