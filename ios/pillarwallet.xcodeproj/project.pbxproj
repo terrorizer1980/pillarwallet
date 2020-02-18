@@ -41,7 +41,6 @@
 		32F8060C4F084EB39FBDF2DF /* libRNCookieManagerIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BE833F43D8942C1A5FEAA0A /* libRNCookieManagerIOS.a */; };
 		3C7B672F213EADB70053E053 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C7B672E213EADB60053E053 /* Social.framework */; };
 		3C7B6731213EADC20053E053 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C7B6730213EADC20053E053 /* MessageUI.framework */; };
-		4FE764C8021D4F85BB1B08D7 /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA815C82E1A64CAE93EF8ED5 /* libRNFirebase.a */; };
 		5338BCC4AA1048EF9AA522AB /* EuclidCircularB-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A6AADC6B352744E592D93AE3 /* EuclidCircularB-Regular.otf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		8018645422DF4DC3855F3A3D /* libRNThread.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC6F631CBBF458CB455FF9C /* libRNThread.a */; };
@@ -184,13 +183,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 3D7682761D8E76B80014119E;
 			remoteInfo = SplashScreen;
-		};
-		16A4A6632111EBA6008E645C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9DDE0EB81B5B432389D30BE2 /* RNFirebase.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNFirebase;
 		};
 		16A4A6682111EBA7008E645C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -578,7 +570,6 @@
 		99C139DC81004BBBB48D842B /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		9B758149B386407EA6FB7144 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		9CCAF66D8F7E43A985268607 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/native-base/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
-		9DDE0EB81B5B432389D30BE2 /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFirebase.xcodeproj; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; };
 		A030F51609C4ED022BBF639F /* Pods-pillarwallet.staging.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pillarwallet.staging.release.xcconfig"; path = "Pods/Target Support Files/Pods-pillarwallet/Pods-pillarwallet.staging.release.xcconfig"; sourceTree = "<group>"; };
 		A448C5E5A81446A2B5F41A85 /* Roboto_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto_medium.ttf; path = "../node_modules/native-base/Fonts/Roboto_medium.ttf"; sourceTree = "<group>"; };
 		A6AADC6B352744E592D93AE3 /* EuclidCircularB-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "EuclidCircularB-Regular.otf"; path = "../src/assets/fonts/EuclidCircularB-Regular.otf"; sourceTree = "<group>"; };
@@ -597,7 +588,6 @@
 		C2E2A14F124842D889D80692 /* EuclidCircularB-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "EuclidCircularB-Medium.otf"; path = "../src/assets/fonts/EuclidCircularB-Medium.otf"; sourceTree = "<group>"; };
 		C8ADF4A6C06F4F2AB8A74D88 /* Aktiv Grotesk App_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Aktiv Grotesk App_medium.ttf"; path = "../src/assets/fonts/Aktiv Grotesk App_medium.ttf"; sourceTree = "<group>"; };
 		CA39A57B14AB4FD2B5AF2303 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/native-base/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
-		CA815C82E1A64CAE93EF8ED5 /* libRNFirebase.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFirebase.a; sourceTree = "<group>"; };
 		D4813BD2D53B497081A4E8F1 /* EuclidCircularB-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "EuclidCircularB-Bold.otf"; path = "../src/assets/fonts/EuclidCircularB-Bold.otf"; sourceTree = "<group>"; };
 		E010AE77226E52320034CF4D /* UdpSockets.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = UdpSockets.xcodeproj; path = "../node_modules/react-native-udp/ios/UdpSockets.xcodeproj"; sourceTree = "<group>"; };
 		E036DE6F226E0CFE00ED9620 /* RNRandomBytes.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNRandomBytes.xcodeproj; path = "../node_modules/react-native-randombytes/RNRandomBytes.xcodeproj"; sourceTree = "<group>"; };
@@ -637,7 +627,6 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				D69534B8BDBF68246E3C0379 /* libPods-pillarwallet.a in Frameworks */,
-				4FE764C8021D4F85BB1B08D7 /* libRNFirebase.a in Frameworks */,
 				EA4F15CCADAC44BFA9453C38 /* libRNOS.a in Frameworks */,
 				A9A60C1EA96A483EA7421C39 /* libTcpSockets.a in Frameworks */,
 				162E1794211325E60028BE96 /* SignalProtocol.framework in Frameworks */,
@@ -809,7 +798,6 @@
 		16A4A6342111EBA5008E645C /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				CA815C82E1A64CAE93EF8ED5 /* libRNFirebase.a */,
 				62DA123A58B3461382F464FA /* libRNOS.a */,
 				BA5F62D180334F57AA8CCEEB /* libTcpSockets.a */,
 				690777AE39E44AABA938DEFA /* libSignalMessagingSwift.a */,
@@ -819,14 +807,6 @@
 				8D7EBF760F774C03B1BAB347 /* libRNInAppBrowser.a */,
 			);
 			name = "Recovered References";
-			sourceTree = "<group>";
-		};
-		16A4A6602111EBA6008E645C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				16A4A6642111EBA6008E645C /* libRNFirebase.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		16A4A6652111EBA7008E645C /* Products */ = {
@@ -934,7 +914,6 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
-				9DDE0EB81B5B432389D30BE2 /* RNFirebase.xcodeproj */,
 				B9E3EFA94F904E9B96ECEFEF /* RNOS.xcodeproj */,
 				3C6BE9948FEC483EA9345AC5 /* TcpSockets.xcodeproj */,
 				4C1E21202BBC4C8F979136AA /* SignalMessagingSwift.xcodeproj */,
@@ -1211,10 +1190,6 @@
 					ProjectRef = 162E175C21131D790028BE96 /* RNFetchBlob.xcodeproj */;
 				},
 				{
-					ProductGroup = 16A4A6602111EBA6008E645C /* Products */;
-					ProjectRef = 9DDE0EB81B5B432389D30BE2 /* RNFirebase.xcodeproj */;
-				},
-				{
 					ProductGroup = 0475C33823C8BB3300BC4A18 /* Products */;
 					ProjectRef = 113115949D7043F5B6F906FF /* RNInAppBrowser.xcodeproj */;
 				},
@@ -1388,13 +1363,6 @@
 			fileType = archive.ar;
 			path = libSplashScreen.a;
 			remoteRef = 165F276F21244AC70089F39A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		16A4A6642111EBA6008E645C /* libRNFirebase.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNFirebase.a;
-			remoteRef = 16A4A6632111EBA6008E645C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		16A4A6692111EBA7008E645C /* libRNOS.a */ = {
@@ -1756,6 +1724,7 @@
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Foundation.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf",
@@ -1764,7 +1733,6 @@
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
 				"${PODS_ROOT}/RSKImageCropper/RSKImageCropper/RSKImageCropperStrings.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/gRPC/gRPCCertificates.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -1779,6 +1747,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Brands.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Regular.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Solid.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Fontisto.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Foundation.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Ionicons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialCommunityIcons.ttf",
@@ -1787,7 +1756,6 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RSKImageCropperStrings.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1885,7 +1853,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/@expo/vector-icons/vendor/react-native-vector-icons/RNVectorIconsManager",
-					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-os/ios",
 					"$(SRCROOT)/../node_modules/react-native-tcp/ios/**",
 					"$(SRCROOT)/../node_modules/rn-signal-protocol-messaging/ios/SignalMessagingSwift/**",
@@ -1938,7 +1905,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/@expo/vector-icons/vendor/react-native-vector-icons/RNVectorIconsManager",
-					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-os/ios",
 					"$(SRCROOT)/../node_modules/react-native-tcp/ios/**",
 					"$(SRCROOT)/../node_modules/rn-signal-protocol-messaging/ios/SignalMessagingSwift/**",
@@ -2106,7 +2072,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/@expo/vector-icons/vendor/react-native-vector-icons/RNVectorIconsManager",
-					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-os/ios",
 					"$(SRCROOT)/../node_modules/react-native-tcp/ios/**",
 					"$(SRCROOT)/../node_modules/rn-signal-protocol-messaging/ios/SignalMessagingSwift/**",

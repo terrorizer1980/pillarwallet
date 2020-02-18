@@ -2,8 +2,6 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
 
 target 'pillarwallet' do
-  pod 'Fabric', '~> 1.7.5'
-  pod 'Crashlytics', '~> 3.10.4'
 
   pod 'React',
     :path => "../node_modules/react-native",
@@ -36,14 +34,9 @@ target 'pillarwallet' do
     :podspec => "../node_modules/react-native/third-party-podspecs/glog.podspec",
     :inhibit_warnings => true
   pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
-  pod 'Firebase/Core', '~> 5.0.0'
-  pod 'Firebase/Database'
-  pod 'Firebase/Auth'
-  pod 'Firebase/Firestore'
-  pod 'Firebase/Messaging'
-  pod 'Firebase/DynamicLinks'
-  pod 'Firebase/Storage'
-  pod 'Firebase/Performance'
+
+  pod 'Firebase/Messaging', '~> 6.13.0'
+
   pod 'ReactNativePermissions', :path => '../node_modules/react-native-permissions'
   pod 'react-native-fetch-blob', :path => '../node_modules/react-native-fetch-blob'
   pod 'RNKeychain', :path => '../node_modules/react-native-keychain'
@@ -69,8 +62,6 @@ target 'pillarwallet' do
 
   pod 'SentryReactNative', :path => '../node_modules/react-native-sentry'
 
-  pod 'ReactNativeFabric', :path => '../node_modules/react-native-fabric'
-
   pod 'react-native-webview', :path => '../node_modules/react-native-webview'
 
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
@@ -78,6 +69,18 @@ target 'pillarwallet' do
   pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
 
   pod 'react-native-appearance', :path => '../node_modules/react-native-appearance'
+
+  pod 'RNFBAnalytics', :path => '../node_modules/@react-native-firebase/analytics'
+
+  pod 'RNFBApp', :path => '../node_modules/@react-native-firebase/app'
+
+  pod 'RNFBCrashlytics', :path => '../node_modules/@react-native-firebase/crashlytics'
+
+  pod 'RNFBIid', :path => '../node_modules/@react-native-firebase/iid'
+
+  pod 'RNFBMessaging', :path => '../node_modules/@react-native-firebase/messaging'
+
+  pod 'RNScreens', :path => '../node_modules/react-native-screens'
 
   post_install do |installer|
     installer.pods_project.main_group.tab_width = '2';

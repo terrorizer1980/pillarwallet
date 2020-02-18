@@ -1,8 +1,6 @@
 // Copyright 2015-present 650 Industries. All rights reserved.
 #import "Firebase.h"
 #import "AppDelegate.h"
-#import "RNFirebaseNotifications.h"
-#import "RNFirebaseMessaging.h"
 #import "Intercom/intercom.h"
 #import "React/RCTRootView.h"
 #import "Crashlytics/Answers.h"
@@ -17,8 +15,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSURL *jsCodeLocation;
-    [FIRApp configure];
-    [RNFirebaseNotifications configure];
+    if ([FIRApp defaultApp] == nil) {
+      [FIRApp configure];
+    }
     [Fabric with:@[[Crashlytics class], [Answers class]]];
     #ifdef DEBUG
       jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index"
@@ -46,21 +45,8 @@
 
 #pragma mark - Notifications
 
-- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
-  [[RNFirebaseNotifications instance] didReceiveLocalNotification:notification];
-}
-
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(nonnull NSDictionary *)userInfo
-                                                       fetchCompletionHandler:(nonnull void (^)(UIBackgroundFetchResult))completionHandler{
-  [[RNFirebaseNotifications instance] didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
-}
-
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
      [Intercom setDeviceToken:deviceToken];
-}
-
-- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
-  [[RNFirebaseMessaging instance] didRegisterUserNotificationSettings:notificationSettings];
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
