@@ -1645,7 +1645,6 @@
 				DEVELOPMENT_TEAM = J9DEY3FGPD;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../node_modules/@matt-block/react-native-in-app-browser/ios/RNInAppBrowser",
 					"$(SRCROOT)/../node_modules/react-native-cookies/ios/RNCookieManagerIOS",
 					"$(SRCROOT)/../node_modules/react-native-threads/ios",
 					"$(SRCROOT)/../node_modules/rn-signal-protocol-messaging/ios/SignalMessagingSwift/**",
@@ -1682,7 +1681,6 @@
 				DEVELOPMENT_TEAM = J9DEY3FGPD;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../node_modules/@matt-block/react-native-in-app-browser/ios/RNInAppBrowser",
 					"$(SRCROOT)/../node_modules/react-native-cookies/ios/RNCookieManagerIOS",
 					"$(SRCROOT)/../node_modules/react-native-threads/ios",
 					"$(SRCROOT)/../node_modules/rn-signal-protocol-messaging/ios/SignalMessagingSwift/**",
@@ -1922,7 +1920,6 @@
 				DEVELOPMENT_TEAM = J9DEY3FGPD;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../node_modules/@matt-block/react-native-in-app-browser/ios/RNInAppBrowser",
 					"$(SRCROOT)/../node_modules/react-native-cookies/ios/RNCookieManagerIOS",
 					"$(SRCROOT)/../node_modules/react-native-threads/ios",
 					"$(SRCROOT)/../node_modules/rn-signal-protocol-messaging/ios/SignalMessagingSwift/**",
