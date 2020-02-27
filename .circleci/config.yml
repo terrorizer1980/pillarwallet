@@ -628,6 +628,7 @@ workflows:
               only:
                   - develop
                   - fix/pure-react-native
+                  - fix/pure-rn-ios-further-work
       - appcenter_android:
           requires:
             - build-and-test
