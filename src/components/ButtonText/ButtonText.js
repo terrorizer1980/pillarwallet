@@ -27,6 +27,7 @@ import type { IconProps } from 'components/Icon';
 import { fontSizes } from 'utils/variables';
 import { themedColors } from 'utils/themes';
 
+
 type CommonProps = {
   disabled?: boolean,
   isLoading?: boolean,
@@ -47,10 +48,11 @@ type ContentProps = CommonProps & {
   secondary?: boolean,
 };
 
-type Props = WrapperProps & ContentProps & {
+export type Props = WrapperProps & ContentProps & {
   leftIconProps?: IconProps,
   rightIconProps?: IconProps,
 };
+
 
 const Wrapper = styled.View`
   align-self: center;

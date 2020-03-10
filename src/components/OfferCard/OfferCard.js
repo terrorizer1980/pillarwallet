@@ -20,8 +20,10 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import styled from 'styled-components/native';
+import styled, { withTheme } from 'styled-components/native';
 import { CachedImage } from 'react-native-cached-image';
+import type { ExternalProps as ButtonProps } from 'components/Button';
+import type { Props as TextButtonProps } from 'components/ButtonText';
 
 // components
 import ShadowedCard from 'components/ShadowedCard';
@@ -31,18 +33,15 @@ import ButtonText from 'components/ButtonText';
 
 // utils
 import { fontStyles } from 'utils/variables';
-import { themedColors } from 'utils/themes';
+import { getThemeColors, themedColors } from 'utils/themes';
+import { hexToRgba } from 'utils/ui';
+
+// types
+import type { Theme } from 'models/Theme';
+
 
 type ImageObject = {
   uri: string,
-};
-
-type ButtonProps = {
-  label?: string,
-  onPress?: () => void,
-  isDisabled?: boolean,
-  isLoading?: boolean,
-  isSecondary?: boolean,
 };
 
 type Props = {
@@ -51,12 +50,14 @@ type Props = {
   labelTop: string,
   valueTop: string | number,
   cardImageSource?: string | ImageObject,
-  cardTopButton?: ButtonProps,
+  cardTopButton?: TextButtonProps,
   labelBottom: string,
   valueBottom: string | number,
   cardMainButton?: ButtonProps,
   cardNote?: string,
+  theme: Theme,
 };
+
 
 const CardWrapper = styled.TouchableOpacity`
   width: 100%;
@@ -123,29 +124,17 @@ const OfferCard = (props: Props) => {
     valueBottom,
     cardMainButton = {},
     cardNote,
+    theme,
   } = props;
 
-  const {
-    label: topButtonLabel,
-    onPress: topButtonOnPress,
-    isDisabled: isTopButtonDisabled,
-    isLoading: isTopButtonLoading,
-    isSecondary: isTopButtonSecondary,
-  } = cardTopButton;
-
-  const {
-    label: mainButtonLabel,
-    onPress: mainButtonOnPress,
-    isDisabled: isMainButtonDisabled,
-    isLoading: isMainButtonLoading,
-  } = cardMainButton;
+  const colors = getThemeColors(theme);
 
   return (
     <ShadowedCard
       contentWrapperStyle={{ paddingHorizontal: 16, paddingVertical: 6 }}
       isAnimated
       spacingAfterAnimation={10}
-      disabled={isDisabled}
+      upperContentWrapperStyle={isDisabled ? { backgroundColor: hexToRgba(colors.card, 0.6) } : {}}
     >
       <CardWrapper
         disabled={isDisabled}
@@ -160,12 +149,8 @@ const OfferCard = (props: Props) => {
             {!!cardImageSource && <ProviderIcon source={cardImageSource} resizeMode="contain" />}
             {!!Object.keys(cardTopButton).length &&
             <ButtonText
-              onPress={topButtonOnPress}
-              buttonText={topButtonLabel}
-              secondary={isTopButtonSecondary}
-              disabled={isTopButtonDisabled}
-              isLoading={isTopButtonLoading}
               wrapperStyle={{ paddingVertical: 4, marginLeft: 10 }}
+              {...cardTopButton}
             />
             }
             {!!cardNote && <CardNote>{cardNote}</CardNote>}
@@ -181,11 +166,9 @@ const OfferCard = (props: Props) => {
           </CardColumn>
           <CardColumn>
             <Button
-              disabled={isMainButtonDisabled}
-              title={isMainButtonLoading ? '' : mainButtonLabel}
               small
-              onPress={mainButtonOnPress}
-              isLoading={isMainButtonLoading}
+              horizontalPadding={8}
+              {...cardMainButton}
             />
           </CardColumn>
         </CardRow>
@@ -194,4 +177,4 @@ const OfferCard = (props: Props) => {
   );
 };
 
-export default OfferCard;
+export default withTheme(OfferCard);

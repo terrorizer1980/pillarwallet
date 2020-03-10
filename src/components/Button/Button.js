@@ -30,7 +30,8 @@ import { responsiveSize } from 'utils/ui';
 import type { Theme } from 'models/Theme';
 import { getThemeColors, themedColors } from 'utils/themes';
 
-export type Props = {
+
+export type ExternalProps = {
   children?: React.Node,
   title: string,
   onPress?: Function,
@@ -59,12 +60,18 @@ export type Props = {
   style?: Object,
   isLoading?: boolean,
   regularText?: boolean,
-  theme: Theme,
   leftIconName?: string,
   leftIconStyle?: Object,
   rightIconName?: string,
   rightIconStyle?: Object,
+  horizontalPadding?: number,
 };
+
+type InternalProps = {
+  theme: Theme,
+}
+
+export type Props = ExternalProps & InternalProps;
 
 type State = {
   shouldIgnoreTap: boolean,
@@ -74,6 +81,7 @@ type ButtonNextProps = {
   onPress: Function,
   disabled?: boolean,
 };
+
 
 const themes = {
   primary: {
@@ -225,6 +233,8 @@ const getButtonWidth = (props) => {
 const getButtonPadding = (props) => {
   if (props.noPadding) {
     return '0';
+  } else if (props.horizontalPadding) {
+    return `${props.horizontalPadding}px`;
   } else if (props.small || props.block) {
     return `${spacing.rhythm}px`;
   } else if (props.square) {

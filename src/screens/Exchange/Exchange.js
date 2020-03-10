@@ -40,7 +40,7 @@ import { BaseText, MediumText } from 'components/Typography';
 import TextInput from 'components/TextInput';
 import DeploymentView from 'components/DeploymentView';
 import EmptyStateParagraph from 'components/EmptyState/EmptyStateParagraph';
-import OfferCard from 'components/OfferCard/OfferCard';
+import OfferCard from 'components/OfferCard';
 
 // actions
 import {
@@ -368,41 +368,28 @@ function getCardTopButtonData(topButtonProps) {
     thisComponent,
     isShapeShift,
     shapeshiftAccessToken,
-    storedAllowance,
-    allowanceSet,
     shapeshiftAuthPressed,
-    pressedTokenAllowanceId,
   } = topButtonProps;
 
   const {
-    _id: offerId,
     minQuantity,
     maxQuantity,
     fromAsset,
   } = offer;
 
   const { code: fromAssetCode } = fromAsset;
-  const isSetAllowancePressed = pressedTokenAllowanceId === offerId;
   const minOrMaxAmount = formatAmountDisplay(isBelowMin ? minQuantity : maxQuantity);
 
   if (minOrMaxNeeded) {
     return {
-      label: `${minOrMaxAmount} ${fromAssetCode} ${isBelowMin ? 'min' : 'max'}`,
+      buttonText: `${minOrMaxAmount} ${fromAssetCode} ${isBelowMin ? 'min' : 'max'}`,
       onPress: () => thisComponent.setFromAmount(isBelowMin ? minQuantity : maxQuantity),
     };
   } else if (isShapeShift && !shapeshiftAccessToken) {
     return {
-      label: 'Connect',
+      buttonText: 'Connect',
       onPress: thisComponent.onShapeshiftAuthPress,
-      isDisabled: shapeshiftAuthPressed,
-    };
-  } else if (!allowanceSet) {
-    return {
-      label: storedAllowance ? 'Pending' : 'Enable',
-      onPress: () => thisComponent.onSetTokenAllowancePress(offer),
-      isDisabled: isSetAllowancePressed,
-      isSecondary: !!storedAllowance,
-      isLoading: isSetAllowancePressed,
+      disabled: shapeshiftAuthPressed,
     };
   }
   return {};
@@ -862,10 +849,12 @@ class ExchangeScreen extends React.Component<Props, State> {
     const isAboveMax = maxQuantityNumeric !== 0 && amountToSell > maxQuantityNumeric;
 
     const minOrMaxNeeded = isBelowMin || isAboveMax;
-    const isTakeButtonDisabled = !!minOrMaxNeeded
+    const isSetAllowancePressed = pressedTokenAllowanceId === offerId;
+    const isCardDisabled = !!minOrMaxNeeded
       || isTakeOfferPressed
-      || !allowanceSet
       || (isShapeShift && !shapeshiftAccessToken);
+    const isCryptoOfferButtonLoading = isTakeOfferPressed || !!storedAllowance || isSetAllowancePressed;
+    const isCryptoOfferButtonDisabled = isCardDisabled || isCryptoOfferButtonLoading;
 
     const isFiat = isFiatProvider(offerProvider);
 
@@ -878,17 +867,14 @@ class ExchangeScreen extends React.Component<Props, State> {
       isBelowMin,
       isShapeShift,
       shapeshiftAccessToken,
-      allowanceSet,
-      storedAllowance,
       shapeshiftAuthPressed,
-      pressedTokenAllowanceId,
       thisComponent: this,
     };
 
     if (isFiat) {
       return (
         <OfferCard
-          isDisabled={isTakeButtonDisabled || disableOffer}
+          isDisabled={isCardDisabled || disableOffer}
           onPress={() => this.onFiatOfferPress(offer)}
           labelTop="Amount total"
           valueTop={`${askRate} ${fromAssetCode}`}
@@ -900,9 +886,9 @@ class ExchangeScreen extends React.Component<Props, State> {
             : 'Will be calculated'
           }
           cardMainButton={{
-            label: `${formatAmountDisplay(quoteCurrencyAmount)} ${toAssetCode}`,
+            title: `${formatAmountDisplay(quoteCurrencyAmount)} ${toAssetCode}`,
             onPress: () => this.onFiatOfferPress(offer),
-            isDisabled: disableFiatExchange,
+            disabled: disableFiatExchange,
             isLoading: isTakeOfferPressed,
           }}
           cardNote={offerRestricted}
@@ -912,8 +898,11 @@ class ExchangeScreen extends React.Component<Props, State> {
 
     return (
       <OfferCard
-        isDisabled={isTakeButtonDisabled || disableOffer}
-        onPress={() => this.onOfferPress(offer)}
+        isDisabled={isCardDisabled || disableOffer}
+        onPress={() => !allowanceSet
+          ? this.onSetTokenAllowancePress(offer)
+          : this.onOfferPress(offer)
+        }
         labelTop="Exchange rate"
         valueTop={formatAmountDisplay(askRate)}
         cardImageSource={providerLogo}
@@ -921,10 +910,13 @@ class ExchangeScreen extends React.Component<Props, State> {
         labelBottom="Available"
         valueBottom={available}
         cardMainButton={{
-          label: `${amountToBuyString} ${toAssetCode}`,
-          onPress: () => this.onOfferPress(offer),
-          isDisabled: isTakeButtonDisabled || disableNonFiatExchange,
-          isLoading: isTakeOfferPressed,
+          title: !allowanceSet ? 'Allow this exchange' : `${amountToBuyString} ${toAssetCode}`,
+          onPress: () => !allowanceSet
+            ? this.onSetTokenAllowancePress(offer)
+            : this.onOfferPress(offer),
+          disabled: isCryptoOfferButtonDisabled || disableNonFiatExchange,
+          isLoading: isCryptoOfferButtonLoading,
+          positive: !allowanceSet,
         }}
       />
     );
