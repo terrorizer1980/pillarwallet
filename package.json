@@ -156,7 +156,7 @@
     "rn-nodeify": "^10.0.1",
     "rn-signal-protocol-messaging": "1.0.218",
     "shuffle-array": "^1.0.1",
-    "socket.io-client": "^2.2.0",
+    "socket.io-client": "^3.0.0",
     "stream-browserify": "^1.0.0",
     "string_decoder": "~0.10.25",
     "styled-components": "^3.2.5",
