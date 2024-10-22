@@ -55,7 +55,7 @@
     "cryptocompare": "^0.5.0",
     "date-fns": "^1.29.0",
     "dns.js": "^1.0.1",
-    "ethereumjs-util": "^6.1.0",
+    "ethereumjs-util": "^6.2.1",
     "ethers": "https://github.com/pillarwallet/ethers.js#pillar-v4.0.44",
     "ethjs-abi": "^0.2.1",
     "events": "^1.0.0",
