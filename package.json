@@ -137,7 +137,7 @@
     "react-native-swiper": "^1.6.0",
     "react-native-tcp": "^3.2.1",
     "react-native-udp": "^2.6.0",
-    "react-native-vector-icons": "^6.6.0",
+    "react-native-vector-icons": "^10.3.0",
     "react-native-webview": "^10.1.0",
     "react-navigation": "3.13.0",
     "react-navigation-redux-helpers": "2.0.1",
